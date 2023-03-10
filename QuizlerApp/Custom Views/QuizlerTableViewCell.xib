@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="RobotoSlab-Regular.ttf">
+            <string>RobotoSlab-Regular</string>
+        </array>
+        <array key="RobotoSlab-SemiBold.ttf">
+            <string>RobotoSlab-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuizlerTableViewCell" customModule="QuizlerApp" customModuleProvider="target"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuizlerTableViewCell" rowHeight="322" id="URZ-pj-9L0" customClass="QuizlerTableViewCell" customModule="QuizlerApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="405" height="322"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="URZ-pj-9L0" id="XBI-vS-HUf">
+                <rect key="frame" x="0.0" y="0.0" width="405" height="322"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PbK-G0-6af">
+                        <rect key="frame" x="16" y="16" width="373" height="290"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="9C4-cn-LQ5">
+                                <rect key="frame" x="8" y="8" width="357" height="274"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4DM-9D-36b">
+                                        <rect key="frame" x="0.0" y="0.0" width="357" height="58"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GqF-Hu-MTV">
+                                                <rect key="frame" x="0.0" y="0.0" width="357" height="58"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Kategorija" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfI-eW-5nj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="357" height="22.666666666666668"/>
+                                                        <fontDescription key="fontDescription" name="RobotoSlab-SemiBold" family="Roboto Slab" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="boF-V0-BOG">
+                                                        <rect key="frame" x="0.0" y="30.666666666666664" width="357" height="27.333333333333336"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vjM-D9-c5d">
+                                                                <rect key="frame" x="0.0" y="0.0" width="2" height="27.333333333333332"/>
+                                                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="2" id="eZ3-hR-Wo1"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Mislis da dobro poznajes Majkla Dzeksona ili pak bolje znas gde trenutno igra Mbappe? Oprobaj se u jednom od modova kategorije." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCD-Uj-1u0">
+                                                                <rect key="frame" x="10" y="0.0" width="347" height="27.333333333333332"/>
+                                                                <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="14"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="GqF-Hu-MTV" firstAttribute="leading" secondItem="4DM-9D-36b" secondAttribute="leading" id="Q22-fB-vZv"/>
+                                            <constraint firstAttribute="trailing" secondItem="GqF-Hu-MTV" secondAttribute="trailing" id="UU5-yz-KPo"/>
+                                            <constraint firstItem="GqF-Hu-MTV" firstAttribute="top" secondItem="4DM-9D-36b" secondAttribute="top" id="bs2-4A-3iv"/>
+                                            <constraint firstAttribute="bottom" secondItem="GqF-Hu-MTV" secondAttribute="bottom" id="wMI-G7-Fzu"/>
+                                        </constraints>
+                                    </view>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5l4-c3-vfQ">
+                                        <rect key="frame" x="0.0" y="74" width="357" height="200"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="5Sk-Cj-eFK"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yhq-9S-mcD">
+                                            <size key="itemSize" width="182" height="170"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="URZ-pj-9L0" id="YPT-MQ-0QH"/>
+                                            <outlet property="delegate" destination="URZ-pj-9L0" id="KVT-zl-9eo"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9C4-cn-LQ5" firstAttribute="leading" secondItem="PbK-G0-6af" secondAttribute="leading" constant="8" id="6Wa-TO-mf0"/>
+                            <constraint firstAttribute="trailing" secondItem="9C4-cn-LQ5" secondAttribute="trailing" constant="8" id="H6A-M2-nFf"/>
+                            <constraint firstAttribute="bottom" secondItem="9C4-cn-LQ5" secondAttribute="bottom" constant="8" id="ruG-Qy-UOj"/>
+                            <constraint firstItem="9C4-cn-LQ5" firstAttribute="top" secondItem="PbK-G0-6af" secondAttribute="top" constant="8" id="stP-Na-UKd"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="PbK-G0-6af" firstAttribute="top" secondItem="XBI-vS-HUf" secondAttribute="top" constant="16" id="cpg-3t-Sfx"/>
+                    <constraint firstAttribute="trailing" secondItem="PbK-G0-6af" secondAttribute="trailing" constant="16" id="egU-5z-5Qs"/>
+                    <constraint firstItem="PbK-G0-6af" firstAttribute="leading" secondItem="XBI-vS-HUf" secondAttribute="leading" constant="16" id="gTX-m6-AcD"/>
+                    <constraint firstAttribute="bottom" secondItem="PbK-G0-6af" secondAttribute="bottom" constant="16" id="si5-fp-rEH"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="backgroundCellView" destination="PbK-G0-6af" id="2SE-xp-lgH"/>
+                <outlet property="descriptionLabel" destination="DCD-Uj-1u0" id="BBD-0f-Wwv"/>
+                <outlet property="tableViewCellHeaderView" destination="vjM-D9-c5d" id="Znr-gV-e1s"/>
+                <outlet property="tableViewCellTitleLabel" destination="mfI-eW-5nj" id="PlU-nG-xsd"/>
+                <outlet property="tableViewCellWarningView" destination="4DM-9D-36b" id="e9g-xY-SDa"/>
+                <outlet property="tableViewCollectionView" destination="5l4-c3-vfQ" id="zP3-7y-9ZD"/>
+            </connections>
+            <point key="canvasLocation" x="-133.58778625954199" y="-450.7042253521127"/>
+        </tableViewCell>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

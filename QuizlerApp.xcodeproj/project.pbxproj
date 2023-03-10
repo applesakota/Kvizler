@@ -3,27 +3,149 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D06BA1E3CE24256A3364ECA /* Pods_QuizlerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 339A708B6C678EEDB0F0080E /* Pods_QuizlerApp.framework */; };
+		9E09550B269773D00099EA48 /* QuizPauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E09550A269773D00099EA48 /* QuizPauseViewController.swift */; };
+		9E0F5D7226826CAA004E28C0 /* RESTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0F5D7126826CAA004E28C0 /* RESTManager.swift */; };
+		9E0F5D7426826E8D004E28C0 /* RESTRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0F5D7326826E8D004E28C0 /* RESTRequest.swift */; };
+		9E0F5D762682734E004E28C0 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0F5D752682734E004E28C0 /* Storage.swift */; };
+		9E0F5D7826827983004E28C0 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0F5D7726827983004E28C0 /* AppConstants.swift */; };
+		9E0F5D7A268327FE004E28C0 /* RESTResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0F5D79268327FE004E28C0 /* RESTResponse.swift */; };
+		9E0F5D7C26832E64004E28C0 /* RESTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0F5D7B26832E64004E28C0 /* RESTError.swift */; };
+		9E18CB2529B020B000053B3C /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9E18CB2729B020B000053B3C /* Localization.strings */; };
+		9E1A63FA29B60074006D5FBA /* QuizlerCustomPopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E1A63F929B60074006D5FBA /* QuizlerCustomPopUpView.xib */; };
+		9E1A63FC29B6126A006D5FBA /* QuizlerCustomPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1A63FB29B6126A006D5FBA /* QuizlerCustomPopUpView.swift */; };
+		9E1A63FF29B8CA09006D5FBA /* QuestionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1A63FE29B8CA09006D5FBA /* QuestionsViewModel.swift */; };
 		9E31CA79266BBBB80064599C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E31CA78266BBBB80064599C /* AppDelegate.swift */; };
-		9E31CA7B266BBBB80064599C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E31CA7A266BBBB80064599C /* SceneDelegate.swift */; };
-		9E31CA7D266BBBB80064599C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E31CA7C266BBBB80064599C /* ViewController.swift */; };
 		9E31CA80266BBBB80064599C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E31CA7E266BBBB80064599C /* Main.storyboard */; };
 		9E31CA82266BBBBA0064599C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E31CA81266BBBBA0064599C /* Assets.xcassets */; };
 		9E31CA85266BBBBA0064599C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E31CA83266BBBBA0064599C /* LaunchScreen.storyboard */; };
+		9E31CA8F266BC2EA0064599C /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E31CA8E266BC2EA0064599C /* AppEnvironment.swift */; };
+		9E31CA91266BC67C0064599C /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E31CA90266BC67C0064599C /* AppTheme.swift */; };
+		9E347784269C53F5007FCD65 /* QuestionReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E347783269C53F5007FCD65 /* QuestionReportViewController.swift */; };
+		9E3D0BA52994040600AE91B9 /* QuizlerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E3D0BA42994040600AE91B9 /* QuizlerTableViewCell.xib */; };
+		9E49755F267917AF00677E3A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E49755E267917AF00677E3A /* LoginViewController.swift */; };
+		9E4FFE02268F8B6D004A4C09 /* HerokuRestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4FFE01268F8B6D004A4C09 /* HerokuRestManager.swift */; };
+		9E5454792722E444009755D7 /* LocalStorageStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5454782722E444009755D7 /* LocalStorageStorable.swift */; };
+		9E5830A326F4D1C500474206 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5830A226F4D1C500474206 /* ProfileViewController.swift */; };
+		9E5AA02129AA483500976E49 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5AA02029AA483500976E49 /* Reachability.swift */; };
+		9E71C889299FCD2400FFA023 /* ScoreboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E71C888299FCD2400FFA023 /* ScoreboardViewController.swift */; };
+		9E78DF64266FC84E005BF3BB /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E78DF63266FC84E005BF3BB /* Login.storyboard */; };
+		9E78DF67266FC924005BF3BB /* RobotoSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E78DF65266FC907005BF3BB /* RobotoSlab-Regular.ttf */; };
+		9E78DF68266FC927005BF3BB /* RobotoSlab-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E78DF66266FC913005BF3BB /* RobotoSlab-SemiBold.ttf */; };
+		9E78DF6C266FCA2E005BF3BB /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78DF6B266FCA2E005BF3BB /* SplashViewController.swift */; };
+		9E78DF7126700E38005BF3BB /* AppGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78DF7026700E38005BF3BB /* AppGlobals.swift */; };
+		9E78DF78267012C6005BF3BB /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 9E78DF77267012C6005BF3BB /* Realm */; };
+		9E78DF7A267012C6005BF3BB /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9E78DF79267012C6005BF3BB /* RealmSwift */; };
+		9E78DF7C2670CFC0005BF3BB /* HerokuService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78DF7B2670CFC0005BF3BB /* HerokuService.swift */; };
+		9E78DF7E2670D12A005BF3BB /* HerokuServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78DF7D2670D12A005BF3BB /* HerokuServiceManager.swift */; };
+		9E78DF812670D615005BF3BB /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78DF802670D615005BF3BB /* UserModel.swift */; };
+		9E78DF842670E5E7005BF3BB /* QuizlerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78DF832670E5E7005BF3BB /* QuizlerTextField.swift */; };
+		9E78DF862670E5FA005BF3BB /* QuizlerTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E78DF852670E5FA005BF3BB /* QuizlerTextField.xib */; };
+		9E78DF88267218FD005BF3BB /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78DF87267218FD005BF3BB /* RegisterViewController.swift */; };
+		9E78DF8B26721B87005BF3BB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78DF8A26721B87005BF3BB /* Extensions.swift */; };
+		9E78DF8E2672304A005BF3BB /* FlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78DF8D2672304A005BF3BB /* FlowManager.swift */; };
+		9E78DF9626739222005BF3BB /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E78DF9526739222005BF3BB /* MainTabBarController.swift */; };
+		9E81D6FE299AEA5F00543A48 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E81D6FD299AEA5F00543A48 /* HomeCollectionViewCell.xib */; };
+		9E870AD027084D2A008003CE /* CategoryScoreboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E870ACF27084D2A008003CE /* CategoryScoreboardViewController.swift */; };
+		9E8C1AB1269D891200AEDBA6 /* QuizlerTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E8C1AB0269D891200AEDBA6 /* QuizlerTextView.xib */; };
+		9E8C1AB3269DA44D00AEDBA6 /* QuizlerTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8C1AB2269DA44D00AEDBA6 /* QuizlerTextView.swift */; };
+		9E8D52E827184D02002261AE /* LengthScoreboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8D52E727184D02002261AE /* LengthScoreboardViewController.swift */; };
+		9E8D52EA27184D43002261AE /* ScorebardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8D52E927184D43002261AE /* ScorebardTableViewCell.swift */; };
+		9E8D52EC27184D91002261AE /* DifficultyScoreboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8D52EB27184D91002261AE /* DifficultyScoreboardViewController.swift */; };
+		9E8D52EE2719EB21002261AE /* ScoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8D52ED2719EB21002261AE /* ScoreModel.swift */; };
+		9E8D52F1271EFE40002261AE /* LocalStorage+Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8D52F0271EFE40002261AE /* LocalStorage+Keychain.swift */; };
+		9E8D52F327218EC2002261AE /* LocalStorage+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8D52F227218EC2002261AE /* LocalStorage+UserDefaults.swift */; };
+		9E8D52F527218FC6002261AE /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8D52F427218FC6002261AE /* LocalStorage.swift */; };
+		9E8D52F7272193E7002261AE /* AppTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8D52F6272193E7002261AE /* AppTarget.swift */; };
+		9E9328BA26A0677000A33609 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9328B926A0677000A33609 /* CategoryModel.swift */; };
+		9E9328BC26A09C5E00A33609 /* DifficultyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9328BB26A09C5E00A33609 /* DifficultyModel.swift */; };
+		9E9328BE26A09C9F00A33609 /* SubMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9328BD26A09C9F00A33609 /* SubMode.swift */; };
+		9E9328C026A84C0E00A33609 /* LocalCommonRESTService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E9328BF26A84C0E00A33609 /* LocalCommonRESTService.swift */; };
+		9E939BB2299022DE00B3CB4F /* QuizlerWarningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E939BB1299022DE00B3CB4F /* QuizlerWarningView.xib */; };
+		9E939BB429912C5C00B3CB4F /* QuizlerWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E939BB329912C5C00B3CB4F /* QuizlerWarningView.swift */; };
+		9E939BB62991322B00B3CB4F /* NewHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E939BB52991322B00B3CB4F /* NewHomeViewController.swift */; };
+		9EA37D7B2999396B00840694 /* QuizlerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA37D7A2999396B00840694 /* QuizlerTableViewCell.swift */; };
+		9EA37D85299AB7CD00840694 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA37D84299AB7CD00840694 /* HomeCollectionViewCell.swift */; };
+		9EBD3C1C269F050C006582E7 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD3C1B269F050C006582E7 /* QuestionModel.swift */; };
+		9ED2690726964EE7006CFFD2 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED2690626964EE7006CFFD2 /* QuizViewController.swift */; };
+		9EE0B62E267B6150005F0305 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE0B62D267B6150005F0305 /* LoaderView.swift */; };
+		9EF0A6C82695CE5B00743D05 /* Utils.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EF0A6C72695CE5B00743D05 /* Utils.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2577A29527DE52763504E328 /* Pods-QuizlerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizlerApp.debug.xcconfig"; path = "Target Support Files/Pods-QuizlerApp/Pods-QuizlerApp.debug.xcconfig"; sourceTree = "<group>"; };
+		339A708B6C678EEDB0F0080E /* Pods_QuizlerApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuizlerApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E09550A269773D00099EA48 /* QuizPauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizPauseViewController.swift; sourceTree = "<group>"; };
+		9E0F5D7126826CAA004E28C0 /* RESTManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTManager.swift; sourceTree = "<group>"; };
+		9E0F5D7326826E8D004E28C0 /* RESTRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTRequest.swift; sourceTree = "<group>"; };
+		9E0F5D752682734E004E28C0 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		9E0F5D7726827983004E28C0 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		9E0F5D79268327FE004E28C0 /* RESTResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTResponse.swift; sourceTree = "<group>"; };
+		9E0F5D7B26832E64004E28C0 /* RESTError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTError.swift; sourceTree = "<group>"; };
+		9E18CB2629B020B000053B3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localization.strings; sourceTree = "<group>"; };
+		9E1A63F929B60074006D5FBA /* QuizlerCustomPopUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizlerCustomPopUpView.xib; sourceTree = "<group>"; };
+		9E1A63FB29B6126A006D5FBA /* QuizlerCustomPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizlerCustomPopUpView.swift; sourceTree = "<group>"; };
+		9E1A63FE29B8CA09006D5FBA /* QuestionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewModel.swift; sourceTree = "<group>"; };
 		9E31CA75266BBBB80064599C /* QuizlerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizlerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E31CA78266BBBB80064599C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9E31CA7A266BBBB80064599C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9E31CA7C266BBBB80064599C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9E31CA7F266BBBB80064599C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9E31CA81266BBBBA0064599C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E31CA84266BBBBA0064599C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E31CA86266BBBBA0064599C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E31CA8E266BC2EA0064599C /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		9E31CA90266BC67C0064599C /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		9E347783269C53F5007FCD65 /* QuestionReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionReportViewController.swift; sourceTree = "<group>"; };
+		9E3D0BA42994040600AE91B9 /* QuizlerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizlerTableViewCell.xib; sourceTree = "<group>"; };
+		9E49755E267917AF00677E3A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9E4FFE01268F8B6D004A4C09 /* HerokuRestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerokuRestManager.swift; sourceTree = "<group>"; };
+		9E5454782722E444009755D7 /* LocalStorageStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageStorable.swift; sourceTree = "<group>"; };
+		9E5830A226F4D1C500474206 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		9E5AA02029AA483500976E49 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		9E71C888299FCD2400FFA023 /* ScoreboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardViewController.swift; sourceTree = "<group>"; };
+		9E78DF63266FC84E005BF3BB /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		9E78DF65266FC907005BF3BB /* RobotoSlab-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Regular.ttf"; sourceTree = "<group>"; };
+		9E78DF66266FC913005BF3BB /* RobotoSlab-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-SemiBold.ttf"; sourceTree = "<group>"; };
+		9E78DF6B266FCA2E005BF3BB /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		9E78DF7026700E38005BF3BB /* AppGlobals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGlobals.swift; sourceTree = "<group>"; };
+		9E78DF7B2670CFC0005BF3BB /* HerokuService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerokuService.swift; sourceTree = "<group>"; };
+		9E78DF7D2670D12A005BF3BB /* HerokuServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerokuServiceManager.swift; sourceTree = "<group>"; };
+		9E78DF802670D615005BF3BB /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		9E78DF832670E5E7005BF3BB /* QuizlerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizlerTextField.swift; sourceTree = "<group>"; };
+		9E78DF852670E5FA005BF3BB /* QuizlerTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizlerTextField.xib; sourceTree = "<group>"; };
+		9E78DF87267218FD005BF3BB /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		9E78DF8A26721B87005BF3BB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9E78DF8D2672304A005BF3BB /* FlowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowManager.swift; sourceTree = "<group>"; };
+		9E78DF9526739222005BF3BB /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		9E81D6FD299AEA5F00543A48 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		9E870ACF27084D2A008003CE /* CategoryScoreboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryScoreboardViewController.swift; sourceTree = "<group>"; };
+		9E8C1AB0269D891200AEDBA6 /* QuizlerTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizlerTextView.xib; sourceTree = "<group>"; };
+		9E8C1AB2269DA44D00AEDBA6 /* QuizlerTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizlerTextView.swift; sourceTree = "<group>"; };
+		9E8D52E727184D02002261AE /* LengthScoreboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthScoreboardViewController.swift; sourceTree = "<group>"; };
+		9E8D52E927184D43002261AE /* ScorebardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorebardTableViewCell.swift; sourceTree = "<group>"; };
+		9E8D52EB27184D91002261AE /* DifficultyScoreboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyScoreboardViewController.swift; sourceTree = "<group>"; };
+		9E8D52ED2719EB21002261AE /* ScoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreModel.swift; sourceTree = "<group>"; };
+		9E8D52F0271EFE40002261AE /* LocalStorage+Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+Keychain.swift"; sourceTree = "<group>"; };
+		9E8D52F227218EC2002261AE /* LocalStorage+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+UserDefaults.swift"; sourceTree = "<group>"; };
+		9E8D52F427218FC6002261AE /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		9E8D52F6272193E7002261AE /* AppTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTarget.swift; sourceTree = "<group>"; };
+		9E9328B926A0677000A33609 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		9E9328BB26A09C5E00A33609 /* DifficultyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyModel.swift; sourceTree = "<group>"; };
+		9E9328BD26A09C9F00A33609 /* SubMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubMode.swift; sourceTree = "<group>"; };
+		9E9328BF26A84C0E00A33609 /* LocalCommonRESTService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCommonRESTService.swift; sourceTree = "<group>"; };
+		9E939BB1299022DE00B3CB4F /* QuizlerWarningView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizlerWarningView.xib; sourceTree = "<group>"; };
+		9E939BB329912C5C00B3CB4F /* QuizlerWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizlerWarningView.swift; sourceTree = "<group>"; };
+		9E939BB52991322B00B3CB4F /* NewHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewController.swift; sourceTree = "<group>"; };
+		9EA37D7A2999396B00840694 /* QuizlerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizlerTableViewCell.swift; sourceTree = "<group>"; };
+		9EA37D84299AB7CD00840694 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		9EBD3C1B269F050C006582E7 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		9ED2690626964EE7006CFFD2 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		9EE0B62D267B6150005F0305 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		9EF0A6C72695CE5B00743D05 /* Utils.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Utils.storyboard; sourceTree = "<group>"; };
+		AA7C77681AD8919BA4926F45 /* Pods-QuizlerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizlerApp.release.xcconfig"; path = "Target Support Files/Pods-QuizlerApp/Pods-QuizlerApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +153,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E78DF7A267012C6005BF3BB /* RealmSwift in Frameworks */,
+				9E78DF78267012C6005BF3BB /* Realm in Frameworks */,
+				3D06BA1E3CE24256A3364ECA /* Pods_QuizlerApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4804D50577689007470848D6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2577A29527DE52763504E328 /* Pods-QuizlerApp.debug.xcconfig */,
+				AA7C77681AD8919BA4926F45 /* Pods-QuizlerApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		93A669B86D29A465C61A4A86 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				339A708B6C678EEDB0F0080E /* Pods_QuizlerApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9E1A63FD29B8C9EC006D5FBA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				9E1A63FE29B8CA09006D5FBA /* QuestionsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		9E31CA6C266BBBB80064599C = {
 			isa = PBXGroup;
 			children = (
 				9E31CA77266BBBB80064599C /* QuizlerApp */,
 				9E31CA76266BBBB80064599C /* Products */,
+				4804D50577689007470848D6 /* Pods */,
+				93A669B86D29A465C61A4A86 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +209,176 @@
 			isa = PBXGroup;
 			children = (
 				9E31CA78266BBBB80064599C /* AppDelegate.swift */,
-				9E31CA7A266BBBB80064599C /* SceneDelegate.swift */,
-				9E31CA7C266BBBB80064599C /* ViewController.swift */,
-				9E31CA7E266BBBB80064599C /* Main.storyboard */,
-				9E31CA81266BBBBA0064599C /* Assets.xcassets */,
-				9E31CA83266BBBBA0064599C /* LaunchScreen.storyboard */,
+				9E31CA8E266BC2EA0064599C /* AppEnvironment.swift */,
+				9E78DF7026700E38005BF3BB /* AppGlobals.swift */,
+				9E31CA90266BC67C0064599C /* AppTheme.swift */,
+				9E0F5D7726827983004E28C0 /* AppConstants.swift */,
+				9E8D52F6272193E7002261AE /* AppTarget.swift */,
+				9E8D52EF271EFE25002261AE /* Local Storage */,
+				9E78DF8926721B77005BF3BB /* Utils */,
+				9E78DF7226700F45005BF3BB /* Networking */,
+				9E78DF7F2670D5DA005BF3BB /* Models */,
+				9E31CA8C266BC0FA0064599C /* Views */,
+				9E78DF69266FCA0E005BF3BB /* Controllers */,
+				9E31CA8D266BC1070064599C /* Ressources */,
 				9E31CA86266BBBBA0064599C /* Info.plist */,
+				9E18CB2729B020B000053B3C /* Localization.strings */,
 			);
 			path = QuizlerApp;
+			sourceTree = "<group>";
+		};
+		9E31CA8C266BC0FA0064599C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9E78DF9026737651005BF3BB /* Reusable View */,
+				9E78DF822670E56B005BF3BB /* Custom Views */,
+				9E31CA7E266BBBB80064599C /* Main.storyboard */,
+				9EF0A6C72695CE5B00743D05 /* Utils.storyboard */,
+				9E31CA83266BBBBA0064599C /* LaunchScreen.storyboard */,
+				9E78DF63266FC84E005BF3BB /* Login.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		9E31CA8D266BC1070064599C /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				9E78DF66266FC913005BF3BB /* RobotoSlab-SemiBold.ttf */,
+				9E78DF65266FC907005BF3BB /* RobotoSlab-Regular.ttf */,
+				9E31CA81266BBBBA0064599C /* Assets.xcassets */,
+			);
+			path = Ressources;
+			sourceTree = "<group>";
+		};
+		9E78DF69266FCA0E005BF3BB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9ED2690526964ED2006CFFD2 /* Utils */,
+				9E78DF8F267284E4005BF3BB /* Main */,
+				9E78DF6A266FCA17005BF3BB /* Login */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		9E78DF6A266FCA17005BF3BB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9E78DF6B266FCA2E005BF3BB /* SplashViewController.swift */,
+				9E78DF87267218FD005BF3BB /* RegisterViewController.swift */,
+				9E49755E267917AF00677E3A /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		9E78DF7226700F45005BF3BB /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				9E0F5D7126826CAA004E28C0 /* RESTManager.swift */,
+				9E0F5D7326826E8D004E28C0 /* RESTRequest.swift */,
+				9E0F5D79268327FE004E28C0 /* RESTResponse.swift */,
+				9E0F5D7B26832E64004E28C0 /* RESTError.swift */,
+				9E78DF7326700F4E005BF3BB /* CommonManager */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		9E78DF7326700F4E005BF3BB /* CommonManager */ = {
+			isa = PBXGroup;
+			children = (
+				9E78DF7B2670CFC0005BF3BB /* HerokuService.swift */,
+				9E78DF7D2670D12A005BF3BB /* HerokuServiceManager.swift */,
+				9E4FFE01268F8B6D004A4C09 /* HerokuRestManager.swift */,
+				9E9328BF26A84C0E00A33609 /* LocalCommonRESTService.swift */,
+			);
+			name = CommonManager;
+			sourceTree = "<group>";
+		};
+		9E78DF7F2670D5DA005BF3BB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9E1A63FD29B8C9EC006D5FBA /* ViewModels */,
+				9E78DF802670D615005BF3BB /* UserModel.swift */,
+				9EBD3C1B269F050C006582E7 /* QuestionModel.swift */,
+				9E9328B926A0677000A33609 /* CategoryModel.swift */,
+				9E9328BB26A09C5E00A33609 /* DifficultyModel.swift */,
+				9E9328BD26A09C9F00A33609 /* SubMode.swift */,
+				9E8D52ED2719EB21002261AE /* ScoreModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		9E78DF822670E56B005BF3BB /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				9E78DF832670E5E7005BF3BB /* QuizlerTextField.swift */,
+				9E78DF852670E5FA005BF3BB /* QuizlerTextField.xib */,
+				9EE0B62D267B6150005F0305 /* LoaderView.swift */,
+				9E8C1AB0269D891200AEDBA6 /* QuizlerTextView.xib */,
+				9E8C1AB2269DA44D00AEDBA6 /* QuizlerTextView.swift */,
+				9E8D52E927184D43002261AE /* ScorebardTableViewCell.swift */,
+				9E939BB1299022DE00B3CB4F /* QuizlerWarningView.xib */,
+				9E939BB329912C5C00B3CB4F /* QuizlerWarningView.swift */,
+				9E3D0BA42994040600AE91B9 /* QuizlerTableViewCell.xib */,
+				9EA37D7A2999396B00840694 /* QuizlerTableViewCell.swift */,
+				9EA37D84299AB7CD00840694 /* HomeCollectionViewCell.swift */,
+				9E81D6FD299AEA5F00543A48 /* HomeCollectionViewCell.xib */,
+				9E1A63F929B60074006D5FBA /* QuizlerCustomPopUpView.xib */,
+				9E1A63FB29B6126A006D5FBA /* QuizlerCustomPopUpView.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		9E78DF8926721B77005BF3BB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9E78DF8A26721B87005BF3BB /* Extensions.swift */,
+				9E5AA02029AA483500976E49 /* Reachability.swift */,
+				9E78DF8D2672304A005BF3BB /* FlowManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		9E78DF8F267284E4005BF3BB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				9E78DF9526739222005BF3BB /* MainTabBarController.swift */,
+				9E5830A226F4D1C500474206 /* ProfileViewController.swift */,
+				9E8D52E727184D02002261AE /* LengthScoreboardViewController.swift */,
+				9E870ACF27084D2A008003CE /* CategoryScoreboardViewController.swift */,
+				9E8D52EB27184D91002261AE /* DifficultyScoreboardViewController.swift */,
+				9E939BB52991322B00B3CB4F /* NewHomeViewController.swift */,
+				9E71C888299FCD2400FFA023 /* ScoreboardViewController.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		9E78DF9026737651005BF3BB /* Reusable View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Reusable View";
+			sourceTree = "<group>";
+		};
+		9E8D52EF271EFE25002261AE /* Local Storage */ = {
+			isa = PBXGroup;
+			children = (
+				9E0F5D752682734E004E28C0 /* Storage.swift */,
+				9E8D52F0271EFE40002261AE /* LocalStorage+Keychain.swift */,
+				9E8D52F227218EC2002261AE /* LocalStorage+UserDefaults.swift */,
+				9E8D52F427218FC6002261AE /* LocalStorage.swift */,
+				9E5454782722E444009755D7 /* LocalStorageStorable.swift */,
+			);
+			name = "Local Storage";
+			sourceTree = "<group>";
+		};
+		9ED2690526964ED2006CFFD2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9ED2690626964EE7006CFFD2 /* QuizViewController.swift */,
+				9E09550A269773D00099EA48 /* QuizPauseViewController.swift */,
+				9E347783269C53F5007FCD65 /* QuestionReportViewController.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,15 +388,21 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9E31CA89266BBBBA0064599C /* Build configuration list for PBXNativeTarget "QuizlerApp" */;
 			buildPhases = (
+				3CA0B7F5A2BDDD788B3D6032 /* [CP] Check Pods Manifest.lock */,
 				9E31CA71266BBBB80064599C /* Sources */,
 				9E31CA72266BBBB80064599C /* Frameworks */,
 				9E31CA73266BBBB80064599C /* Resources */,
+				F49E9096CAA4642135BADF85 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = QuizlerApp;
+			packageProductDependencies = (
+				9E78DF77267012C6005BF3BB /* Realm */,
+				9E78DF79267012C6005BF3BB /* RealmSwift */,
+			);
 			productName = QuizlerApp;
 			productReference = 9E31CA75266BBBB80064599C /* QuizlerApp.app */;
 			productType = "com.apple.product-type.application";
@@ -110,6 +430,9 @@
 				Base,
 			);
 			mainGroup = 9E31CA6C266BBBB80064599C;
+			packageReferences = (
+				9E78DF76267012C6005BF3BB /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
 			productRefGroup = 9E31CA76266BBBB80064599C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -124,28 +447,136 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EF0A6C82695CE5B00743D05 /* Utils.storyboard in Resources */,
+				9E8C1AB1269D891200AEDBA6 /* QuizlerTextView.xib in Resources */,
+				9E78DF68266FC927005BF3BB /* RobotoSlab-SemiBold.ttf in Resources */,
+				9E78DF64266FC84E005BF3BB /* Login.storyboard in Resources */,
+				9E81D6FE299AEA5F00543A48 /* HomeCollectionViewCell.xib in Resources */,
+				9E1A63FA29B60074006D5FBA /* QuizlerCustomPopUpView.xib in Resources */,
+				9E78DF67266FC924005BF3BB /* RobotoSlab-Regular.ttf in Resources */,
 				9E31CA85266BBBBA0064599C /* LaunchScreen.storyboard in Resources */,
+				9E939BB2299022DE00B3CB4F /* QuizlerWarningView.xib in Resources */,
+				9E78DF862670E5FA005BF3BB /* QuizlerTextField.xib in Resources */,
 				9E31CA82266BBBBA0064599C /* Assets.xcassets in Resources */,
+				9E18CB2529B020B000053B3C /* Localization.strings in Resources */,
 				9E31CA80266BBBB80064599C /* Main.storyboard in Resources */,
+				9E3D0BA52994040600AE91B9 /* QuizlerTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3CA0B7F5A2BDDD788B3D6032 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QuizlerApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F49E9096CAA4642135BADF85 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuizlerApp/Pods-QuizlerApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuizlerApp/Pods-QuizlerApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuizlerApp/Pods-QuizlerApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9E31CA71266BBBB80064599C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E31CA7D266BBBB80064599C /* ViewController.swift in Sources */,
+				9E78DF88267218FD005BF3BB /* RegisterViewController.swift in Sources */,
+				9E8D52EA27184D43002261AE /* ScorebardTableViewCell.swift in Sources */,
+				9E78DF7E2670D12A005BF3BB /* HerokuServiceManager.swift in Sources */,
+				9E8D52F327218EC2002261AE /* LocalStorage+UserDefaults.swift in Sources */,
+				9E939BB62991322B00B3CB4F /* NewHomeViewController.swift in Sources */,
+				9E31CA8F266BC2EA0064599C /* AppEnvironment.swift in Sources */,
+				9E0F5D7A268327FE004E28C0 /* RESTResponse.swift in Sources */,
+				9E8D52F1271EFE40002261AE /* LocalStorage+Keychain.swift in Sources */,
+				9E0F5D7426826E8D004E28C0 /* RESTRequest.swift in Sources */,
+				9E1A63FC29B6126A006D5FBA /* QuizlerCustomPopUpView.swift in Sources */,
+				9E8D52F7272193E7002261AE /* AppTarget.swift in Sources */,
+				9E8D52E827184D02002261AE /* LengthScoreboardViewController.swift in Sources */,
+				9E78DF842670E5E7005BF3BB /* QuizlerTextField.swift in Sources */,
+				9E9328C026A84C0E00A33609 /* LocalCommonRESTService.swift in Sources */,
+				9E9328BA26A0677000A33609 /* CategoryModel.swift in Sources */,
+				9E5AA02129AA483500976E49 /* Reachability.swift in Sources */,
 				9E31CA79266BBBB80064599C /* AppDelegate.swift in Sources */,
-				9E31CA7B266BBBB80064599C /* SceneDelegate.swift in Sources */,
+				9E78DF6C266FCA2E005BF3BB /* SplashViewController.swift in Sources */,
+				9E78DF8B26721B87005BF3BB /* Extensions.swift in Sources */,
+				9E71C889299FCD2400FFA023 /* ScoreboardViewController.swift in Sources */,
+				9E78DF8E2672304A005BF3BB /* FlowManager.swift in Sources */,
+				9E0F5D7226826CAA004E28C0 /* RESTManager.swift in Sources */,
+				9E870AD027084D2A008003CE /* CategoryScoreboardViewController.swift in Sources */,
+				9E78DF9626739222005BF3BB /* MainTabBarController.swift in Sources */,
+				9E09550B269773D00099EA48 /* QuizPauseViewController.swift in Sources */,
+				9EA37D85299AB7CD00840694 /* HomeCollectionViewCell.swift in Sources */,
+				9ED2690726964EE7006CFFD2 /* QuizViewController.swift in Sources */,
+				9E4FFE02268F8B6D004A4C09 /* HerokuRestManager.swift in Sources */,
+				9E8D52EC27184D91002261AE /* DifficultyScoreboardViewController.swift in Sources */,
+				9E5454792722E444009755D7 /* LocalStorageStorable.swift in Sources */,
+				9EA37D7B2999396B00840694 /* QuizlerTableViewCell.swift in Sources */,
+				9E78DF7126700E38005BF3BB /* AppGlobals.swift in Sources */,
+				9E49755F267917AF00677E3A /* LoginViewController.swift in Sources */,
+				9E78DF7C2670CFC0005BF3BB /* HerokuService.swift in Sources */,
+				9E347784269C53F5007FCD65 /* QuestionReportViewController.swift in Sources */,
+				9E8D52EE2719EB21002261AE /* ScoreModel.swift in Sources */,
+				9E9328BC26A09C5E00A33609 /* DifficultyModel.swift in Sources */,
+				9EBD3C1C269F050C006582E7 /* QuestionModel.swift in Sources */,
+				9E0F5D7826827983004E28C0 /* AppConstants.swift in Sources */,
+				9E8D52F527218FC6002261AE /* LocalStorage.swift in Sources */,
+				9E0F5D7C26832E64004E28C0 /* RESTError.swift in Sources */,
+				9E78DF812670D615005BF3BB /* UserModel.swift in Sources */,
+				9E8C1AB3269DA44D00AEDBA6 /* QuizlerTextView.swift in Sources */,
+				9E0F5D762682734E004E28C0 /* Storage.swift in Sources */,
+				9E9328BE26A09C9F00A33609 /* SubMode.swift in Sources */,
+				9E5830A326F4D1C500474206 /* ProfileViewController.swift in Sources */,
+				9E1A63FF29B8CA09006D5FBA /* QuestionsViewModel.swift in Sources */,
+				9E939BB429912C5C00B3CB4F /* QuizlerWarningView.swift in Sources */,
+				9E31CA91266BC67C0064599C /* AppTheme.swift in Sources */,
+				9EE0B62E267B6150005F0305 /* LoaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		9E18CB2729B020B000053B3C /* Localization.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9E18CB2629B020B000053B3C /* en */,
+			);
+			name = Localization.strings;
+			sourceTree = "<group>";
+		};
 		9E31CA7E266BBBB80064599C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -216,7 +647,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -271,7 +702,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -283,11 +714,12 @@
 		};
 		9E31CA8A266BBBBA0064599C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2577A29527DE52763504E328 /* Pods-QuizlerApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5P8KN8QGKH;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = QuizlerApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -302,11 +734,12 @@
 		};
 		9E31CA8B266BBBBA0064599C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA7C77681AD8919BA4926F45 /* Pods-QuizlerApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5P8KN8QGKH;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = QuizlerApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -341,6 +774,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9E78DF76267012C6005BF3BB /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.7.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9E78DF77267012C6005BF3BB /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E78DF76267012C6005BF3BB /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		9E78DF79267012C6005BF3BB /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E78DF76267012C6005BF3BB /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9E31CA6D266BBBB80064599C /* Project object */;
 }

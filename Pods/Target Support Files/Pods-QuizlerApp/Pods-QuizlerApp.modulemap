@@ -1,0 +1,6 @@
+framework module Pods_QuizlerApp {
+  umbrella header "Pods-QuizlerApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

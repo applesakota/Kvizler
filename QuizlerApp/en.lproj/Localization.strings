@@ -1,0 +1,22 @@
+/* 
+  Localization.strings
+  QuizlerApp
+
+  Created by Petar Sakotic on 3/2/23.
+  
+*/
+"hard" = "Tesko";
+"easy" = "Lako";
+"medium" = "Srednje";
+
+"sport" = "Sport";
+"music" = "Muzika";
+"history" = "Istorija";
+"geography" = "Geografija";
+"movie" = "Film";
+"general_knowledge" = "Opste znanje";
+
+"zen" = "Zen";
+"exam" = "Test";
+"marathon" = "Maraton";
+

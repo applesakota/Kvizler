@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="RobotoSlab-Regular.ttf">
+            <string>RobotoSlab-Regular</string>
+        </array>
+        <array key="source-sans-pro.regular.ttf">
+            <string>SourceSansPro-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuizlerTextField" customModule="QuizlerApp" customModuleProvider="target">
+            <connections>
+                <outlet property="errorLabel" destination="CDK-yK-qfQ" id="fTp-9H-wlZ"/>
+                <outlet property="iconImageView" destination="hIo-y6-geV" id="H7P-9Y-awt"/>
+                <outlet property="revealPasswordButton" destination="k6D-p4-lox" id="U8l-7R-8Cn"/>
+                <outlet property="textField" destination="dkN-QP-u1Z" id="hZs-xu-mqc"/>
+                <outlet property="titleLabel" destination="3aL-RR-gzf" id="dps-h8-nK5"/>
+                <outlet property="view" destination="O8f-r6-4WJ" id="bG6-Xc-tdM"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="O8f-r6-4WJ">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="sks-0W-3mr">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="63"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3aL-RR-gzf">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="18.5"/>
+                            <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="user@example.com" textAlignment="natural" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="dkN-QP-u1Z">
+                            <rect key="frame" x="0.0" y="20.5" width="414" height="42.5"/>
+                            <fontDescription key="fontDescription" name="SourceSansPro-Regular" family="Source Sans Pro" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="didEnd:" destination="-1" eventType="editingDidEnd" id="uJP-x9-WrK"/>
+                            </connections>
+                        </textField>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email error" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDK-yK-qfQ">
+                            <rect key="frame" x="0.0" y="63" width="414" height="0.0"/>
+                            <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="10"/>
+                            <color key="textColor" name="ErrorRed"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YbW-uT-B0v">
+                    <rect key="frame" x="354" y="31" width="52" height="22"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6D-p4-lox">
+                            <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="WVT-Kd-6hX"/>
+                                <constraint firstAttribute="width" constant="22" id="y14-CU-BuW"/>
+                            </constraints>
+                            <state key="normal" image="seePassword"/>
+                            <connections>
+                                <action selector="revealPasswordButton_onClick:" destination="-1" eventType="touchUpInside" id="9Ga-G5-8LG"/>
+                            </connections>
+                        </button>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hIo-y6-geV">
+                            <rect key="frame" x="30" y="2" width="22" height="18.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="22" id="R4A-h3-U2R"/>
+                                <constraint firstAttribute="height" constant="22" id="gZG-Lf-U66"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="sks-0W-3mr" secondAttribute="bottom" id="4FE-XB-rVC"/>
+                <constraint firstItem="sks-0W-3mr" firstAttribute="top" secondItem="O8f-r6-4WJ" secondAttribute="top" id="5Tu-75-c4c"/>
+                <constraint firstAttribute="bottom" secondItem="sks-0W-3mr" secondAttribute="bottom" id="5jk-vC-Ado"/>
+                <constraint firstAttribute="trailing" secondItem="sks-0W-3mr" secondAttribute="trailing" id="Ehg-7i-EjV"/>
+                <constraint firstItem="sks-0W-3mr" firstAttribute="leading" secondItem="O8f-r6-4WJ" secondAttribute="leading" id="RYj-i9-syz"/>
+                <constraint firstItem="sks-0W-3mr" firstAttribute="top" secondItem="O8f-r6-4WJ" secondAttribute="top" id="SH3-8O-v2U"/>
+                <constraint firstAttribute="trailing" secondItem="YbW-uT-B0v" secondAttribute="trailing" constant="8" id="j4U-RJ-FFX"/>
+                <constraint firstAttribute="trailing" secondItem="sks-0W-3mr" secondAttribute="trailing" id="o46-vp-4Hx"/>
+                <constraint firstItem="sks-0W-3mr" firstAttribute="leading" secondItem="O8f-r6-4WJ" secondAttribute="leading" id="sA6-OR-V26"/>
+                <constraint firstItem="YbW-uT-B0v" firstAttribute="centerY" secondItem="dkN-QP-u1Z" secondAttribute="centerY" id="vTb-lW-9aj"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-39.130434782608695" y="-52.232142857142854"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
+        <image name="seePassword" width="12" height="12"/>
+        <namedColor name="ErrorRed">
+            <color red="0.69099998474121094" green="0.0" blue="0.12800000607967377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
