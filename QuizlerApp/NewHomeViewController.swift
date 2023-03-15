@@ -8,13 +8,16 @@
 import UIKit
 
 class NewHomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    //MARK: - Globals
 
     class var identifier: String { return "NewHomeViewController" }
     
     @IBOutlet weak var tableView: UITableView!
-    
     private var dataSource: [CategoryModel] = []
     private var questionsDataSource: QuestionsViewModel?
+    
+    //MARK: - Init
 
     class func instantiate() -> NewHomeViewController {
         let viewController = UIStoryboard.main.instantiateViewController(withIdentifier: identifier) as! NewHomeViewController
@@ -59,21 +62,6 @@ class NewHomeViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
-//
-//        self.apiFetchLength { [weak self] dataSource in
-//            guard let self = self else { return }
-//            DispatchQueue.main.async {
-//                self.lengthDataSource = dataSource
-//            }
-//        }
-//
-//        self.apiFetchDifficulty { [weak self] dataSource in
-//            guard let self = self else { return }
-//            DispatchQueue.main.async {
-//                self.difficultyDataSource = dataSource
-//            }
-//        }
-        
     }
     
     // MARK: - Utils
@@ -109,18 +97,21 @@ class NewHomeViewController: UIViewController, UITableViewDataSource, UITableVie
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: QuizlerTableViewCell.identifier) as? QuizlerTableViewCell else { return UITableViewCell() }
         
-        if dataSource[indexPath.row].name == "length" {
-            cell.configure(with: "Duzina", description: "Ako si u guzvi, ili pak imas dosta vremena, odigraj jednu od modova po duzini. Respektivno, oni imaju 20,40, odnosno 100 pitanja.", data: dataSource[indexPath.row].submodes, questions: questionsDataSource)
+        if indexPath.row == 0 {
+            guard let model = dataSource.first(where: { $0.name == "category"}) else { return UITableViewCell() }
+            cell.configure(with: "Kategorija", description: "Mislis da dobro poznajes Majkla Dzeksona, ili pak bolje znas de trenutno igra Mbappe? Oprobaj se u jednom od modova kategorije", data: model.submodes, questions: questionsDataSource)
             return cell
-            
-        } else if dataSource[indexPath.row].name == "category" {
-            cell.configure(with: "Kategorija", description: "Mislis da dobro poznajes Majkla Dzeksona, ili pak bolje znas de trenutno igra Mbappe? Oprobaj se u jednom od modova kategorije", data: dataSource[indexPath.row].submodes, questions: questionsDataSource)
+        } else if indexPath.row == 1 {
+            guard let model = dataSource.first(where: { $0.name == "length"}) else { return UITableViewCell() }
+            cell.configure(with: "Duzina", description: "Ako si u guzvi, ili pak imas dosta vremena, odigraj jednu od modova po duzini. Respektivno, oni imaju 20,40, odnosno 100 pitanja.", data: model.submodes, questions: questionsDataSource)
             return cell
-            
-        } else {
-            cell.configure(with: "Tezina", description: "Lak, srednji ili tezak mod, Na tebi je koliko si hrabra/hrabar !", data: dataSource[indexPath.row].submodes, questions: questionsDataSource)
+        } else if indexPath.row == 2 {
+            guard let model = dataSource.first(where: { $0.name == "difficulty"}) else { return UITableViewCell() }
+            cell.configure(with: "Tezina", description: "Lak, srednji ili tezak mod, Na tebi je koliko si hrabra/hrabar!", data: model.submodes, questions: questionsDataSource)
             return cell
         }
+        
+        return UITableViewCell()
     }
     
     //MARK: - API

@@ -184,7 +184,6 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.firstScoreBackgroundView.backgroundColor = AppTheme.current.firstScoreBackgroundColor
                 self.firstScoreBackgroundView.layer.cornerRadius = 10
                 self.firstScoreLabel.text = String("\(scores[0].score)")
-                
             }
         }
         
@@ -278,6 +277,8 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
         let sorted = newScores.sorted(by: {$0.score > $1.score })
         if sorted.count > 3 {
             self.scoresRawDataSource = Array(sorted.dropFirst(3))
+        } else {
+            self.scoresRawDataSource = []
         }
         return sorted
     }
