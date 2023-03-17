@@ -103,7 +103,7 @@ class NewHomeViewController: UIViewController, UITableViewDataSource, UITableVie
             return cell
         } else if indexPath.row == 1 {
             guard let model = dataSource.first(where: { $0.name == "length"}) else { return UITableViewCell() }
-            cell.configure(with: "Duzina", description: "Ako si u guzvi, ili pak imas dosta vremena, odigraj jednu od modova po duzini. Respektivno, oni imaju 20,40, odnosno 100 pitanja.", data: model.submodes, questions: questionsDataSource)
+            cell.configure(with: "Duzina", description: "Ako si u guzvi, ili pak imas dosta vremena, odigraj jednu od modova po duzini. Respektivno, oni imaju 20,50, odnosno 100 pitanja.", data: model.submodes, questions: questionsDataSource)
             return cell
         } else if indexPath.row == 2 {
             guard let model = dataSource.first(where: { $0.name == "difficulty"}) else { return UITableViewCell() }

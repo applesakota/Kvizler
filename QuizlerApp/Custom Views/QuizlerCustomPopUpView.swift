@@ -104,7 +104,7 @@ class QuizlerCustomPopUpView: UIView {
             }
         ))
         
-        if score < 10 {
+        if numberOfAnsers < countOfAnswers / 3 {
             self.titleLabel.text = "Biće bolje idući put!"
             self.emojiImageView.image = UIImage(named: "emoji-3")
             self.answersCountLabel.text = "Dao/la si tačan odgovor na \(numberOfAnsers) od \(countOfAnswers) pitanja"
@@ -112,8 +112,9 @@ class QuizlerCustomPopUpView: UIView {
             self.returnToTheMainControllerButton.backgroundColor = .clear
             self.returnToTheMainControllerButton.setTitleColor(AppTheme.current.cellColor, for: .normal)
 
-        } else if score > 20 {
-
+        } else if numberOfAnsers > (countOfAnswers * 2) / 3 {
+            // Calculate two-thirds of the total number of questions
+            
             self.titleLabel.text = "Sjajno!"
             self.emojiImageView.image = UIImage(named: "emoji-2")
             self.answersCountLabel.text = "Dao/la si tačan odgovor na \(numberOfAnsers) od \(countOfAnswers) pitanja"
@@ -122,7 +123,7 @@ class QuizlerCustomPopUpView: UIView {
             self.returnToTheMainControllerButton.setTitleColor(AppTheme.current.cellColor, for: .normal)
             
         } else {
-
+            
             self.titleLabel.text = "Bilo je dobro, probaj opet sledecei put!"
             self.emojiImageView.image = UIImage(named: "emoji")
             self.answersCountLabel.text = "Dao/la si tačan odgovor na \(numberOfAnsers) od \(countOfAnswers) pitanja"

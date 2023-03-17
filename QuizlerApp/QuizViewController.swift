@@ -102,56 +102,39 @@ class QuizViewController: UIViewController {
             isAnswerRight(button: sender)
             sender.backgroundColor = AppTheme.current.cardOrange
             showRightAnswer()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
-                self.prepareNewQuestion()
-            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { self.prepareNewQuestion() }
         case 2:
             timer.invalidate()
             self.timerView.pauseAnimation()
             isAnswerRight(button: sender)
             sender.backgroundColor = AppTheme.current.cardOrange
             showRightAnswer()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
-                self.prepareNewQuestion()
-            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { self.prepareNewQuestion() }
         case 3:
             timer.invalidate()
             self.timerView.pauseAnimation()
             isAnswerRight(button: sender)
             sender.backgroundColor = AppTheme.current.cardOrange
             showRightAnswer()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
-                self.prepareNewQuestion()
-            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { self.prepareNewQuestion() }
         case 4:
             timer.invalidate()
             self.timerView.pauseAnimation()
             isAnswerRight(button: sender)
             sender.backgroundColor = AppTheme.current.cardOrange
             showRightAnswer()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
-                self.prepareNewQuestion()
-            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { self.prepareNewQuestion() }
         default: return
         }
     }
     
-    //    @IBAction func addTimeButton_onClick(_ sender: Any) {
-    //        self.timerCount += 5
-    //        self.view.makeCircleLayer(onView: timerView, withShapeLayer: CAShapeLayer(), label: timerValueLabel, defaultTimeRemaining: timerCount, timeRemaining: timerCount)
-    //    }
-    
     @IBAction func closeButton_onClick(_ sender: Any) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Napusti kviz", message: "Da li sigurno zelis da napustis kviz?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Da", style: .default) { _ in
-                FlowManager.presentMainScreen()
-            })
+            alert.addAction(UIAlertAction(title: "Da", style: .default) { _ in FlowManager.presentMainScreen() })
             alert.addAction(UIAlertAction(title: "Ne", style: .default))
             self.present(alert, animated: false)
         }
-        
-//        FlowManager.presentMainScreen()
     }
     
     //MARK: - Utils
@@ -181,9 +164,7 @@ class QuizViewController: UIViewController {
         self.answer3Button.setTitleColor(AppTheme.current.white, for: .normal)
         self.answer3Button.layer.cornerRadius = answer3Button.layer.bounds.height / 2
         
-        if questions[counter].answers.count <= 3 {
-            self.answer4Button.isHidden = true
-        } else {
+        if questions[counter].answers.count <= 3 { self.answer4Button.isHidden = true } else {
             self.answer4Button.isHidden = false
             self.answer4Button.backgroundColor = colorTheme
             self.answer4Button.setTitle(questions[counter].answers[3].answerText, for: .normal)
@@ -192,8 +173,6 @@ class QuizViewController: UIViewController {
         }
         
         self.numberOfQuestionsCountLabel.text = "\(counter + 1) / \(questions.count)"
-        
-        
         self.view.isUserInteractionEnabled = true
         self.timerCount = timePerQuestion
         self.timerValueLabel.text = "\(timerCount)"
@@ -216,8 +195,8 @@ class QuizViewController: UIViewController {
             target: self,
             selector: #selector(QuizViewController.timerClass),
             userInfo: nil,
-            repeats: true)
-        
+            repeats: true
+        )
     }
     
     @objc func timerClass() {
@@ -227,9 +206,9 @@ class QuizViewController: UIViewController {
         if timerCount == 0 {
             timer.invalidate()
             self.showRightAnswer()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
-                self.prepareNewQuestion()
-            }
+            self.fibiCount = 0
+            self.score += calculateScore(numCorrectAnswers: fibiCount)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { self.prepareNewQuestion() }
         }
     }
     
@@ -240,18 +219,14 @@ class QuizViewController: UIViewController {
             let answers: [AnswerModel] = [questions[counter].answers[0], questions[counter].answers[1], questions[counter].answers[2]]
             let indexOfTrueAnswer = answers.firstIndex{$0.isCorrect == true}
             for (index, button) in buttons.enumerated() {
-                if index == indexOfTrueAnswer {
-                    button.backgroundColor = AppTheme.current.geographyColor
-                }
+                if index == indexOfTrueAnswer { button.backgroundColor = AppTheme.current.geographyColor }
             }
         } else {
             let buttons: [UIButton] = [answer1Button, answer2Button, answer3Button, answer4Button]
             let answers: [AnswerModel] = [questions[counter].answers[0], questions[counter].answers[1], questions[counter].answers[2], questions[counter].answers[3]]
-            let indexOfTrueAnswer = answers.firstIndex{$0.isCorrect == true}
+            let indexOfTrueAnswer = answers.firstIndex{ $0.isCorrect == true }
             for (index, button) in buttons.enumerated() {
-                if index == indexOfTrueAnswer {
-                    button.backgroundColor = AppTheme.current.geographyColor
-                }
+                if index == indexOfTrueAnswer { button.backgroundColor = AppTheme.current.geographyColor }
             }
         }
         
@@ -298,7 +273,6 @@ class QuizViewController: UIViewController {
     }
     
     func prepareNewQuestion() {
-        
         if !questions.isEmpty {
             if counter == questions.count {
                 DispatchQueue.main.async {
@@ -315,22 +289,9 @@ class QuizViewController: UIViewController {
         }
     }
     
-    //MARK: API
-    
-        
-    // MARK: - User Interaction
-    
-    
-    @IBAction func reportButtonTouched(_ sender: Any) {
-        print("Dugme stisnuto bajo")
-    }
-    
     func calculateScore(numCorrectAnswers: Int) -> Int {
-        if numCorrectAnswers == 0 {
-            return 0
-        } else if numCorrectAnswers == 1 {
-            return 1
-        }
+        if numCorrectAnswers == 0 {      return 0 }
+        else if numCorrectAnswers == 1 { return 1 }
         
         var fib1 = 0
         var fib2 = 1
@@ -345,8 +306,14 @@ class QuizViewController: UIViewController {
         return currentFib
     }
     
+    // MARK: - User Interaction
+    
+    @IBAction func reportButtonTouched(_ sender: Any) {
+        print("Dugme stisnuto bajo")
+    }
 }
 
+//MARK: - SendScoreButtonDelegate
 extension QuizViewController: SendScoreButtonDelegate {
     
     func sendScore(username: String) {
@@ -361,6 +328,7 @@ extension QuizViewController: SendScoreButtonDelegate {
         }
     }
     
+//MARK: - API
     
     func apiPostRequestScore(username: String, mode: String, score: Int, _ callback: @escaping (String) -> Swift.Void) {
         let loader = LoaderView.create(for: self.view)
