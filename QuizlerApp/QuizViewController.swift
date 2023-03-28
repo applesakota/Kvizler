@@ -13,7 +13,7 @@ class QuizViewController: UIViewController {
     
     //MARK: - Globals
     
-    static var identifier: String { return "QuizViewController" }
+    class var identifier: String { return "QuizViewController" }
     
     @IBOutlet weak var headerView: UIView!
     
@@ -129,12 +129,8 @@ class QuizViewController: UIViewController {
     }
     
     @IBAction func closeButton_onClick(_ sender: Any) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "Napusti kviz", message: "Da li sigurno zelis da napustis kviz?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Da", style: .default) { _ in FlowManager.presentMainScreen() })
-            alert.addAction(UIAlertAction(title: "Ne", style: .default))
-            self.present(alert, animated: false)
-        }
+        let customAlert = QuizlerCustomAlertViewController()
+        customAlert.show()
     }
     
     //MARK: - Utils
