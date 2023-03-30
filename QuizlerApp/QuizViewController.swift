@@ -64,14 +64,16 @@ class QuizViewController: UIViewController {
     
     private var questions: [QuestionModel] = []
     var numberOfQuestions: Int = 20
+    var mode: String!
     
     //MARK: - Init
     
-    class func instantiate(questions: [QuestionModel], numberOfQuestions: Int, timePerQuestion: Int) -> QuizViewController {
+    class func instantiate(questions: [QuestionModel], numberOfQuestions: Int, timePerQuestion: Int, mode: String) -> QuizViewController {
         let viewController = UIStoryboard.utils.instantiate(identifier) as! QuizViewController
         viewController.questions = questions
         viewController.timePerQuestion = timePerQuestion
         viewController.numberOfQuestions = numberOfQuestions
+        viewController.mode = mode
         return viewController
     }
     
@@ -313,7 +315,7 @@ class QuizViewController: UIViewController {
 extension QuizViewController: SendScoreButtonDelegate {
     
     func sendScore(username: String) {
-        apiPostRequestScore(username: username, mode: questions.first!.categoryId, score: score) { message in
+        apiPostRequestScore(username: username, mode: mode, score: score) { message in
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "Info", message: message, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default) { _ in
