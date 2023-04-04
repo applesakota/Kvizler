@@ -51,7 +51,8 @@ class QuizlerCustomAlertViewController: UIViewController {
         self.alertDescriptionLabel.text = "Da li sigurno želiš da napustiš kviz?"
         self.alertNoButton.setTitle("Ne", for: .normal)
         self.alertYesButton.setTitle("Da", for: .normal)
-
+        self.alertView.layer.borderWidth = 0.2
+        self.alertView.showShadow()
     }
     
     //MARK: - User Interaction

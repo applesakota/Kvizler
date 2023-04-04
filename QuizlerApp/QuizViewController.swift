@@ -151,16 +151,19 @@ class QuizViewController: UIViewController {
         self.answer1Button.setTitle(questions[counter].answers[0].answerText, for: .normal)
         self.answer1Button.setTitleColor(AppTheme.current.white, for: .normal)
         self.answer1Button.layer.cornerRadius = answer1Button.layer.bounds.height / 2
+        self.answer1Button.isExclusiveTouch = true
         
         self.answer2Button.backgroundColor = colorTheme
         self.answer2Button.setTitle(questions[counter].answers[1].answerText, for: .normal)
         self.answer2Button.setTitleColor(AppTheme.current.white, for: .normal)
         self.answer2Button.layer.cornerRadius = answer2Button.layer.bounds.height / 2
+        self.answer2Button.isExclusiveTouch = true
         
         self.answer3Button.backgroundColor = colorTheme
         self.answer3Button.setTitle(questions[counter].answers[2].answerText, for: .normal)
         self.answer3Button.setTitleColor(AppTheme.current.white, for: .normal)
         self.answer3Button.layer.cornerRadius = answer3Button.layer.bounds.height / 2
+        self.answer3Button.isExclusiveTouch = true
         
         if questions[counter].answers.count <= 3 { self.answer4Button.isHidden = true } else {
             self.answer4Button.isHidden = false
@@ -168,6 +171,7 @@ class QuizViewController: UIViewController {
             self.answer4Button.setTitle(questions[counter].answers[3].answerText, for: .normal)
             self.answer4Button.setTitleColor(AppTheme.current.white, for: .normal)
             self.answer4Button.layer.cornerRadius = answer4Button.layer.bounds.height / 2
+            self.answer4Button.isExclusiveTouch = true
         }
         
         self.numberOfQuestionsCountLabel.text = "\(counter + 1) / \(questions.count)"

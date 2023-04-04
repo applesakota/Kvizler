@@ -22,14 +22,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="182" height="170"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="e8J-Oh-M1i">
-                        <rect key="frame" x="8" y="8" width="166" height="154"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="e8J-Oh-M1i">
+                        <rect key="frame" x="16" y="16" width="150" height="138"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="geography" translatesAutoresizingMaskIntoConstraints="NO" id="7CW-CW-IFy">
-                                <rect key="frame" x="0.0" y="0.0" width="166" height="121.33333333333333"/>
+                                <rect key="frame" x="0.0" y="0.0" width="150" height="99.333333333333329"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" text="Test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDI-qI-nMt">
-                                <rect key="frame" x="0.0" y="131.33333333333334" width="166" height="22.666666666666657"/>
+                                <rect key="frame" x="0.0" y="115.33333333333334" width="150" height="22.666666666666657"/>
                                 <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -38,10 +38,10 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="e8J-Oh-M1i" secondAttribute="trailing" constant="8" id="7PL-6x-uau"/>
-                    <constraint firstItem="e8J-Oh-M1i" firstAttribute="leading" secondItem="75U-TL-PpX" secondAttribute="leading" constant="8" id="D1y-ka-Rt9"/>
-                    <constraint firstItem="e8J-Oh-M1i" firstAttribute="top" secondItem="75U-TL-PpX" secondAttribute="top" constant="8" id="rOx-V0-gQX"/>
-                    <constraint firstAttribute="bottom" secondItem="e8J-Oh-M1i" secondAttribute="bottom" constant="8" id="s59-UU-zxn"/>
+                    <constraint firstAttribute="trailing" secondItem="e8J-Oh-M1i" secondAttribute="trailing" constant="16" id="7PL-6x-uau"/>
+                    <constraint firstItem="e8J-Oh-M1i" firstAttribute="leading" secondItem="75U-TL-PpX" secondAttribute="leading" constant="16" id="D1y-ka-Rt9"/>
+                    <constraint firstItem="e8J-Oh-M1i" firstAttribute="top" secondItem="75U-TL-PpX" secondAttribute="top" constant="16" id="rOx-V0-gQX"/>
+                    <constraint firstAttribute="bottom" secondItem="e8J-Oh-M1i" secondAttribute="bottom" constant="16" id="s59-UU-zxn"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="182" height="170"/>

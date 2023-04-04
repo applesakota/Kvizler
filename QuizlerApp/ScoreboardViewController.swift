@@ -49,7 +49,6 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
     private(set) var selectedSubMode: SubMode? {
         didSet { DispatchQueue.main.async {
             self.updateUIOnStateChange()
-            self.tableView.reloadData()
         }}
     }
     
@@ -187,7 +186,8 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.firstScoreLabel.text = String("\(scores[0].score)")
             }
         }
-        
+        //Reload data
+        self.tableView.reloadData()
     }
     
     //MARK: - UIPickerViewDelegate and UIPickerViewDataSource

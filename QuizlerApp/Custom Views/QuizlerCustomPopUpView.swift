@@ -139,7 +139,7 @@ class QuizlerCustomPopUpView: UIView {
         self.returnToTheMainControllerButton.setTitleColor(AppTheme.current.cellColor, for: .normal)
         self.view.backgroundColor = AppTheme.current.popUpColor
         self.view.layer.cornerRadius = 10
-        self.view.layer.borderWidth = 0.1
+        self.view.layer.borderWidth = 0.2
         self.view.showShadow()
         
     }
