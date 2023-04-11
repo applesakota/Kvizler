@@ -90,36 +90,36 @@ class QuizlerTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
         let model = dataSource[indexPath.row]
         
         if model.name == "easy" {
-            self.presentQuestionViewController(questions: self.questionsViewModel!.easyQuestions, numberOfQuestions: 20, timePerQuestion: model.timePerQuestion)
+            self.presentQuestionViewController(questions: self.questionsViewModel!.easyQuestions, numberOfQuestions: 20, timePerQuestion: model.timePerQuestion, mode: model.id)
         } else if model.name == "medium" {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel!.mediumQuestions, numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion)
+                self.presentQuestionViewController(questions: self.questionsViewModel!.mediumQuestions, numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         } else if model.name == "hard" {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel!.hardQuestions, numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion)
+                self.presentQuestionViewController(questions: self.questionsViewModel!.hardQuestions, numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         } else if model.name == "zen" {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel!.fetchZenQuestions(numberOfQuestions: model.numberOfQuestions), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion)
+                self.presentQuestionViewController(questions: self.questionsViewModel!.fetchZenQuestions(numberOfQuestions: model.numberOfQuestions), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         } else if model.name == "exam" {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel!.fetchExamQuestions(numberOfQuestions: model.numberOfQuestions), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion)
+                self.presentQuestionViewController(questions: self.questionsViewModel!.fetchExamQuestions(numberOfQuestions: model.numberOfQuestions), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         } else if model.name == "marathon" {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel!.fetchMarathonQuestions(numberOfQuestions: model.numberOfQuestions), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion)
+                self.presentQuestionViewController(questions: self.questionsViewModel!.fetchMarathonQuestions(numberOfQuestions: model.numberOfQuestions), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         }  else {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel!.fetchCategoryQuestions(id: model.id), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion)
+                self.presentQuestionViewController(questions: self.questionsViewModel!.fetchCategoryQuestions(id: model.id), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         }
     }
     
-    func presentQuestionViewController(questions: [QuestionModel], numberOfQuestions: Int, timePerQuestion: Int) {
-        let viewController = QuizViewController.instantiate(questions: questions, numberOfQuestions: numberOfQuestions, timePerQuestion: timePerQuestion)
+    func presentQuestionViewController(questions: [QuestionModel], numberOfQuestions: Int, timePerQuestion: Int, mode: String) {
+        let viewController = QuizViewController.instantiate(questions: questions, numberOfQuestions: numberOfQuestions, timePerQuestion: timePerQuestion, mode: mode)
         self.parentViewController?.navigationController?.pushViewController(viewController, animated: false)
     }
 

@@ -9,7 +9,7 @@ import UIKit
 
 class QuizPauseViewController: UIViewController {
     
-    static var identifier: String { return "QuizPauseViewController"}
+    class var identifier: String { return "QuizPauseViewController"}
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
