@@ -49,7 +49,6 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
     private(set) var selectedSubMode: SubMode? {
         didSet { DispatchQueue.main.async {
             self.updateUIOnStateChange()
-            self.tableView.reloadData()
         }}
     }
     
@@ -72,13 +71,14 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
         return navigationController
     }
     
+    //MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         self.prepareThemeAndLocalization()
         self.prepareNavigationBarTheme()
-        
         
         self.apiFetchSubmodes { [weak self] submodes in
             guard let self = self else { return }
@@ -184,10 +184,10 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.firstScoreBackgroundView.backgroundColor = AppTheme.current.firstScoreBackgroundColor
                 self.firstScoreBackgroundView.layer.cornerRadius = 10
                 self.firstScoreLabel.text = String("\(scores[0].score)")
-                
             }
         }
-        
+        //Reload data
+        self.tableView.reloadData()
     }
     
     //MARK: - UIPickerViewDelegate and UIPickerViewDataSource
@@ -234,9 +234,7 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.textLabel?.textAlignment = .center
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: ScoreboardTableViewCell.identifier, for: indexPath) as? ScoreboardTableViewCell else {
-                return UITableViewCell()
-            }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ScoreboardTableViewCell.identifier, for: indexPath) as? ScoreboardTableViewCell else { return UITableViewCell() }
             cell.setTheme(for: scoresRawDataSource[indexPath.row], rank: indexPath.row + 4)
             return cell
         }
@@ -278,6 +276,8 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
         let sorted = newScores.sorted(by: {$0.score > $1.score })
         if sorted.count > 3 {
             self.scoresRawDataSource = Array(sorted.dropFirst(3))
+        } else {
+            self.scoresRawDataSource = []
         }
         return sorted
     }
@@ -296,7 +296,6 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
                     self.updateUIOnStateChange()
                 }
             }
-            
             self.noInternetConeectionView.isHidden = true
         } else {
             self.noInternetConeectionView.isHidden = false

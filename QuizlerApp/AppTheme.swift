@@ -46,7 +46,7 @@ enum AppTheme {
     }
     
     var geographyColor: UIColor {
-        return UIColor(named: "geographyColor")!
+        return UIColor(named: "GeographyColor")!
         
     }
     
@@ -81,7 +81,7 @@ enum AppTheme {
         
     }
     var historyColor: UIColor {
-        return UIColor(named: "historyColor")!
+        return UIColor(named: "HistoryColor")!
         
     }
     var primaryLight: UIColor {
