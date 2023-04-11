@@ -217,7 +217,7 @@
         <scene sceneID="sRK-cs-M99">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ki8-Sb-al1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Tabela" image="table" id="wyJ-rs-nBa"/>
+                    <tabBarItem key="tabBarItem" title="Tabela" image="save" id="wyJ-rs-nBa"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="DYG-ZT-Icf">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1313,14 +1313,13 @@
         <image name="circle.fill" catalog="system" width="128" height="123"/>
         <image name="coin" width="256" height="256"/>
         <image name="first" width="256" height="256"/>
-        <image name="home" width="10" height="8.5"/>
+        <image name="home" width="25" height="25"/>
         <image name="no-wifi" width="256" height="256"/>
         <image name="openLock" width="32" height="32"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="profile" width="8" height="8"/>
-        <image name="save" width="128" height="128"/>
+        <image name="save" width="7" height="9"/>
         <image name="second" width="256" height="256"/>
-        <image name="table" width="9.5" height="7.5"/>
         <image name="third" width="256" height="256"/>
         <namedColor name="Black">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
