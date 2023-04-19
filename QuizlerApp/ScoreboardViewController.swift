@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
+class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: - Globals
     
@@ -41,29 +41,26 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
     var pickerViewDataSource: [SubMode] = []
     var scores: [ScoreModel] = []
     var scoresRawDataSource: [ScoreModel] = []
-    
-    var pickerView: UIPickerView? {
-        return categoryTextField.inputView as? UIPickerView
-    }
-    
+        
     private(set) var selectedSubMode: SubMode? {
         didSet { DispatchQueue.main.async {
             self.updateUIOnStateChange()
         }}
     }
     
-    
-    
     //MARK: - Init
     
-    class func instantiate() -> ScoreboardViewController {
+    class func instantiate(selectedSubMode: SubMode?) -> ScoreboardViewController {
         let viewController = UIStoryboard.main.instantiate(identifier) as! ScoreboardViewController
+        if selectedSubMode != nil {
+            viewController.selectedSubMode = selectedSubMode
+        }
         viewController.tabBarItem = UITabBarItem(title: "Tabela", image: #imageLiteral(resourceName: "table"), selectedImage: #imageLiteral(resourceName: "table"))
         return viewController
     }
     
     class func instantiateWithNavigation() -> UINavigationController {
-        let navigationController = UINavigationController(rootViewController: instantiate())
+        let navigationController = UINavigationController(rootViewController: instantiate(selectedSubMode: nil))
         navigationController.modalTransitionStyle = .crossDissolve
         navigationController.modalPresentationStyle = .fullScreen
         navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -85,7 +82,6 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
             DispatchQueue.main.async {
                 self.pickerViewDataSource = submodes
                 self.selectedSubMode = self.pickerViewDataSource.first
-                self.setupPickerView()
             }
         }
         
@@ -126,6 +122,7 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
         self.categoryTextField.backgroundColor = AppTheme.current.cellColor
         self.categoryTextField.textColor = AppTheme.current.white
         self.categoryTextField.layer.cornerRadius = 30
+        self.categoryTextField.isUserInteractionEnabled = false
         
         self.thirdPlaceLabel.text = ""
         self.thirdPlaceLabel.superview?.layer.cornerRadius = 10
@@ -160,6 +157,7 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
                 self.categoryTextField.backgroundColor = AppTheme.current.cellColor
                 self.categoryTextField.textColor = AppTheme.current.white
                 self.categoryTextField.layer.cornerRadius = 30
+                self.categoryTextField.text = selectedSubMode?.name.localized()
                 
                 self.thirdPlaceLabel.text = scores[2].username
                 self.thirdPlaceLabel.superview?.layer.cornerRadius = 10
@@ -189,35 +187,6 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
         //Reload data
         self.tableView.reloadData()
     }
-    
-    //MARK: - UIPickerViewDelegate and UIPickerViewDataSource
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-
-    func pickerView( _ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerViewDataSource.count
-    }
-
-    func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerViewDataSource[row].name.localized()
-    }
-
-    func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let submode = pickerViewDataSource[row]
-        categoryTextField.text = submode.name.localized()
-        selectedSubMode = submode
-    }
-    
-    private func setupPickerView() {
-        let categoryPicker = UIPickerView()
-        categoryTextField.inputView = categoryPicker
-        categoryPicker.delegate = self
-        categoryPicker.dataSource = self
-        categoryTextField.text = selectedSubMode?.name.localized()
-    }
-    
     
     //MARK: - UITableViewDelegate and UITableViewDataSource
     
@@ -282,9 +251,27 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
         return sorted
     }
     
+
+    private func presentLengthScoreboardViewController() {
+        let viewController = LengthScoreboardViewController.instantiate(submodes: pickerViewDataSource)
+        viewController.delegate = self
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            viewController.modalPresentationStyle = .automatic
+        } else {
+            viewController.modalPresentationStyle = .popover
+        }
+        DispatchQueue.main.async {
+            self.present(viewController, animated: false)
+        }
+    }
     
+    //MARK: - DataSources / Delegates
     //MARK: - User Interaction
     
+    @IBAction func categoryButtonTapped(_ sender: Any) {
+        self.presentLengthScoreboardViewController()
+        
+    }
     @IBAction func refreshButtonOnClick(_ sender: Any) {
         
         if Reachability.isConnectedToNetwork {
@@ -303,4 +290,11 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 }
 
-
+extension ScoreboardViewController: LengthScoreboardViewControllerDelegate {
+    
+    func lengthScoreboardViewController(_ viewController: LengthScoreboardViewController, didSelect subMode: SubMode?) {
+        self.selectedSubMode = subMode
+        self.updateUIOnStateChange()
+        
+    }
+}
