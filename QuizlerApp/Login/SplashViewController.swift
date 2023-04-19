@@ -13,14 +13,12 @@ class SplashViewController: UIViewController {
     
     class var identifier: String { return "SplashViewController" }
     
-    @IBOutlet weak var appNameLabel: UILabel!
-    @IBOutlet weak var appVersionLabel: UILabel!
-    
+    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var internetConectionContainerView: UIView!
     @IBOutlet weak var internetConectionButton: UIButton!
     @IBOutlet weak var internetConectionDescriptionLabel: UILabel!
     @IBOutlet weak var internetContectionTitleLabel: UILabel!
-    
+    @IBOutlet weak var quizlerProgressBarView: QuizlerProgressBarView!
     var newDataSource: QuestionsViewModel?
     
     //MARK: - Init
@@ -29,49 +27,60 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.prepareThemeAndLocalization()
-        if Reachability.isConnectedToNetwork {
-            self.apiFetchUserIfAny()
-        }
     }
+    
+    
     
     //MARK: - User interaction
     //MARK: - DataSources / Delegates
     //MARK: - Utils
     
     func prepareThemeAndLocalization() {
+        self.logoImageView.image = UIImage(named: "logo_image")
         self.view.backgroundColor = AppTheme.current.zenOrange
-        appNameLabel.textColor = AppTheme.current.blackColor
-        appVersionLabel.textColor = AppTheme.current.blackColor
         internetContectionTitleLabel.text = "Nema internet konekcije"
         internetConectionDescriptionLabel.text = "Potrebna je internet konekcija radi osvežavanja podataka."
         internetConectionButton.setTitle("Pokušaj ponovo", for: .normal)
-        setBackgroundImage()
         self.internetConectionContainerView.layer.cornerRadius = 10
         self.internetConectionButton.layer.cornerRadius = 30
-        
-        self.internetConectionContainerView.isHidden = Reachability.isConnectedToNetwork
-        //Data
-        appNameLabel.text = "Quizler"
-        appVersionLabel.text = "1.01"
+        self.internetConectionContainerView.isHidden = true
+        self.logoTransition()
+    }
+
+    @IBAction func internetConectionButtonTouched(_ sender: Any) {
+        self.showProgressBar()
     }
     
-    @IBAction func internetConectionButtonTouched(_ sender: Any) {
-        if Reachability.isConnectedToNetwork {
-            self.apiFetchUserIfAny()
-        }
-    }
     func apiFetchUserIfAny() {
         FlowManager.presentMainScreen()
     }
     
-    func setBackgroundImage() {
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: "background")
-        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFit
-        self.view.insertSubview(backgroundImage, at: 0)
+    
+    func logoTransition() {
+        UIView.animate(
+            withDuration: 0.88,
+            delay: 0.5,
+            options: [.curveEaseIn],
+            animations: { self.logoImageView.alpha = 0.0 },
+            completion: { _ in self.showProgressBar() }
+        )
+    }
+            
+    func showProgressBar() {
+        self.quizlerProgressBarView.isHidden = false
+        self.quizlerProgressBarView.setProgress(to: 1)
+        perform(#selector(internetCheck), with: nil, afterDelay: 0.7)
     }
     
+    @objc func internetCheck() {
+        if Reachability.isConnectedToNetwork {
+            self.apiFetchUserIfAny()
+        } else {
+            self.quizlerProgressBarView.setProgress(to: 0)
+            self.internetConectionContainerView.isHidden = false
+        }
 
+    }
     
 
 }

@@ -71,6 +71,7 @@
 		9EA37D7B2999396B00840694 /* QuizlerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA37D7A2999396B00840694 /* QuizlerTableViewCell.swift */; };
 		9EA37D85299AB7CD00840694 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA37D84299AB7CD00840694 /* HomeCollectionViewCell.swift */; };
 		9EBD3C1C269F050C006582E7 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD3C1B269F050C006582E7 /* QuestionModel.swift */; };
+		9EC805F429EEC849008CA296 /* QuizlerProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC805F329EEC849008CA296 /* QuizlerProgressBarView.swift */; };
 		9ED2690726964EE7006CFFD2 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED2690626964EE7006CFFD2 /* QuizViewController.swift */; };
 		9EE0B62E267B6150005F0305 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE0B62D267B6150005F0305 /* LoaderView.swift */; };
 		9EE41F0C29D1C98300875A96 /* QuizlerCustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE41F0A29D1C98300875A96 /* QuizlerCustomAlertViewController.swift */; };
@@ -144,6 +145,7 @@
 		9EA37D7A2999396B00840694 /* QuizlerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizlerTableViewCell.swift; sourceTree = "<group>"; };
 		9EA37D84299AB7CD00840694 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		9EBD3C1B269F050C006582E7 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		9EC805F329EEC849008CA296 /* QuizlerProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizlerProgressBarView.swift; sourceTree = "<group>"; };
 		9ED2690626964EE7006CFFD2 /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		9EE0B62D267B6150005F0305 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		9EE41F0A29D1C98300875A96 /* QuizlerCustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizlerCustomAlertViewController.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				9E1A63FB29B6126A006D5FBA /* QuizlerCustomPopUpView.swift */,
 				9EE41F0A29D1C98300875A96 /* QuizlerCustomAlertViewController.swift */,
 				9EE41F0B29D1C98300875A96 /* QuizlerCustomAlertViewController.xib */,
+				9EC805F329EEC849008CA296 /* QuizlerProgressBarView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 				9E31CA8F266BC2EA0064599C /* AppEnvironment.swift in Sources */,
 				9E0F5D7A268327FE004E28C0 /* RESTResponse.swift in Sources */,
 				9E8D52F1271EFE40002261AE /* LocalStorage+Keychain.swift in Sources */,
+				9EC805F429EEC849008CA296 /* QuizlerProgressBarView.swift in Sources */,
 				9E0F5D7426826E8D004E28C0 /* RESTRequest.swift in Sources */,
 				9E1A63FC29B6126A006D5FBA /* QuizlerCustomPopUpView.swift in Sources */,
 				9E8D52F7272193E7002261AE /* AppTarget.swift in Sources */,
