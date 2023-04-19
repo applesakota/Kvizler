@@ -26,21 +26,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KGO-0k-xXt">
-                                <rect key="frame" x="20" y="398" width="374" height="100.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="jmR-Wp-8Ad">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="895"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KGO-0k-xXt">
+                                <rect key="frame" x="20" y="405.5" width="374" height="85"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[App Name]" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1y-p9-1kv">
-                                        <rect key="frame" x="48.5" y="0.0" width="277.5" height="66"/>
-                                        <fontDescription key="fontDescription" name="RobotoSlab-SemiBold" family="Roboto Slab" pointSize="50"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[App Version]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lY-aQ-ATk">
-                                        <rect key="frame" x="123.5" y="74" width="127" height="26.5"/>
-                                        <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_image" translatesAutoresizingMaskIntoConstraints="NO" id="eo1-Uy-Epx">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="85"/>
+                                    </imageView>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NuA-CP-box" customClass="QuizlerProgressBarView" customModule="QuizlerApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="10"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="9qt-Qm-NAO"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9i-S8-zLh">
@@ -134,22 +135,26 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="top" secondItem="jmR-Wp-8Ad" secondAttribute="top" id="672-cx-WN2"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="H9i-S8-zLh" secondAttribute="bottom" constant="16" id="CfY-bF-S45"/>
+                            <constraint firstAttribute="bottom" secondItem="jmR-Wp-8Ad" secondAttribute="bottom" constant="1" id="JJ5-NW-DzC"/>
+                            <constraint firstAttribute="trailing" secondItem="jmR-Wp-8Ad" secondAttribute="trailing" id="KMs-Fy-QMN"/>
                             <constraint firstItem="KGO-0k-xXt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="LVb-2c-Zr2"/>
                             <constraint firstItem="H9i-S8-zLh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="LYQ-Pb-NR4"/>
                             <constraint firstItem="KGO-0k-xXt" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Uli-wP-d0z"/>
                             <constraint firstItem="H9i-S8-zLh" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.25" id="ZOu-GS-AOw"/>
+                            <constraint firstItem="jmR-Wp-8Ad" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="n6d-QY-nE5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="H9i-S8-zLh" secondAttribute="trailing" constant="16" id="wrS-Pg-KPs"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="KGO-0k-xXt" secondAttribute="trailing" constant="20" id="zGN-UA-Xqh"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="appNameLabel" destination="N1y-p9-1kv" id="3Rp-cR-soq"/>
-                        <outlet property="appVersionLabel" destination="7lY-aQ-ATk" id="E6S-Tm-RKv"/>
                         <outlet property="internetConectionButton" destination="ozA-SV-8Ir" id="0NX-03-3sh"/>
                         <outlet property="internetConectionContainerView" destination="H9i-S8-zLh" id="NoL-m0-WuV"/>
                         <outlet property="internetConectionDescriptionLabel" destination="E6P-Mw-T0t" id="wbZ-Vj-Iup"/>
                         <outlet property="internetContectionTitleLabel" destination="nBe-Z1-GNc" id="she-9w-y5z"/>
+                        <outlet property="logoImageView" destination="eo1-Uy-Epx" id="tDf-nN-eJy"/>
+                        <outlet property="quizlerProgressBarView" destination="NuA-CP-box" id="39Q-uN-eaD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
