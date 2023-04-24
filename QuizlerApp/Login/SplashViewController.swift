@@ -29,7 +29,11 @@ class SplashViewController: UIViewController {
         self.prepareThemeAndLocalization()
     }
     
-    
+    struct LocalizationStrings {
+        static let internetConnectionTitle = "splash_screen_no_internet_connection_title".localized()
+        static let internetConnectionDescription = "splash_screen_no_internet_connection_description_text".localized()
+        static let internetConnectionButtonText = "splash_screen_no_internet_conection_button_text".localized()
+    }
     
     //MARK: - User interaction
     //MARK: - DataSources / Delegates
@@ -38,9 +42,9 @@ class SplashViewController: UIViewController {
     func prepareThemeAndLocalization() {
         self.logoImageView.image = UIImage(named: "logo_image")
         self.view.backgroundColor = AppTheme.current.zenOrange
-        internetContectionTitleLabel.text = "Nema internet konekcije"
-        internetConectionDescriptionLabel.text = "Potrebna je internet konekcija radi osvežavanja podataka."
-        internetConectionButton.setTitle("Pokušaj ponovo", for: .normal)
+        internetContectionTitleLabel.text = LocalizationStrings.internetConnectionTitle
+        internetConectionDescriptionLabel.text = LocalizationStrings.internetConnectionDescription
+        internetConectionButton.setTitle(LocalizationStrings.internetConnectionButtonText, for: .normal)
         self.internetConectionContainerView.layer.cornerRadius = 10
         self.internetConectionButton.layer.cornerRadius = 30
         self.internetConectionContainerView.isHidden = true

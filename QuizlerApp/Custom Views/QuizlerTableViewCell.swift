@@ -21,7 +21,7 @@ class QuizlerTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
     @IBOutlet weak var backgroundCellView: UIView!
     
     var dataSource: [SubMode] = []
-    var questionsViewModel: QuestionsViewModel?
+    var questionsViewModel: QuestionsViewModel!
     
     //MARK: - Init
     
@@ -33,7 +33,6 @@ class QuizlerTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
     }
     
     private func setupCollectionView() {
-
         tableViewCollectionView.dataSource = self
         tableViewCollectionView.delegate = self
         let nib = UINib(nibName: HomeCollectionViewCell.identifier, bundle: nil)
@@ -46,7 +45,7 @@ class QuizlerTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
         // Configure the view for the selected state
     }
     
-    func configure(with title: String, description: String, data: [SubMode]?, questions: QuestionsViewModel?) {
+    func configure(with title: String, description: String, data: [SubMode]?, questions: QuestionsViewModel) {
         self.setupCollectionView()
         self.backgroundColor = AppTheme.current.backgroundColor
         self.tableViewCollectionView.backgroundColor = UIColor.clear
@@ -63,9 +62,7 @@ class QuizlerTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
         if let dataSource = data {
             self.dataSource = dataSource
         }
-        if let questions = questions {
-            self.questionsViewModel = questions
-        }
+        self.questionsViewModel = questions
         self.tableViewCollectionView.reloadData()
     }
 
@@ -90,30 +87,30 @@ class QuizlerTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
         let model = dataSource[indexPath.row]
         
         if model.name == "easy" {
-            self.presentQuestionViewController(questions: self.questionsViewModel!.easyQuestions, numberOfQuestions: 20, timePerQuestion: model.timePerQuestion, mode: model.id)
+            self.presentQuestionViewController(questions: self.questionsViewModel.easyQuestions, numberOfQuestions: 20, timePerQuestion: model.timePerQuestion, mode: model.id)
         } else if model.name == "medium" {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel!.mediumQuestions, numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
+                self.presentQuestionViewController(questions: self.questionsViewModel.mediumQuestions, numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         } else if model.name == "hard" {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel!.hardQuestions, numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
+                self.presentQuestionViewController(questions: self.questionsViewModel.hardQuestions, numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         } else if model.name == "zen" {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel!.fetchZenQuestions(numberOfQuestions: model.numberOfQuestions), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
+                self.presentQuestionViewController(questions: self.questionsViewModel.fetchZenQuestions(numberOfQuestions: model.numberOfQuestions), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         } else if model.name == "exam" {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel!.fetchExamQuestions(numberOfQuestions: model.numberOfQuestions), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
+                self.presentQuestionViewController(questions: self.questionsViewModel.fetchExamQuestions(numberOfQuestions: model.numberOfQuestions), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         } else if model.name == "marathon" {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel!.fetchMarathonQuestions(numberOfQuestions: model.numberOfQuestions), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
+                self.presentQuestionViewController(questions: self.questionsViewModel.fetchMarathonQuestions(numberOfQuestions: model.numberOfQuestions), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         }  else {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel!.fetchCategoryQuestions(id: model.id), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
+                self.presentQuestionViewController(questions: self.questionsViewModel.fetchCategoryQuestions(id: model.id), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         }
     }

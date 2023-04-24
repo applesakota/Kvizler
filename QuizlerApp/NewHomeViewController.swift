@@ -15,13 +15,23 @@ class NewHomeViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var tableView: UITableView!
     private var dataSource: [CategoryModel] = []
-    private var questionsDataSource: QuestionsViewModel?
+    private var questionsDataSource: QuestionsViewModel!
+
+    struct LocalizationStrings {
+        static let kategorijaTitle = "home_view_screen_kategorija_title".localized()
+        static let kategorijaDescription = "home_view_screen_kategorija_description".localized()
+        static let tezinaTitle = "home_view_screen_tezina_title".localized()
+        static let tezinaDescription = "home_view_screen_tezina_description".localized()
+        static let duzinaTitle = "home_view_screen_duzina_title".localized()
+        static let duzinaDescription = "home_view_screen_duzina_description".localized()
+        static let tabBarPocetnaText = "home_view_screen_pocetna_text".localized()
+    }
     
     //MARK: - Init
 
     class func instantiate() -> NewHomeViewController {
         let viewController = UIStoryboard.main.instantiateViewController(withIdentifier: identifier) as! NewHomeViewController
-        viewController.tabBarItem = UITabBarItem(title: "Pocetna", image: #imageLiteral(resourceName: "home"), selectedImage: #imageLiteral(resourceName: "home"))
+        viewController.tabBarItem = UITabBarItem(title: LocalizationStrings.tabBarPocetnaText, image: #imageLiteral(resourceName: "home"), selectedImage: #imageLiteral(resourceName: "home"))
         return viewController
     }
     
@@ -99,15 +109,15 @@ class NewHomeViewController: UIViewController, UITableViewDataSource, UITableVie
         
         if indexPath.row == 0 {
             guard let model = dataSource.first(where: { $0.name == "category"}) else { return UITableViewCell() }
-            cell.configure(with: "Kategorija", description: "Mislis da dobro poznajes Majkla Dzeksona, ili pak bolje znas de trenutno igra Mbappe? Oprobaj se u jednom od modova kategorije", data: model.submodes, questions: questionsDataSource)
+            cell.configure(with: LocalizationStrings.kategorijaTitle, description: LocalizationStrings.kategorijaDescription, data: model.submodes, questions: questionsDataSource)
             return cell
         } else if indexPath.row == 1 {
-            guard let model = dataSource.first(where: { $0.name == "length"}) else { return UITableViewCell() }
-            cell.configure(with: "Duzina", description: "Ako si u guzvi, ili pak imas dosta vremena, odigraj jednu od modova po duzini. Respektivno, oni imaju 20,50, odnosno 100 pitanja.", data: model.submodes, questions: questionsDataSource)
+            guard let model = dataSource.first(where: { $0.name == "difficulty"}) else { return UITableViewCell() }
+            cell.configure(with: LocalizationStrings.tezinaTitle, description: LocalizationStrings.tezinaDescription, data: model.submodes, questions: questionsDataSource)
             return cell
         } else if indexPath.row == 2 {
-            guard let model = dataSource.first(where: { $0.name == "difficulty"}) else { return UITableViewCell() }
-            cell.configure(with: "Tezina", description: "Lak, srednji ili tezak mod, Na tebi je koliko si hrabra/hrabar!", data: model.submodes, questions: questionsDataSource)
+            guard let model = dataSource.first(where: { $0.name == "length"}) else { return UITableViewCell() }
+            cell.configure(with: LocalizationStrings.duzinaTitle, description: LocalizationStrings.duzinaDescription, data: model.submodes, questions: questionsDataSource)
             return cell
         }
         

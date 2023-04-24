@@ -45,22 +45,28 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9i-S8-zLh">
-                                <rect key="frame" x="16" y="622" width="382" height="224"/>
+                                <rect key="frame" x="16" y="628.5" width="382" height="217.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="us1-L0-9IH">
-                                        <rect key="frame" x="8" y="8" width="366" height="208"/>
+                                        <rect key="frame" x="8" y="8" width="366" height="201.5"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="249" text="Nema internet konekcije" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBe-Z1-GNc">
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="22.5"/>
+                                                <fontDescription key="fontDescription" name="RobotoSlab-SemiBold" family="Roboto Slab" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSB-et-P5P">
-                                                <rect key="frame" x="0.0" y="0.0" width="366" height="142"/>
+                                                <rect key="frame" x="0.0" y="38.5" width="366" height="97"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="mTS-FS-PVH">
-                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="142"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="97"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5gL-3d-wVl">
-                                                                <rect key="frame" x="0.0" y="0.0" width="66" height="142"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="66" height="97"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-wifi" translatesAutoresizingMaskIntoConstraints="NO" id="toI-1m-Eky">
-                                                                        <rect key="frame" x="8" y="46" width="50" height="50"/>
+                                                                        <rect key="frame" x="8" y="23.5" width="50" height="50"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="50" id="3YI-7C-80z"/>
                                                                             <constraint firstAttribute="width" secondItem="toI-1m-Eky" secondAttribute="height" multiplier="1:1" id="hGo-lO-YZO"/>
@@ -75,17 +81,11 @@
                                                                     <constraint firstItem="toI-1m-Eky" firstAttribute="centerY" secondItem="5gL-3d-wVl" secondAttribute="centerY" id="yaD-xS-8AT"/>
                                                                 </constraints>
                                                             </view>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="rMK-oO-w6U">
-                                                                <rect key="frame" x="82" y="0.0" width="284" height="142"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="rMK-oO-w6U">
+                                                                <rect key="frame" x="82" y="0.0" width="284" height="97"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="249" text="Nema internet konekcije" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBe-Z1-GNc">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="199" height="95"/>
-                                                                        <fontDescription key="fontDescription" name="RobotoSlab-SemiBold" family="Roboto Slab" pointSize="17"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Potrebna je internet konekcija radi osvezavanja podataka" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6P-Mw-T0t">
-                                                                        <rect key="frame" x="0.0" y="97" width="280" height="45"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Potrebna je internet konekcija radi osvezavanja podataka" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6P-Mw-T0t">
+                                                                        <rect key="frame" x="2" y="0.0" width="280" height="97"/>
                                                                         <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -107,7 +107,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozA-SV-8Ir">
-                                                <rect key="frame" x="0.0" y="158" width="366" height="50"/>
+                                                <rect key="frame" x="0.0" y="151.5" width="366" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="idl-oG-c81"/>
                                                 </constraints>
@@ -142,7 +142,6 @@
                             <constraint firstItem="KGO-0k-xXt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="LVb-2c-Zr2"/>
                             <constraint firstItem="H9i-S8-zLh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="LYQ-Pb-NR4"/>
                             <constraint firstItem="KGO-0k-xXt" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Uli-wP-d0z"/>
-                            <constraint firstItem="H9i-S8-zLh" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.25" id="ZOu-GS-AOw"/>
                             <constraint firstItem="jmR-Wp-8Ad" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="n6d-QY-nE5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="H9i-S8-zLh" secondAttribute="trailing" constant="16" id="wrS-Pg-KPs"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="KGO-0k-xXt" secondAttribute="trailing" constant="20" id="zGN-UA-Xqh"/>

@@ -28,6 +28,12 @@ class LengthScoreboardViewController: UIViewController, UICollectionViewDataSour
     private(set) var submodes: [SubMode] = []
     private(set) var rawSubModes: [SubMode] = []
     
+    struct LocalizationStrings {
+        static let duzinaButtonText = "length_screen_duzina_button_text".localized()
+        static let kategorijaButtonText = "length_screen_kategorija_button_text".localized()
+        static let tezinaButtonText = "length_screen_tezina_button_text".localized()
+    }
+    
     //MARK: - Init
     class func instantiate(submodes: [SubMode]) -> LengthScoreboardViewController {
         let viewController = UIStoryboard.main.instantiate(identifier) as! LengthScoreboardViewController
@@ -47,6 +53,10 @@ class LengthScoreboardViewController: UIViewController, UICollectionViewDataSour
     func prepareThemeAndLocalization() {
         
         self.toolbarContainerView.backgroundColor = AppTheme.current.secondPlaceColor
+        
+        self.duzinaButton.setTitle(LocalizationStrings.duzinaButtonText, for: .normal)
+        self.kategorijaButton.setTitle(LocalizationStrings.kategorijaButtonText, for: .normal)
+        self.tezinaButton.setTitle(LocalizationStrings.tezinaButtonText, for: .normal)
         
         onUnselectButton(duzinaButton)
         onUnselectButton(kategorijaButton)
@@ -116,13 +126,13 @@ class LengthScoreboardViewController: UIViewController, UICollectionViewDataSour
             //Check is tezina is selected
             if tezinaButton.isSelected {
                 result.append(contentsOf: dataSource.filter({
-                    $0.name.localized() == "Lako" || $0.name.localized() == "Srednje" || $0.name.localized() == "Tesko"
+                    $0.name.localized() == "Lako" || $0.name.localized() == "Srednje" || $0.name.localized() == "Teško"
                 }))
             }
             //Check is lategorija is selected
             if kategorijaButton.isSelected {
                 result.append(contentsOf: dataSource.filter({
-                    $0.name.localized() == "Sport" || $0.name.localized() == "Muzika" || $0.name.localized() == "Istorija" || $0.name.localized() == "Geografija" || $0.name.localized() == "Film" || $0.name.localized() == "Opste znanje"
+                    $0.name.localized() == "Sport" || $0.name.localized() == "Muzika" || $0.name.localized() == "Istorija" || $0.name.localized() == "Geografija" || $0.name.localized() == "Film" || $0.name.localized() == "Opšte znanje"
                 }))
             }
             

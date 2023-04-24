@@ -5,18 +5,33 @@
   Created by Petar Sakotic on 3/2/23.
   
 */
-"hard" = "Tesko";
+"hard" = "Teško";
 "easy" = "Lako";
 "medium" = "Srednje";
-
 "sport" = "Sport";
 "music" = "Muzika";
 "history" = "Istorija";
 "geography" = "Geografija";
 "movie" = "Film";
-"general_knowledge" = "Opste znanje";
-
+"general_knowledge" = "Opšte znanje";
 "zen" = "Zen";
 "exam" = "Test";
 "marathon" = "Maraton";
-
+// No internet Connection View
+"splash_screen_no_internet_connection_title" = "Nema internet konekcije";
+"splash_screen_no_internet_connection_description_text" = "Potrebna internet konekcija radi osvežavanja podataka.";
+"splash_screen_no_internet_conection_button_text" = "Pokušaj ponovo";
+// Home View Controller
+"home_view_screen_kategorija_title" = "Kategorija";
+"home_view_screen_kategorija_description"="Misliš da dobro poznaješ Majkla Džeksona, ili pak bolje znaš gde trenutno igra Mbappe? Oprobaj se u jednom od modova kategorije.";
+"home_view_screen_tezina_title" = "Težina";
+"home_view_screen_tezina_description" = "Lak, srednji ili težak mod. Na tebi je koliko si hrabra/hrabar !";
+"home_view_screen_duzina_title" = "Dužina";
+"home_view_screen_duzina_description" = "Ako si u gužvi, ili pak imaš dosta vremena, odigraj jednu od modova po dužini. Respektivno, oni imaju 20,50, odnosno 100 pitanja.";
+"home_view_screen_pocetna_text" = "Početna"
+// LengthScoreboardViewController
+"length_screen_duzina_button_text" = "Dužina";
+"length_screen_kategorija_button_text" = "Kategorija";
+"length_screen_tezina_button_text" = "Težina";
+// ScoreboardViewController
+"scoreboard_screen_tabela_text" = "Tabela";
