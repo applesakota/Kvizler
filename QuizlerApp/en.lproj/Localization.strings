@@ -3,8 +3,8 @@
   QuizlerApp
 
   Created by Petar Sakotic on 3/2/23.
-  
 */
+
 "hard" = "Teško";
 "easy" = "Lako";
 "medium" = "Srednje";
@@ -28,7 +28,7 @@
 "home_view_screen_tezina_description" = "Lak, srednji ili težak mod. Na tebi je koliko si hrabra/hrabar !";
 "home_view_screen_duzina_title" = "Dužina";
 "home_view_screen_duzina_description" = "Ako si u gužvi, ili pak imaš dosta vremena, odigraj jednu od modova po dužini. Respektivno, oni imaju 20,50, odnosno 100 pitanja.";
-"home_view_screen_pocetna_text" = "Početna"
+"home_view_screen_pocetna_text" = "Početna";
 // LengthScoreboardViewController
 "length_screen_duzina_button_text" = "Dužina";
 "length_screen_kategorija_button_text" = "Kategorija";
