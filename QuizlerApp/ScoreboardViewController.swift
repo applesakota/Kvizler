@@ -48,6 +48,10 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
         }}
     }
     
+    struct LocalizationStrings {
+        static let tabelaText = "scoreboard_screen_tabela_text".localized()
+    }
+    
     //MARK: - Init
     
     class func instantiate(selectedSubMode: SubMode?) -> ScoreboardViewController {
@@ -55,7 +59,7 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
         if selectedSubMode != nil {
             viewController.selectedSubMode = selectedSubMode
         }
-        viewController.tabBarItem = UITabBarItem(title: "Tabela", image: #imageLiteral(resourceName: "table"), selectedImage: #imageLiteral(resourceName: "table"))
+        viewController.tabBarItem = UITabBarItem(title: LocalizationStrings.tabelaText, image: #imageLiteral(resourceName: "table"), selectedImage: #imageLiteral(resourceName: "table"))
         return viewController
     }
     
