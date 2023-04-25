@@ -174,4 +174,26 @@ enum AppTheme {
     var popUpColor: UIColor {
         UIColor(named: "popUpColor")!
     }
+    
+    var mainColor: UIColor {
+        UIColor(named: "mainColor")!
+    }
+    
+    var textColor: UIColor {
+        UIColor(named: "textColor")!
+    }
+    
+    var backgColor: UIColor {
+        UIColor(named: "backgColor")!
+    }
+    
+    var containerColor: UIColor {
+        UIColor(named: "containerColor")!
+    }
+    
+    var collectionViewBackground: UIColor {
+        UIColor(named: "collectionViewBackground")!
+    }
+    
+    
 }

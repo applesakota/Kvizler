@@ -15,10 +15,10 @@ class QuizlerTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
     
     @IBOutlet weak var tableViewCellWarningView: UIView!
     @IBOutlet weak var tableViewCellTitleLabel: UILabel!
-    @IBOutlet weak var tableViewCellHeaderView: UIView!
     @IBOutlet weak var tableViewCollectionView: UICollectionView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var backgroundCellView: UIView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
     var dataSource: [SubMode] = []
     var questionsViewModel: QuestionsViewModel!
@@ -45,24 +45,25 @@ class QuizlerTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
         // Configure the view for the selected state
     }
     
-    func configure(with title: String, description: String, data: [SubMode]?, questions: QuestionsViewModel) {
+    func configure(with title: String, description: String, data: [SubMode]?, questions: QuestionsViewModel?) {
         self.setupCollectionView()
-        self.backgroundColor = AppTheme.current.backgroundColor
         self.tableViewCollectionView.backgroundColor = UIColor.clear
         self.tableViewCollectionView.contentInset = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
         self.tableViewCellTitleLabel.text = title
         self.tableViewCellTitleLabel.textColor = AppTheme.current.bodyTextColor
-        self.tableViewCellHeaderView.backgroundColor = AppTheme.current.cellColor
-        self.backgroundCellView.backgroundColor = AppTheme.current.cellBackgroundColor
         self.descriptionLabel.text = description
         self.descriptionLabel.textColor = AppTheme.current.bodyTextColor
         self.tableViewCellWarningView.backgroundColor = .clear
-        self.backgroundCellView.layer.cornerRadius = 20
         self.backgroundColor = UIColor.clear
+//        self.backgroundImageView.layer.masksToBounds = true
+//        self.backgroundImageView.layer.cornerRadius = 10
+        self.layer.cornerRadius = 10
         if let dataSource = data {
             self.dataSource = dataSource
         }
-        self.questionsViewModel = questions
+        if let questions = questions {
+            self.questionsViewModel = questions
+        }
         self.tableViewCollectionView.reloadData()
     }
 
@@ -80,7 +81,7 @@ class QuizlerTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 180, height: 180)
+        return CGSize(width: 150, height: 120)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

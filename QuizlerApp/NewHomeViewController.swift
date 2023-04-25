@@ -15,7 +15,7 @@ class NewHomeViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var tableView: UITableView!
     private var dataSource: [CategoryModel] = []
-    private var questionsDataSource: QuestionsViewModel!
+    private var questionsDataSource: QuestionsViewModel?
 
     struct LocalizationStrings {
         static let kategorijaTitle = "home_view_screen_kategorija_title".localized()
@@ -80,6 +80,7 @@ class NewHomeViewController: UIViewController, UITableViewDataSource, UITableVie
         //Theme
         tableView.delegate = self
         tableView.dataSource = self
+        self.view.backgroundColor = AppTheme.current.mainColor
         
     }
     

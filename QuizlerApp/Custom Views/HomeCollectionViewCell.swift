@@ -15,6 +15,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet weak var iconImageView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,14 +23,14 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     func setTheme(with model: SubMode) {
-        
-        self.backgroundColor = AppTheme.current.cellColor
-        self.layer.cornerRadius = 40
+        self.backgroundColor = AppTheme.current.collectionViewBackground
+        self.layer.cornerRadius = 10
+        self.iconImageView.layer.cornerRadius = 10
+        self.iconImageView.tintColor = AppTheme.current.mainColor
         self.titleLabel.text = model.name
         self.imageView.image = UIImage(named: model.name)
         self.titleLabel.text = model.name.localized()
-        
-        addShadow()
+        self.titleLabel.textColor = AppTheme.current.textColor
     }
     
     

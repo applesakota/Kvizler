@@ -169,9 +169,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="XsJ-af-bQW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Uh9-IX-mkr">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -198,11 +195,7 @@
                             <constraint firstItem="Uh9-IX-mkr" firstAttribute="top" secondItem="kfo-Np-D4b" secondAttribute="top" id="2FL-nG-VM9"/>
                             <constraint firstItem="kfo-Np-D4b" firstAttribute="bottom" secondItem="Uh9-IX-mkr" secondAttribute="bottom" id="3ge-tK-F2O"/>
                             <constraint firstItem="Uh9-IX-mkr" firstAttribute="leading" secondItem="kfo-Np-D4b" secondAttribute="leading" id="FzJ-C4-6i7"/>
-                            <constraint firstItem="XsJ-af-bQW" firstAttribute="top" secondItem="7CI-fm-dyV" secondAttribute="top" id="JIx-24-Nuz"/>
                             <constraint firstItem="kfo-Np-D4b" firstAttribute="trailing" secondItem="Uh9-IX-mkr" secondAttribute="trailing" id="Mgn-Td-542"/>
-                            <constraint firstItem="XsJ-af-bQW" firstAttribute="leading" secondItem="kfo-Np-D4b" secondAttribute="leading" id="Qqj-fF-hPD"/>
-                            <constraint firstItem="XsJ-af-bQW" firstAttribute="trailing" secondItem="kfo-Np-D4b" secondAttribute="trailing" id="ded-ec-HwZ"/>
-                            <constraint firstAttribute="bottom" secondItem="XsJ-af-bQW" secondAttribute="bottom" id="s28-mu-E25"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Q45-vF-ce3"/>

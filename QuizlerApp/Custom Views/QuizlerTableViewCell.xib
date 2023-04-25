@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -27,14 +26,20 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PbK-G0-6af">
                         <rect key="frame" x="16" y="16" width="373" height="290"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="9C4-cn-LQ5">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="200" verticalCompressionResistancePriority="200" image="frame" translatesAutoresizingMaskIntoConstraints="NO" id="xZw-yB-62M">
+                                <rect key="frame" x="0.0" y="0.0" width="373" height="290"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9C4-cn-LQ5">
                                 <rect key="frame" x="8" y="8" width="357" height="274"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4DM-9D-36b">
-                                        <rect key="frame" x="0.0" y="0.0" width="357" height="58"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="357" height="124"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GqF-Hu-MTV">
-                                                <rect key="frame" x="0.0" y="0.0" width="357" height="58"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="357" height="124"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Kategorija" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfI-eW-5nj">
                                                         <rect key="frame" x="0.0" y="0.0" width="357" height="22.666666666666668"/>
@@ -42,24 +47,12 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="boF-V0-BOG">
-                                                        <rect key="frame" x="0.0" y="30.666666666666664" width="357" height="27.333333333333336"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vjM-D9-c5d">
-                                                                <rect key="frame" x="0.0" y="0.0" width="2" height="27.333333333333332"/>
-                                                                <color key="backgroundColor" systemColor="systemPinkColor"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="2" id="eZ3-hR-Wo1"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Mislis da dobro poznajes Majkla Dzeksona ili pak bolje znas gde trenutno igra Mbappe? Oprobaj se u jednom od modova kategorije." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCD-Uj-1u0">
-                                                                <rect key="frame" x="10" y="0.0" width="347" height="27.333333333333332"/>
-                                                                <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="14"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Mislis da dobro poznajes Majkla Dzeksona ili pak bolje znas gde trenutno igra Mbappe? Oprobaj se u jednom od modova kategorije." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DCD-Uj-1u0">
+                                                        <rect key="frame" x="0.0" y="30.666666666666664" width="357" height="93.333333333333343"/>
+                                                        <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="14"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </stackView>
@@ -73,10 +66,10 @@
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5l4-c3-vfQ">
-                                        <rect key="frame" x="0.0" y="74" width="357" height="200"/>
+                                        <rect key="frame" x="0.0" y="124" width="357" height="150"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="5Sk-Cj-eFK"/>
+                                            <constraint firstAttribute="height" constant="150" id="5Sk-Cj-eFK"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yhq-9S-mcD">
                                             <size key="itemSize" width="182" height="170"/>
@@ -93,12 +86,16 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="9C4-cn-LQ5" firstAttribute="leading" secondItem="PbK-G0-6af" secondAttribute="leading" constant="8" id="6Wa-TO-mf0"/>
+                            <constraint firstAttribute="trailing" secondItem="xZw-yB-62M" secondAttribute="trailing" id="ApB-ei-H7C"/>
                             <constraint firstAttribute="trailing" secondItem="9C4-cn-LQ5" secondAttribute="trailing" constant="8" id="H6A-M2-nFf"/>
+                            <constraint firstItem="xZw-yB-62M" firstAttribute="leading" secondItem="PbK-G0-6af" secondAttribute="leading" id="Tzw-HM-wSk"/>
+                            <constraint firstItem="xZw-yB-62M" firstAttribute="top" secondItem="PbK-G0-6af" secondAttribute="top" id="m4J-1p-b6P"/>
                             <constraint firstAttribute="bottom" secondItem="9C4-cn-LQ5" secondAttribute="bottom" constant="8" id="ruG-Qy-UOj"/>
                             <constraint firstItem="9C4-cn-LQ5" firstAttribute="top" secondItem="PbK-G0-6af" secondAttribute="top" constant="8" id="stP-Na-UKd"/>
+                            <constraint firstAttribute="bottom" secondItem="xZw-yB-62M" secondAttribute="bottom" id="uUO-4j-UOK"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -112,8 +109,8 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="backgroundCellView" destination="PbK-G0-6af" id="2SE-xp-lgH"/>
+                <outlet property="backgroundImageView" destination="xZw-yB-62M" id="eQC-VU-F6Z"/>
                 <outlet property="descriptionLabel" destination="DCD-Uj-1u0" id="BBD-0f-Wwv"/>
-                <outlet property="tableViewCellHeaderView" destination="vjM-D9-c5d" id="Znr-gV-e1s"/>
                 <outlet property="tableViewCellTitleLabel" destination="mfI-eW-5nj" id="PlU-nG-xsd"/>
                 <outlet property="tableViewCellWarningView" destination="4DM-9D-36b" id="e9g-xY-SDa"/>
                 <outlet property="tableViewCollectionView" destination="5l4-c3-vfQ" id="zP3-7y-9ZD"/>
@@ -123,11 +120,6 @@
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="frame" width="611" height="420"/>
     </resources>
 </document>
