@@ -175,7 +175,7 @@ class LengthScoreboardViewController: UIViewController, UICollectionViewDataSour
         let fullWidth = (collectionView.bounds.width - 32) / 3.0
         let fullHeight = fullWidth
         
-        return CGSize(width: fullWidth, height: fullHeight)
+        return CGSize(width: fullWidth, height: 120)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -213,10 +213,14 @@ class SubModeCollectionViewCell: UICollectionViewCell {
     class var identifier: String { return "SubModeCollectionViewCell" }
     
     func setTheme(with model: SubMode) {
-        self.backgroundColor = AppTheme.current.cellColor.withAlphaComponent(0.5)
-        self.subModeImageView.alpha = 0.5
-        self.layer.cornerRadius = self.layer.bounds.width / 2
+        self.backgroundColor = AppTheme.current.collectionViewBackground
+        self.layer.cornerRadius = 10
+        self.subModeImageView.layer.cornerRadius = 10
+        self.containerView.layer.cornerRadius = 10
+        self.subModeImageView.tintColor = AppTheme.current.mainColor
+        self.subModeTitleLabel.text = model.name
         self.subModeImageView.image = UIImage(named: model.name)
         self.subModeTitleLabel.text = model.name.localized()
+        self.subModeTitleLabel.textColor = AppTheme.current.textColor
     }
 }

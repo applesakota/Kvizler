@@ -37,6 +37,10 @@ class QuizlerTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
         tableViewCollectionView.delegate = self
         let nib = UINib(nibName: HomeCollectionViewCell.identifier, bundle: nil)
         tableViewCollectionView.register(nib, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
+        self.backgroundCellView.layer.masksToBounds = true
+        self.backgroundCellView.layer.cornerRadius = 10
+        self.layer.cornerRadius = 10
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -57,7 +61,7 @@ class QuizlerTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
         self.backgroundColor = UIColor.clear
 //        self.backgroundImageView.layer.masksToBounds = true
 //        self.backgroundImageView.layer.cornerRadius = 10
-        self.layer.cornerRadius = 10
+        self.backgroundCellView.layer.cornerRadius = 10
         if let dataSource = data {
             self.dataSource = dataSource
         }

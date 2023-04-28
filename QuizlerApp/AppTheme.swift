@@ -195,5 +195,16 @@ enum AppTheme {
         UIColor(named: "collectionViewBackground")!
     }
     
+    var categoryViewTextColor: UIColor {
+        UIColor(named: "categoryViewTextColor")!
+    }
+    
+    var categoryViewBackgroundColor: UIColor {
+        UIColor(named: "categoryViewBackgroundColor")!
+    }
+    
+    var scoreboardTableViewBackgroundColor: UIColor {
+        UIColor(named: "scoreboardTableViewBackgroundColor")!
+    }
     
 }

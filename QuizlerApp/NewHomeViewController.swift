@@ -81,6 +81,7 @@ class NewHomeViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         self.view.backgroundColor = AppTheme.current.mainColor
+        self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
         
     }
     
