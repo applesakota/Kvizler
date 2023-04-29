@@ -566,9 +566,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="U9T-t7-CeI">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fPR-Kt-gzg">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
@@ -734,13 +731,9 @@
                         <color key="backgroundColor" name="ScoreCellBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fPR-Kt-gzg" firstAttribute="leading" secondItem="bOG-DU-Jbi" secondAttribute="leading" id="3s8-kf-aSU"/>
-                            <constraint firstItem="U9T-t7-CeI" firstAttribute="leading" secondItem="zbH-UG-7zm" secondAttribute="leading" id="AUL-g3-PxS"/>
                             <constraint firstItem="fPR-Kt-gzg" firstAttribute="bottom" secondItem="bOG-DU-Jbi" secondAttribute="bottom" id="BOB-Sa-lQc"/>
-                            <constraint firstAttribute="trailing" secondItem="U9T-t7-CeI" secondAttribute="trailing" id="NGx-TD-gDD"/>
                             <constraint firstItem="fPR-Kt-gzg" firstAttribute="top" secondItem="bOG-DU-Jbi" secondAttribute="top" id="Plx-Ud-Tqo"/>
                             <constraint firstItem="fPR-Kt-gzg" firstAttribute="trailing" secondItem="bOG-DU-Jbi" secondAttribute="trailing" id="SDz-Ik-n9D"/>
-                            <constraint firstAttribute="bottom" secondItem="U9T-t7-CeI" secondAttribute="bottom" id="Uii-rY-Fkn"/>
-                            <constraint firstItem="U9T-t7-CeI" firstAttribute="top" secondItem="zbH-UG-7zm" secondAttribute="top" id="fWu-Hg-EkB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="QpT-Do-rab"/>

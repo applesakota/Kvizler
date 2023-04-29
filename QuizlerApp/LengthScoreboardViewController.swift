@@ -51,7 +51,7 @@ class LengthScoreboardViewController: UIViewController, UICollectionViewDataSour
     //MARK: - Utils
     
     func prepareThemeAndLocalization() {
-        
+        self.view.backgroundColor = AppTheme.current.scoreboardTableViewBackgroundColor
         self.toolbarContainerView.backgroundColor = AppTheme.current.secondPlaceColor
         
         self.duzinaButton.setTitle(LocalizationStrings.duzinaButtonText, for: .normal)
@@ -66,15 +66,15 @@ class LengthScoreboardViewController: UIViewController, UICollectionViewDataSour
     }
     
     func onSelectButton(_ button: UIButton) {
-        button.tintColor = AppTheme.current.cellColor
-        button.setTitleColor(AppTheme.current.cellColor, for: .normal)
+        button.tintColor = AppTheme.current.mainColor
+        button.setTitleColor(AppTheme.current.mainColor, for: .normal)
         button.backgroundColor = UIColor.clear
-        (button.superview as? UIStackView)?.arrangedSubviews.last?.backgroundColor = AppTheme.current.cellColor
+        (button.superview as? UIStackView)?.arrangedSubviews.last?.backgroundColor = AppTheme.current.mainColor
     }
     
     func onUnselectButton(_ button: UIButton) {
-        button.tintColor = AppTheme.current.blackColor
-        button.setTitleColor(AppTheme.current.blackColor, for: .normal)
+        button.tintColor = AppTheme.current.textColor
+        button.setTitleColor(AppTheme.current.textColor, for: .normal)
         button.backgroundColor = UIColor.clear
         (button.superview as? UIStackView)?.arrangedSubviews.last?.backgroundColor = UIColor.clear
     }
