@@ -23,8 +23,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="151" height="137"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="e8J-Oh-M1i">
-                        <rect key="frame" x="16" y="16" width="119" height="105"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="e8J-Oh-M1i">
+                        <rect key="frame" x="16" y="16" width="119" height="111"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUJ-ru-E3R">
                                 <rect key="frame" x="31.666666666666664" y="0.0" width="55.999999999999993" height="56"/>
@@ -48,8 +48,14 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" text="Test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDI-qI-nMt">
-                                <rect key="frame" x="42.333333333333329" y="72" width="34.333333333333329" height="33"/>
+                                <rect key="frame" x="42.333333333333329" y="63.999999999999993" width="34.333333333333329" height="22.666666666666664"/>
                                 <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 pitanja" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDx-IL-o0i">
+                                <rect key="frame" x="29.000000000000004" y="94.666666666666671" width="61.333333333333343" height="16.333333333333329"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -67,6 +73,7 @@
             <connections>
                 <outlet property="iconImageView" destination="nUJ-ru-E3R" id="Ghg-P6-Ch9"/>
                 <outlet property="imageView" destination="7CW-CW-IFy" id="xXZ-uX-NvY"/>
+                <outlet property="numberOfQuestionsLabel" destination="UDx-IL-o0i" id="trd-iP-fmX"/>
                 <outlet property="titleLabel" destination="EDI-qI-nMt" id="POS-zf-5TH"/>
             </connections>
             <point key="canvasLocation" x="63.358778625954194" y="8.8028169014084519"/>

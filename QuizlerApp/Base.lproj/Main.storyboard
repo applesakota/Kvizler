@@ -785,7 +785,7 @@
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rezultati za mod:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ga6-aP-bgP">
                                                                             <rect key="frame" x="0.0" y="0.0" width="252" height="33"/>
-                                                                            <fontDescription key="fontDescription" name="RobotoSlab-SemiBold" family="Roboto Slab" pointSize="17"/>
+                                                                            <fontDescription key="fontDescription" name="RobotoSlab-SemiBold" family="Roboto Slab" pointSize="14"/>
                                                                             <color key="textColor" name="categoryViewTextColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>

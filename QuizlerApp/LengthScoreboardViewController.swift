@@ -52,7 +52,7 @@ class LengthScoreboardViewController: UIViewController, UICollectionViewDataSour
     
     func prepareThemeAndLocalization() {
         self.view.backgroundColor = AppTheme.current.scoreboardTableViewBackgroundColor
-        self.toolbarContainerView.backgroundColor = AppTheme.current.secondPlaceColor
+        self.toolbarContainerView.backgroundColor = AppTheme.current.containerColor
         
         self.duzinaButton.setTitle(LocalizationStrings.duzinaButtonText, for: .normal)
         self.kategorijaButton.setTitle(LocalizationStrings.kategorijaButtonText, for: .normal)
@@ -173,8 +173,6 @@ class LengthScoreboardViewController: UIViewController, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let fullWidth = (collectionView.bounds.width - 32) / 3.0
-        let fullHeight = fullWidth
-        
         return CGSize(width: fullWidth, height: 120)
     }
     

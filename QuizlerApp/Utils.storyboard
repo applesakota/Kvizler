@@ -26,21 +26,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="dsY-KL-fHH">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Kh-Tf-vBo">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="358.33333333333331"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rje-Ch-Nhq">
                                         <rect key="frame" x="10" y="10" width="394" height="308.33333333333331"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6j-M0-Agh" userLabel="SEPARATOR">
-                                                <rect key="frame" x="0.0" y="0.0" width="394" height="71.666666666666671"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EOu-Av-Xz7" userLabel="SEPARATOR">
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="50"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="ngD-Gc-Dln"/>
+                                                </constraints>
                                             </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jce-lT-mlG">
-                                                <rect key="frame" x="0.0" y="76.666666666666671" width="394" height="36"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jce-lT-mlG">
+                                                <rect key="frame" x="0.0" y="55" width="394" height="36"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYN-LW-gxf">
                                                         <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
@@ -52,54 +52,36 @@
                                                             <action selector="closeButton_onClick:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ER2-a2-JvY"/>
                                                         </connections>
                                                     </button>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htZ-zr-BbE">
-                                                        <rect key="frame" x="40.999999999999993" y="0.0" width="125.33333333333331" height="36"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2eS-HL-KO5">
+                                                        <rect key="frame" x="51.999999999999986" y="0.0" width="187.66666666666663" height="36"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Voo-pS-KYi">
-                                                                <rect key="frame" x="5" y="5" width="115.33333333333333" height="26"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uLE-l3-7zM">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="53.333333333333336" height="26"/>
-                                                                        <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="15"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnP-hC-En6">
-                                                                        <rect key="frame" x="61.333333333333329" y="0.0" width="54" height="26"/>
-                                                                        <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="15"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                            </stackView>
+                                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sFH-U0-Uh3">
+                                                                <rect key="frame" x="8" y="16" width="171.66666666666666" height="4"/>
+                                                            </progressView>
                                                         </subviews>
-                                                        <color key="backgroundColor" name="SecondScoreBackgroundColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstItem="Voo-pS-KYi" firstAttribute="top" secondItem="htZ-zr-BbE" secondAttribute="top" constant="5" id="X5C-xC-RDu"/>
-                                                            <constraint firstAttribute="trailing" secondItem="Voo-pS-KYi" secondAttribute="trailing" constant="5" id="jSe-cZ-pfh"/>
-                                                            <constraint firstAttribute="bottom" secondItem="Voo-pS-KYi" secondAttribute="bottom" constant="5" id="p1C-OO-Lyf"/>
-                                                            <constraint firstAttribute="height" constant="36" id="piH-P2-hkx"/>
-                                                            <constraint firstItem="Voo-pS-KYi" firstAttribute="leading" secondItem="htZ-zr-BbE" secondAttribute="leading" constant="5" id="wBY-4w-yW4"/>
+                                                            <constraint firstAttribute="trailing" secondItem="sFH-U0-Uh3" secondAttribute="trailing" constant="8" id="1Ag-ML-8FA"/>
+                                                            <constraint firstItem="sFH-U0-Uh3" firstAttribute="centerY" secondItem="2eS-HL-KO5" secondAttribute="centerY" id="JE2-v5-fUN"/>
+                                                            <constraint firstItem="sFH-U0-Uh3" firstAttribute="leading" secondItem="2eS-HL-KO5" secondAttribute="leading" constant="8" id="Pn6-Ot-fbJ"/>
+                                                            <constraint firstItem="sFH-U0-Uh3" firstAttribute="centerY" secondItem="2eS-HL-KO5" secondAttribute="centerY" id="ifU-vR-FG8"/>
+                                                            <constraint firstItem="sFH-U0-Uh3" firstAttribute="centerX" secondItem="2eS-HL-KO5" secondAttribute="centerX" id="zfB-RS-bhX"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1q9-YY-D6Q" userLabel="SEPARATOR">
-                                                        <rect key="frame" x="171.33333333333334" y="0.0" width="107.00000000000003" height="36"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2a-km-xU4">
-                                                        <rect key="frame" x="283.33333333333331" y="0.0" width="110.66666666666669" height="36"/>
+                                                        <rect key="frame" x="255.66666666666669" y="0.0" width="138.33333333333331" height="36"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mwZ-qN-jKS">
-                                                                <rect key="frame" x="8" y="5" width="102.66666666666667" height="26"/>
+                                                                <rect key="frame" x="8" y="5" width="130.33333333333334" height="26"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nx-kt-jnA">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="58.666666666666664" height="26"/>
-                                                                        <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="15"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="86.333333333333329" height="26"/>
+                                                                        <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="14"/>
                                                                         <color key="textColor" name="Black"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="y9h-lr-F6x">
-                                                                        <rect key="frame" x="58.666666666666686" y="0.0" width="44" height="26"/>
+                                                                        <rect key="frame" x="86.333333333333314" y="0.0" width="44" height="26"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="44" id="0l8-CM-t30"/>
                                                                         </constraints>
@@ -107,7 +89,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                         </subviews>
-                                                        <color key="backgroundColor" name="SecondScoreBackgroundColor"/>
+                                                        <color key="backgroundColor" name="scoreboardTableViewBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstItem="mwZ-qN-jKS" firstAttribute="leading" secondItem="a2a-km-xU4" secondAttribute="leading" constant="8" id="Epn-F7-Bxa"/>
                                                             <constraint firstAttribute="bottom" secondItem="mwZ-qN-jKS" secondAttribute="bottom" constant="5" id="dtv-np-Vh9"/>
@@ -122,7 +104,7 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ukl-hd-LmL">
-                                                <rect key="frame" x="0.0" y="117.66666666666667" width="394" height="190.66666666666663"/>
+                                                <rect key="frame" x="0.0" y="96.000000000000014" width="394" height="212.33333333333337"/>
                                                 <fontDescription key="fontDescription" name="RobotoSlab-SemiBold" family="Roboto Slab" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -133,7 +115,6 @@
                                 <color key="backgroundColor" name="backgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="rje-Ch-Nhq" secondAttribute="bottom" constant="40" id="AaU-GL-xYw"/>
-                                    <constraint firstItem="s6j-M0-Agh" firstAttribute="height" secondItem="2Kh-Tf-vBo" secondAttribute="height" multiplier="0.2" id="efu-ZZ-YLw"/>
                                     <constraint firstItem="rje-Ch-Nhq" firstAttribute="leading" secondItem="2Kh-Tf-vBo" secondAttribute="leading" constant="10" id="uVL-JU-jzQ"/>
                                     <constraint firstAttribute="trailing" secondItem="rje-Ch-Nhq" secondAttribute="trailing" constant="10" id="xyU-Ah-A4j"/>
                                     <constraint firstItem="rje-Ch-Nhq" firstAttribute="top" secondItem="2Kh-Tf-vBo" secondAttribute="top" constant="10" id="yfF-JR-1iy"/>
@@ -149,7 +130,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" name="CardRed"/>
+                                <color key="backgroundColor" name="containerColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="GBC-mW-2Ub"/>
                                     <constraint firstItem="Hht-d4-LkC" firstAttribute="centerY" secondItem="ytI-uU-4Ri" secondAttribute="centerY" id="VlR-kv-XMJ"/>
@@ -166,7 +147,7 @@
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EiA-m1-6Fw">
                                                 <rect key="frame" x="15" y="8" width="384" height="74.666666666666671"/>
                                                 <color key="backgroundColor" name="cellColor"/>
-                                                <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="14"/>
                                                 <connections>
                                                     <action selector="answerButton_Click:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CQr-u8-muE"/>
                                                 </connections>
@@ -186,7 +167,7 @@
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkM-UX-k7p">
                                                 <rect key="frame" x="15" y="8" width="384" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="cellColor"/>
-                                                <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="14"/>
                                                 <connections>
                                                     <action selector="answerButton_Click:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="FlY-Gq-U2i"/>
                                                 </connections>
@@ -206,7 +187,7 @@
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwn-mM-vcx">
                                                 <rect key="frame" x="15" y="8" width="384" height="74.666666666666671"/>
                                                 <color key="backgroundColor" name="cellColor"/>
-                                                <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="14"/>
                                                 <connections>
                                                     <action selector="answerButton_Click:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="RGk-ly-T85"/>
                                                 </connections>
@@ -226,7 +207,7 @@
                                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZnJ-AX-ZGg">
                                                 <rect key="frame" x="15" y="8" width="384" height="74.333333333333329"/>
                                                 <color key="backgroundColor" name="cellColor"/>
-                                                <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="14"/>
                                                 <connections>
                                                     <action selector="answerButton_Click:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="7Ow-06-PCV"/>
                                                 </connections>
@@ -284,14 +265,10 @@
                             <constraint firstItem="ytI-uU-4Ri" firstAttribute="bottom" secondItem="2Kh-Tf-vBo" secondAttribute="bottom" constant="35" id="Ldv-Aw-TV3"/>
                             <constraint firstAttribute="bottom" secondItem="ltz-PF-FrW" secondAttribute="bottom" constant="15" id="N9X-pp-Lya"/>
                             <constraint firstItem="2Kh-Tf-vBo" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="O0F-Wg-uax"/>
-                            <constraint firstItem="dsY-KL-fHH" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" id="Rlm-Ic-czT"/>
                             <constraint firstItem="oFp-OH-VAo" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.9" id="g7D-uu-rpV"/>
                             <constraint firstItem="Sb1-V1-e8Y" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="gRK-Jf-nkq"/>
                             <constraint firstItem="Sb1-V1-e8Y" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gfg-oJ-vDM"/>
                             <constraint firstItem="ytI-uU-4Ri" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="jpx-bH-JBB"/>
-                            <constraint firstItem="dsY-KL-fHH" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="ptz-Ff-PUs"/>
-                            <constraint firstAttribute="bottom" secondItem="dsY-KL-fHH" secondAttribute="bottom" id="sVC-z4-FSQ"/>
-                            <constraint firstItem="dsY-KL-fHH" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="vlf-c2-Ckt"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ltz-PF-FrW" secondAttribute="trailing" id="wbe-6b-OwQ"/>
                             <constraint firstItem="oFp-OH-VAo" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.4" placeholder="YES" id="zJt-PK-lza"/>
                             <constraint firstItem="ltz-PF-FrW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="zku-ie-EuI"/>
@@ -307,10 +284,8 @@
                         <outlet property="coinImageView" destination="y9h-lr-F6x" id="TtS-A1-Q8Q"/>
                         <outlet property="coinResultLabel" destination="3nx-kt-jnA" id="Ife-NI-VW7"/>
                         <outlet property="coinView" destination="a2a-km-xU4" id="9nj-4l-Iux"/>
+                        <outlet property="countProgresView" destination="sFH-U0-Uh3" id="SF9-TP-3xQ"/>
                         <outlet property="headerView" destination="2Kh-Tf-vBo" id="HYI-do-5xs"/>
-                        <outlet property="numberOfQuestionsCountLabel" destination="rnP-hC-En6" id="nhg-yS-414"/>
-                        <outlet property="numberOfQuestionsLabel" destination="uLE-l3-7zM" id="lnD-ZR-Z1z"/>
-                        <outlet property="numberOfQuestionsView" destination="htZ-zr-BbE" id="FWI-fH-j1Q"/>
                         <outlet property="questionTitleLabel" destination="Ukl-hd-LmL" id="Cwb-Iw-ink"/>
                         <outlet property="quizlerPopUpContainerView" destination="Sb1-V1-e8Y" id="R8I-Ui-HUY"/>
                         <outlet property="quizlerPopUpView" destination="oFp-OH-VAo" id="sLY-JJ-tMh"/>
@@ -381,17 +356,17 @@
         <namedColor name="Black">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="CardRed">
-            <color red="0.87900000810623169" green="0.50800001621246338" blue="0.49399998784065247" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="SecondScoreBackgroundColor">
-            <color red="0.82700002193450928" green="0.80400002002716064" blue="0.77600002288818359" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
         <namedColor name="backgroundColor">
             <color red="0.92900002002716064" green="0.87999999523162842" blue="0.81999999284744263" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="cellColor">
             <color red="0.48500001430511475" green="0.34000000357627869" blue="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="containerColor">
+            <color red="0.86599999666213989" green="0.89800000190734863" blue="0.84700000286102295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="scoreboardTableViewBackgroundColor">
+            <color red="0.93800002336502075" green="0.93199998140335083" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -16,6 +16,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet weak var iconImageView: UIView!
+    @IBOutlet weak var numberOfQuestionsLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +32,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
         self.imageView.image = UIImage(named: model.name)
         self.titleLabel.text = model.name.localized()
         self.titleLabel.textColor = AppTheme.current.textColor
+        self.numberOfQuestionsLabel.text = "\(model.numberOfQuestions) pitanja"
+        self.numberOfQuestionsLabel.textColor = AppTheme.current.textColor
     }
     
     

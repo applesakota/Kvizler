@@ -17,9 +17,7 @@ class QuizViewController: UIViewController {
     
     @IBOutlet weak var headerView: UIView!
     
-    @IBOutlet weak var numberOfQuestionsView: UIView!
-    @IBOutlet weak var numberOfQuestionsLabel: UILabel!
-    @IBOutlet weak var numberOfQuestionsCountLabel: UILabel!
+    @IBOutlet weak var countProgresView: UIProgressView!
     @IBOutlet weak var quizlerPopUpContainerView: UIView!
     @IBOutlet weak var quizlerPopUpView: QuizlerCustomPopUpView!
     
@@ -83,6 +81,8 @@ class QuizViewController: UIViewController {
         super.viewDidLoad()
         self.prepareNavigationView()
         self.prepareThemeAndLocalization()
+        self.countProgresView.progress = 0.0
+        self.countProgresView.progressTintColor = AppTheme.current.mainColor
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -143,50 +143,52 @@ class QuizViewController: UIViewController {
     }
     
     func prepareThemeAndLocalization() {
+        self.view.backgroundColor = AppTheme.current.mainColor
         
         self.questionTitleLabel.text = questions[counter].questionTitle
-        self.headerView.backgroundColor = AppTheme.current.cellBackgroundColor
+        self.questionTitleLabel.textColor = AppTheme.current.bodyTextColor
+        self.headerView.backgroundColor = AppTheme.current.containerColor
         
-        self.answer1Button.backgroundColor = colorTheme
+        self.answer1Button.backgroundColor = AppTheme.current.containerColor
         self.answer1Button.setTitle(questions[counter].answers[0].answerText, for: .normal)
-        self.answer1Button.setTitleColor(AppTheme.current.white, for: .normal)
+        self.answer1Button.setTitleColor(AppTheme.current.bodyTextColor, for: .normal)
         self.answer1Button.layer.cornerRadius = answer1Button.layer.bounds.height / 2
         self.answer1Button.isExclusiveTouch = true
         
-        self.answer2Button.backgroundColor = colorTheme
+        self.answer2Button.backgroundColor = AppTheme.current.containerColor
         self.answer2Button.setTitle(questions[counter].answers[1].answerText, for: .normal)
-        self.answer2Button.setTitleColor(AppTheme.current.white, for: .normal)
+        self.answer2Button.setTitleColor(AppTheme.current.bodyTextColor, for: .normal)
         self.answer2Button.layer.cornerRadius = answer2Button.layer.bounds.height / 2
         self.answer2Button.isExclusiveTouch = true
         
-        self.answer3Button.backgroundColor = colorTheme
+        self.answer3Button.backgroundColor = AppTheme.current.containerColor
         self.answer3Button.setTitle(questions[counter].answers[2].answerText, for: .normal)
-        self.answer3Button.setTitleColor(AppTheme.current.white, for: .normal)
+        self.answer3Button.setTitleColor(AppTheme.current.bodyTextColor, for: .normal)
         self.answer3Button.layer.cornerRadius = answer3Button.layer.bounds.height / 2
         self.answer3Button.isExclusiveTouch = true
         
         if questions[counter].answers.count <= 3 { self.answer4Button.isHidden = true } else {
             self.answer4Button.isHidden = false
-            self.answer4Button.backgroundColor = colorTheme
+            self.answer4Button.backgroundColor = AppTheme.current.containerColor
             self.answer4Button.setTitle(questions[counter].answers[3].answerText, for: .normal)
-            self.answer4Button.setTitleColor(AppTheme.current.white, for: .normal)
+            self.answer4Button.setTitleColor(AppTheme.current.bodyTextColor, for: .normal)
             self.answer4Button.layer.cornerRadius = answer4Button.layer.bounds.height / 2
             self.answer4Button.isExclusiveTouch = true
         }
         
-        self.numberOfQuestionsCountLabel.text = "\(counter + 1) / \(questions.count)"
         self.view.isUserInteractionEnabled = true
         self.timerCount = timePerQuestion
         self.timerValueLabel.text = "\(timerCount)"
+        self.timerValueLabel.textColor = AppTheme.current.bodyTextColor
         self.view.makeCircleLayer(onView: timerView, withShapeLayer: shapeLayer, label: timerValueLabel, defaultTimeRemaining: timerCount, timeRemaining: timerCount)
-        self.closeButton.backgroundColor = AppTheme.current.errorRed
-        self.closeButton.imageView?.tintColor = UIColor.white
+        self.closeButton.backgroundColor = AppTheme.current.mainColor
+        self.closeButton.imageView?.tintColor = AppTheme.current.containerColor
         self.closeButton.layer.cornerRadius = closeButton.layer.bounds.width / 2
         self.closeButton.clipsToBounds = true
-        self.numberOfQuestionsView.layer.cornerRadius = 10
         self.coinView.layer.cornerRadius = 10
-        self.numberOfQuestionsLabel.text = "Pitanje"
+        self.coinView.backgroundColor = .clear
         self.coinResultLabel.text = "\(score)"
+        self.coinResultLabel.textColor = AppTheme.current.bodyTextColor
         self.quizlerPopUpView.isHidden = true
         self.quizlerPopUpContainerView.isHidden = true
         
@@ -272,6 +274,11 @@ class QuizViewController: UIViewController {
     
     private func updateUIOnStateChange() {
         self.coinResultLabel.text = "\(score)"
+        self.setUpProgressView(for: counter)
+    }
+    
+    func setUpProgressView(for countValue: Int) {
+        countProgresView.setProgress(Float(countValue) / Float(numberOfQuestions), animated: true)
     }
     
     func prepareNewQuestion() {
