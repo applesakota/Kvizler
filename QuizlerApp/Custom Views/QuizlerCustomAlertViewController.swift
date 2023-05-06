@@ -56,8 +56,6 @@ class QuizlerCustomAlertViewController: UIViewController {
         self.alertNoButton.setTitleColor(AppTheme.current.bodyTextColor, for: .normal)
         self.alertYesButton.setTitle("Da", for: .normal)
         self.alertYesButton.setTitleColor(AppTheme.current.bodyTextColor, for: .normal)
-        self.buttonsStackView.addTopBorder(borderColor: AppTheme.current.mainColor, borderWidth: 0.2)
-        self.alertYesButton.addLeftBorder(color: AppTheme.current.mainColor, width: 0.2)
         self.alertView.layer.borderWidth = 0.2
         self.alertView.backgroundColor = AppTheme.current.containerColor
         self.alertView.showShadow()

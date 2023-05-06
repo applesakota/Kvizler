@@ -31,26 +31,26 @@ class MainTabBarController: UITabBarController {
     
     
     private func prepareTabBarTheme() {
-        self.tabBar.tintColor = AppTheme.current.containerColor
-        self.tabBar.barTintColor = AppTheme.current.textColor
-        self.tabBar.unselectedItemTintColor = AppTheme.current.textColor.withAlphaComponent(0.5)
+        self.tabBar.tintColor = AppTheme.current.bodyTextColor
+        self.tabBar.barTintColor = AppTheme.current.containerColor
+        self.tabBar.unselectedItemTintColor = AppTheme.current.bodyTextColor.withAlphaComponent(0.5)
         
         if #available(iOS 15.0, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = AppTheme.current.containerColor
-            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: AppTheme.current.textColor.withAlphaComponent(0.4)]
-            appearance.stackedLayoutAppearance.normal.iconColor = AppTheme.current.textColor.withAlphaComponent(0.4)
-            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: AppTheme.current.textColor]
-            appearance.stackedLayoutAppearance.selected.iconColor = AppTheme.current.textColor
-            appearance.inlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: AppTheme.current.textColor.withAlphaComponent(0.4)]
-            appearance.inlineLayoutAppearance.normal.iconColor = AppTheme.current.textColor.withAlphaComponent(0.4)
-            appearance.inlineLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: AppTheme.current.textColor]
-            appearance.inlineLayoutAppearance.selected.iconColor = AppTheme.current.textColor
-            appearance.compactInlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: AppTheme.current.textColor.withAlphaComponent(0.4)]
-            appearance.compactInlineLayoutAppearance.normal.iconColor = AppTheme.current.textColor.withAlphaComponent(0.4)
-            appearance.compactInlineLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: AppTheme.current.textColor]
-            appearance.compactInlineLayoutAppearance.selected.iconColor = AppTheme.current.textColor
+            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: AppTheme.current.bodyTextColor.withAlphaComponent(0.4)]
+            appearance.stackedLayoutAppearance.normal.iconColor = AppTheme.current.bodyTextColor.withAlphaComponent(0.4)
+            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: AppTheme.current.bodyTextColor]
+            appearance.stackedLayoutAppearance.selected.iconColor = AppTheme.current.bodyTextColor
+            appearance.inlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: AppTheme.current.bodyTextColor.withAlphaComponent(0.4)]
+            appearance.inlineLayoutAppearance.normal.iconColor = AppTheme.current.bodyTextColor.withAlphaComponent(0.4)
+            appearance.inlineLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: AppTheme.current.bodyTextColor]
+            appearance.inlineLayoutAppearance.selected.iconColor = AppTheme.current.bodyTextColor
+            appearance.compactInlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: AppTheme.current.bodyTextColor.withAlphaComponent(0.4)]
+            appearance.compactInlineLayoutAppearance.normal.iconColor = AppTheme.current.bodyTextColor.withAlphaComponent(0.4)
+            appearance.compactInlineLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: AppTheme.current.bodyTextColor]
+            appearance.compactInlineLayoutAppearance.selected.iconColor = AppTheme.current.bodyTextColor
                  
             self.tabBar.standardAppearance = appearance
             self.tabBar.scrollEdgeAppearance = appearance

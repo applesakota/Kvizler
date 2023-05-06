@@ -79,6 +79,9 @@
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcI-BV-5Ru">
                                             <rect key="frame" x="188.66666666666663" y="0.0" width="188.33333333333337" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="T0V-br-lS4"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="RobotoSlab-SemiBold" family="Roboto Slab" pointSize="20"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="Da">
@@ -89,6 +92,9 @@
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="O25-cP-AX1"/>
+                                    </constraints>
                                 </stackView>
                             </subviews>
                         </stackView>
