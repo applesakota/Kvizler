@@ -207,4 +207,8 @@ enum AppTheme {
         UIColor(named: "scoreboardTableViewBackgroundColor")!
     }
     
+    var congratsBackgroundColor: UIColor {
+        UIColor(named: "congratsBackgroundColor")!
+    }
+    
 }

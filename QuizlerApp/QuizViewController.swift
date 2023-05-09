@@ -18,9 +18,6 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     
     @IBOutlet weak var countProgresView: UIProgressView!
-    @IBOutlet weak var quizlerPopUpContainerView: UIView!
-    @IBOutlet weak var quizlerPopUpView: QuizlerCustomPopUpView!
-    
     @IBOutlet weak var coinView: UIView!
     @IBOutlet weak var coinResultLabel: UILabel!
     @IBOutlet weak var coinImageView: UIImageView!
@@ -189,8 +186,6 @@ class QuizViewController: UIViewController {
         self.coinView.backgroundColor = .clear
         self.coinResultLabel.text = "\(score)"
         self.coinResultLabel.textColor = AppTheme.current.bodyTextColor
-        self.quizlerPopUpView.isHidden = true
-        self.quizlerPopUpContainerView.isHidden = true
         
         self.timerView.backgroundColor = UIColor.clear
         timer.invalidate()
@@ -285,17 +280,17 @@ class QuizViewController: UIViewController {
         if !questions.isEmpty {
             if counter == questions.count {
                 DispatchQueue.main.async {
-                    self.view.isUserInteractionEnabled = true
-                    self.quizlerPopUpView.configure(with: self.score, numberOfAnsers: self.countNumberOfCorrectAnswers, countOfAnswers: self.numberOfQuestions, mode: self.questions.first?.categoryId)
-                    self.quizlerPopUpView.isHidden = false
-                    self.quizlerPopUpContainerView.isHidden = false
-                    self.quizlerPopUpContainerView.backgroundColor = AppTheme.current.backgroundColor.withAlphaComponent(0.7)
-                    self.quizlerPopUpView.delegate = self
+                    self.presentResultViewController()
                 }
             } else {
                 self.prepareThemeAndLocalization()
             }
         }
+    }
+    
+    private func presentResultViewController() {
+        let viewController = QuizResultViewController.instantiate(with: score, numberOfAnswers: countNumberOfCorrectAnswers, countOfAnswers: numberOfQuestions, mode: mode)
+        self.present(viewController, animated: true)
     }
     
     func calculateScore(numCorrectAnswers: Int) -> Int {
@@ -322,33 +317,6 @@ class QuizViewController: UIViewController {
     }
 }
 
-//MARK: - SendScoreButtonDelegate
-extension QuizViewController: SendScoreButtonDelegate {
-    
-    func sendScore(username: String) {
-        apiPostRequestScore(username: username, mode: mode, score: score) { message in
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Info", message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default) { _ in
-                    FlowManager.presentMainScreen()
-                })
-                self.present(alert, animated: false)
-            }
-        }
-    }
-    
-//MARK: - API
-    
-    func apiPostRequestScore(username: String, mode: String, score: Int, _ callback: @escaping (String) -> Swift.Void) {
-        let loader = LoaderView.create(for: self.view)
-        AppGlobals.herokuRESTManager.requestPostScore(username: username, mode: mode, score: score) { result in
-            loader.dismiss()
-            switch result {
-            case .success: callback("Tvoj rezultat je zabelezen")
-            case .failure: callback("Greska pri slanju rezultata")
-            }
-        }
-    }
-}
+
 
 
