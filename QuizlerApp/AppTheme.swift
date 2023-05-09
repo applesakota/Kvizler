@@ -174,4 +174,41 @@ enum AppTheme {
     var popUpColor: UIColor {
         UIColor(named: "popUpColor")!
     }
+    
+    var mainColor: UIColor {
+        UIColor(named: "mainColor")!
+    }
+    
+    var textColor: UIColor {
+        UIColor(named: "textColor")!
+    }
+    
+    var backgColor: UIColor {
+        UIColor(named: "backgColor")!
+    }
+    
+    var containerColor: UIColor {
+        UIColor(named: "containerColor")!
+    }
+    
+    var collectionViewBackground: UIColor {
+        UIColor(named: "collectionViewBackground")!
+    }
+    
+    var categoryViewTextColor: UIColor {
+        UIColor(named: "categoryViewTextColor")!
+    }
+    
+    var categoryViewBackgroundColor: UIColor {
+        UIColor(named: "categoryViewBackgroundColor")!
+    }
+    
+    var scoreboardTableViewBackgroundColor: UIColor {
+        UIColor(named: "scoreboardTableViewBackgroundColor")!
+    }
+    
+    var congratsBackgroundColor: UIColor {
+        UIColor(named: "congratsBackgroundColor")!
+    }
+    
 }

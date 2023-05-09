@@ -51,8 +51,8 @@ class LengthScoreboardViewController: UIViewController, UICollectionViewDataSour
     //MARK: - Utils
     
     func prepareThemeAndLocalization() {
-        
-        self.toolbarContainerView.backgroundColor = AppTheme.current.secondPlaceColor
+        self.view.backgroundColor = AppTheme.current.scoreboardTableViewBackgroundColor
+        self.toolbarContainerView.backgroundColor = AppTheme.current.containerColor
         
         self.duzinaButton.setTitle(LocalizationStrings.duzinaButtonText, for: .normal)
         self.kategorijaButton.setTitle(LocalizationStrings.kategorijaButtonText, for: .normal)
@@ -66,15 +66,15 @@ class LengthScoreboardViewController: UIViewController, UICollectionViewDataSour
     }
     
     func onSelectButton(_ button: UIButton) {
-        button.tintColor = AppTheme.current.cellColor
-        button.setTitleColor(AppTheme.current.cellColor, for: .normal)
+        button.tintColor = AppTheme.current.mainColor
+        button.setTitleColor(AppTheme.current.mainColor, for: .normal)
         button.backgroundColor = UIColor.clear
-        (button.superview as? UIStackView)?.arrangedSubviews.last?.backgroundColor = AppTheme.current.cellColor
+        (button.superview as? UIStackView)?.arrangedSubviews.last?.backgroundColor = AppTheme.current.mainColor
     }
     
     func onUnselectButton(_ button: UIButton) {
-        button.tintColor = AppTheme.current.blackColor
-        button.setTitleColor(AppTheme.current.blackColor, for: .normal)
+        button.tintColor = AppTheme.current.textColor
+        button.setTitleColor(AppTheme.current.textColor, for: .normal)
         button.backgroundColor = UIColor.clear
         (button.superview as? UIStackView)?.arrangedSubviews.last?.backgroundColor = UIColor.clear
     }
@@ -173,9 +173,7 @@ class LengthScoreboardViewController: UIViewController, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let fullWidth = (collectionView.bounds.width - 32) / 3.0
-        let fullHeight = fullWidth
-        
-        return CGSize(width: fullWidth, height: fullHeight)
+        return CGSize(width: fullWidth, height: 120)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -213,10 +211,14 @@ class SubModeCollectionViewCell: UICollectionViewCell {
     class var identifier: String { return "SubModeCollectionViewCell" }
     
     func setTheme(with model: SubMode) {
-        self.backgroundColor = AppTheme.current.cellColor.withAlphaComponent(0.5)
-        self.subModeImageView.alpha = 0.5
-        self.layer.cornerRadius = self.layer.bounds.width / 2
+        self.backgroundColor = AppTheme.current.collectionViewBackground
+        self.layer.cornerRadius = 10
+        self.subModeImageView.layer.cornerRadius = 10
+        self.containerView.layer.cornerRadius = 10
+        self.subModeImageView.tintColor = AppTheme.current.mainColor
+        self.subModeTitleLabel.text = model.name
         self.subModeImageView.image = UIImage(named: model.name)
         self.subModeTitleLabel.text = model.name.localized()
+        self.subModeTitleLabel.textColor = AppTheme.current.textColor
     }
 }

@@ -16,8 +16,6 @@
 		9E0F5D7A268327FE004E28C0 /* RESTResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0F5D79268327FE004E28C0 /* RESTResponse.swift */; };
 		9E0F5D7C26832E64004E28C0 /* RESTError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0F5D7B26832E64004E28C0 /* RESTError.swift */; };
 		9E18CB2529B020B000053B3C /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9E18CB2729B020B000053B3C /* Localization.strings */; };
-		9E1A63FA29B60074006D5FBA /* QuizlerCustomPopUpView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E1A63F929B60074006D5FBA /* QuizlerCustomPopUpView.xib */; };
-		9E1A63FC29B6126A006D5FBA /* QuizlerCustomPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1A63FB29B6126A006D5FBA /* QuizlerCustomPopUpView.swift */; };
 		9E1A63FF29B8CA09006D5FBA /* QuestionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E1A63FE29B8CA09006D5FBA /* QuestionsViewModel.swift */; };
 		9E31CA79266BBBB80064599C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E31CA78266BBBB80064599C /* AppDelegate.swift */; };
 		9E31CA80266BBBB80064599C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E31CA7E266BBBB80064599C /* Main.storyboard */; };
@@ -68,6 +66,7 @@
 		9E939BB2299022DE00B3CB4F /* QuizlerWarningView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E939BB1299022DE00B3CB4F /* QuizlerWarningView.xib */; };
 		9E939BB429912C5C00B3CB4F /* QuizlerWarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E939BB329912C5C00B3CB4F /* QuizlerWarningView.swift */; };
 		9E939BB62991322B00B3CB4F /* NewHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E939BB52991322B00B3CB4F /* NewHomeViewController.swift */; };
+		9E95415F2A0925290065D348 /* QuizResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E95415E2A0925280065D348 /* QuizResultViewController.swift */; };
 		9EA37D7B2999396B00840694 /* QuizlerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA37D7A2999396B00840694 /* QuizlerTableViewCell.swift */; };
 		9EA37D85299AB7CD00840694 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA37D84299AB7CD00840694 /* HomeCollectionViewCell.swift */; };
 		9EBD3C1C269F050C006582E7 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBD3C1B269F050C006582E7 /* QuestionModel.swift */; };
@@ -90,8 +89,6 @@
 		9E0F5D79268327FE004E28C0 /* RESTResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTResponse.swift; sourceTree = "<group>"; };
 		9E0F5D7B26832E64004E28C0 /* RESTError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTError.swift; sourceTree = "<group>"; };
 		9E18CB2629B020B000053B3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localization.strings; sourceTree = "<group>"; };
-		9E1A63F929B60074006D5FBA /* QuizlerCustomPopUpView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizlerCustomPopUpView.xib; sourceTree = "<group>"; };
-		9E1A63FB29B6126A006D5FBA /* QuizlerCustomPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizlerCustomPopUpView.swift; sourceTree = "<group>"; };
 		9E1A63FE29B8CA09006D5FBA /* QuestionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewModel.swift; sourceTree = "<group>"; };
 		9E31CA75266BBBB80064599C /* QuizlerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizlerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E31CA78266BBBB80064599C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +139,7 @@
 		9E939BB1299022DE00B3CB4F /* QuizlerWarningView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizlerWarningView.xib; sourceTree = "<group>"; };
 		9E939BB329912C5C00B3CB4F /* QuizlerWarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizlerWarningView.swift; sourceTree = "<group>"; };
 		9E939BB52991322B00B3CB4F /* NewHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewController.swift; sourceTree = "<group>"; };
+		9E95415E2A0925280065D348 /* QuizResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultViewController.swift; sourceTree = "<group>"; };
 		9EA37D7A2999396B00840694 /* QuizlerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizlerTableViewCell.swift; sourceTree = "<group>"; };
 		9EA37D84299AB7CD00840694 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		9EBD3C1B269F050C006582E7 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
@@ -328,8 +326,6 @@
 				9EA37D7A2999396B00840694 /* QuizlerTableViewCell.swift */,
 				9EA37D84299AB7CD00840694 /* HomeCollectionViewCell.swift */,
 				9E81D6FD299AEA5F00543A48 /* HomeCollectionViewCell.xib */,
-				9E1A63F929B60074006D5FBA /* QuizlerCustomPopUpView.xib */,
-				9E1A63FB29B6126A006D5FBA /* QuizlerCustomPopUpView.swift */,
 				9EE41F0A29D1C98300875A96 /* QuizlerCustomAlertViewController.swift */,
 				9EE41F0B29D1C98300875A96 /* QuizlerCustomAlertViewController.xib */,
 				9EC805F329EEC849008CA296 /* QuizlerProgressBarView.swift */,
@@ -386,6 +382,7 @@
 				9ED2690626964EE7006CFFD2 /* QuizViewController.swift */,
 				9E09550A269773D00099EA48 /* QuizPauseViewController.swift */,
 				9E347783269C53F5007FCD65 /* QuestionReportViewController.swift */,
+				9E95415E2A0925280065D348 /* QuizResultViewController.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -462,7 +459,6 @@
 				9EE41F0D29D1C98300875A96 /* QuizlerCustomAlertViewController.xib in Resources */,
 				9E78DF64266FC84E005BF3BB /* Login.storyboard in Resources */,
 				9E81D6FE299AEA5F00543A48 /* HomeCollectionViewCell.xib in Resources */,
-				9E1A63FA29B60074006D5FBA /* QuizlerCustomPopUpView.xib in Resources */,
 				9E78DF67266FC924005BF3BB /* RobotoSlab-Regular.ttf in Resources */,
 				9E31CA85266BBBBA0064599C /* LaunchScreen.storyboard in Resources */,
 				9E939BB2299022DE00B3CB4F /* QuizlerWarningView.xib in Resources */,
@@ -529,11 +525,11 @@
 				9E8D52F327218EC2002261AE /* LocalStorage+UserDefaults.swift in Sources */,
 				9E939BB62991322B00B3CB4F /* NewHomeViewController.swift in Sources */,
 				9E31CA8F266BC2EA0064599C /* AppEnvironment.swift in Sources */,
+				9E95415F2A0925290065D348 /* QuizResultViewController.swift in Sources */,
 				9E0F5D7A268327FE004E28C0 /* RESTResponse.swift in Sources */,
 				9E8D52F1271EFE40002261AE /* LocalStorage+Keychain.swift in Sources */,
 				9EC805F429EEC849008CA296 /* QuizlerProgressBarView.swift in Sources */,
 				9E0F5D7426826E8D004E28C0 /* RESTRequest.swift in Sources */,
-				9E1A63FC29B6126A006D5FBA /* QuizlerCustomPopUpView.swift in Sources */,
 				9E8D52F7272193E7002261AE /* AppTarget.swift in Sources */,
 				9E8D52E827184D02002261AE /* LengthScoreboardViewController.swift in Sources */,
 				9E78DF842670E5E7005BF3BB /* QuizlerTextField.swift in Sources */,

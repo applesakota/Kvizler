@@ -154,9 +154,9 @@ extension UIView {
         //shape
         withShapeLayer.path = circularPath.cgPath
         withShapeLayer.backgroundColor = UIColor.white.cgColor
-        withShapeLayer.strokeColor = AppTheme.current.filmColor.cgColor
+        withShapeLayer.strokeColor = AppTheme.current.containerColor.cgColor
         withShapeLayer.lineWidth = 5
-        withShapeLayer.fillColor = AppTheme.current.filmColor.cgColor
+        withShapeLayer.fillColor = AppTheme.current.containerColor.cgColor
         withShapeLayer.lineCap = CAShapeLayerLineCap(rawValue: "round")
         withShapeLayer.position = center
         withShapeLayer.strokeEnd = 0
@@ -233,5 +233,44 @@ extension Encodable {
             }
         }
         return data
+    }
+}
+
+//MARK: - UIButton
+
+extension UIButton {
+    
+ func addTopBorder(borderColor: UIColor, borderWidth: CGFloat) {
+    let border = CALayer()
+    border.backgroundColor = borderColor.cgColor
+    border.frame = CGRect(x:0,y: 0, width:self.frame.size.width, height: borderWidth)
+    self.layer.addSublayer(border)
+ }
+
+ func addLeftBorder(color: UIColor, width: CGFloat) {
+    let border = CALayer()
+    border.backgroundColor = color.cgColor
+    border.frame = CGRect(x:0, y:0, width:width, height:self.frame.size.height)
+    self.layer.addSublayer(border)
+ }
+    
+}
+
+//MARK: - UIStackView
+
+extension UIStackView {
+    
+    func addTopBorder(borderColor: UIColor, borderWidth: CGFloat) {
+       let border = CALayer()
+       border.backgroundColor = borderColor.cgColor
+       border.frame = CGRect(x:0,y: 0, width:self.frame.size.width, height: borderWidth)
+       self.layer.addSublayer(border)
+    }
+
+    func addLeftBorder(color: UIColor, width: CGFloat) {
+       let border = CALayer()
+       border.backgroundColor = color.cgColor
+       border.frame = CGRect(x:0, y:0, width:width, height:self.frame.size.height)
+       self.layer.addSublayer(border)
     }
 }
