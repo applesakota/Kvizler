@@ -41,7 +41,7 @@ class SplashViewController: UIViewController {
     
     func prepareThemeAndLocalization() {
         self.logoImageView.image = UIImage(named: "logo_image")
-        self.view.backgroundColor = AppTheme.current.zenOrange
+        self.view.backgroundColor = AppTheme.current.mainColor
         internetContectionTitleLabel.text = LocalizationStrings.internetConnectionTitle
         internetConectionDescriptionLabel.text = LocalizationStrings.internetConnectionDescription
         internetConectionButton.setTitle(LocalizationStrings.internetConnectionButtonText, for: .normal)

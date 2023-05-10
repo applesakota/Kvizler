@@ -26,9 +26,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="jmR-Wp-8Ad">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="895"/>
-                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KGO-0k-xXt">
                                 <rect key="frame" x="20" y="405.5" width="374" height="85"/>
                                 <subviews>
@@ -133,16 +130,12 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="mainColor"/>
                         <constraints>
-                            <constraint firstAttribute="top" secondItem="jmR-Wp-8Ad" secondAttribute="top" id="672-cx-WN2"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="H9i-S8-zLh" secondAttribute="bottom" constant="16" id="CfY-bF-S45"/>
-                            <constraint firstAttribute="bottom" secondItem="jmR-Wp-8Ad" secondAttribute="bottom" constant="1" id="JJ5-NW-DzC"/>
-                            <constraint firstAttribute="trailing" secondItem="jmR-Wp-8Ad" secondAttribute="trailing" id="KMs-Fy-QMN"/>
                             <constraint firstItem="KGO-0k-xXt" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="LVb-2c-Zr2"/>
                             <constraint firstItem="H9i-S8-zLh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="LYQ-Pb-NR4"/>
                             <constraint firstItem="KGO-0k-xXt" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="Uli-wP-d0z"/>
-                            <constraint firstItem="jmR-Wp-8Ad" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="n6d-QY-nE5"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="H9i-S8-zLh" secondAttribute="trailing" constant="16" id="wrS-Pg-KPs"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="KGO-0k-xXt" secondAttribute="trailing" constant="20" id="zGN-UA-Xqh"/>
                         </constraints>

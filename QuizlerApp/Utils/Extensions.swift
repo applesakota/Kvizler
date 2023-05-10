@@ -145,9 +145,9 @@ extension UIView {
         let trackLayer = CAShapeLayer()
         let circularPath = UIBezierPath(arcCenter: .zero, radius: 35, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         trackLayer.path = circularPath.cgPath
-        trackLayer.strokeColor = AppTheme.current.errorRed.cgColor
+        trackLayer.strokeColor = AppTheme.current.mainColor.cgColor
         trackLayer.lineWidth = 5
-        trackLayer.fillColor = AppTheme.current.errorRed.cgColor
+        trackLayer.fillColor = AppTheme.current.containerColor.cgColor
         trackLayer.lineCap = CAShapeLayerLineCap(rawValue: "round")
         trackLayer.position = center
         onView.layer.addSublayer(trackLayer)
