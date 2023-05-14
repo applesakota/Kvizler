@@ -34,5 +34,10 @@ protocol HerokuService {
     ///    - score: Score of the quiz
     ///    - callback: Callback function that will be async executed once request is done
     func executePostScore(username: String, mode: String, score: Int, _ callback: @escaping DataCallBack )
+    
+    /// Function that should fetch and return all error types
+    /// - Parameter :
+    ///  callback: Callback function that will be async executed once request is done.
+    func executeGetErrorTypes(_ callback: @escaping DataCallBack)
 
 }

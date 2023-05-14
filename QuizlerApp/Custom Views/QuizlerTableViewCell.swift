@@ -22,6 +22,7 @@ class QuizlerTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
     
     var dataSource: [SubMode] = []
     var questionsViewModel: QuestionsViewModel!
+    var reportTypes: [ReportTypeModel] = []
     
     //MARK: - Init
     
@@ -49,7 +50,7 @@ class QuizlerTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
         // Configure the view for the selected state
     }
     
-    func configure(with title: String, description: String, data: [SubMode]?, questions: QuestionsViewModel?) {
+    func configure(with title: String, description: String, data: [SubMode]?, questions: QuestionsViewModel?, reportTypes: [ReportTypeModel]?) {
         self.setupCollectionView()
         self.tableViewCollectionView.backgroundColor = UIColor.clear
         self.tableViewCollectionView.contentInset = UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
@@ -67,6 +68,9 @@ class QuizlerTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
         }
         if let questions = questions {
             self.questionsViewModel = questions
+        }
+        if let reportTypes = reportTypes {
+            self.reportTypes = reportTypes
         }
         self.tableViewCollectionView.reloadData()
     }
@@ -92,36 +96,36 @@ class QuizlerTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
         let model = dataSource[indexPath.row]
         
         if model.name == "easy" {
-            self.presentQuestionViewController(questions: self.questionsViewModel.easyQuestions, numberOfQuestions: 20, timePerQuestion: model.timePerQuestion, mode: model.id)
+            self.presentQuestionViewController(questions: self.questionsViewModel.easyQuestions, reportTypes: reportTypes, numberOfQuestions: 20, timePerQuestion: model.timePerQuestion, mode: model.id)
         } else if model.name == "medium" {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel.mediumQuestions, numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
+                self.presentQuestionViewController(questions: self.questionsViewModel.mediumQuestions, reportTypes: self.reportTypes, numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         } else if model.name == "hard" {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel.hardQuestions, numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
+                self.presentQuestionViewController(questions: self.questionsViewModel.hardQuestions, reportTypes: self.reportTypes, numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         } else if model.name == "zen" {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel.fetchZenQuestions(numberOfQuestions: model.numberOfQuestions), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
+                self.presentQuestionViewController(questions: self.questionsViewModel.fetchZenQuestions(numberOfQuestions: model.numberOfQuestions),reportTypes: self.reportTypes, numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         } else if model.name == "exam" {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel.fetchExamQuestions(numberOfQuestions: model.numberOfQuestions), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
+                self.presentQuestionViewController(questions: self.questionsViewModel.fetchExamQuestions(numberOfQuestions: model.numberOfQuestions), reportTypes: self.reportTypes, numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         } else if model.name == "marathon" {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel.fetchMarathonQuestions(numberOfQuestions: model.numberOfQuestions), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
+                self.presentQuestionViewController(questions: self.questionsViewModel.fetchMarathonQuestions(numberOfQuestions: model.numberOfQuestions), reportTypes: self.reportTypes, numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         }  else {
             DispatchQueue.main.async {
-                self.presentQuestionViewController(questions: self.questionsViewModel.fetchCategoryQuestions(id: model.id), numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
+                self.presentQuestionViewController(questions: self.questionsViewModel.fetchCategoryQuestions(id: model.id), reportTypes: self.reportTypes, numberOfQuestions: model.numberOfQuestions, timePerQuestion: model.timePerQuestion, mode: model.id)
             }
         }
     }
     
-    func presentQuestionViewController(questions: [QuestionModel], numberOfQuestions: Int, timePerQuestion: Int, mode: String) {
-        let viewController = QuizViewController.instantiate(questions: questions, numberOfQuestions: numberOfQuestions, timePerQuestion: timePerQuestion, mode: mode)
+    func presentQuestionViewController(questions: [QuestionModel], reportTypes: [ReportTypeModel], numberOfQuestions: Int, timePerQuestion: Int, mode: String) {
+        let viewController = QuizViewController.instantiate(questions: questions, reportTypes: reportTypes, numberOfQuestions: numberOfQuestions, timePerQuestion: timePerQuestion, mode: mode)
         self.parentViewController?.navigationController?.pushViewController(viewController, animated: false)
     }
 

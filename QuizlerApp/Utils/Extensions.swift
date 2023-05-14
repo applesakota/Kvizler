@@ -180,7 +180,7 @@ extension UIView {
         onShapeLayer.add(basicAnimation, forKey: "basicAnimation")
     }
     
-    func stopAnimation(layer: CAShapeLayer) {
+    func stopAnimation() {
         layer.removeAllAnimations()
         self.layoutIfNeeded()
     }

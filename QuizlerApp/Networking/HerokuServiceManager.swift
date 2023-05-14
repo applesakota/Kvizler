@@ -69,5 +69,11 @@ class HerokuServiceManager: HerokuService {
         request.execute(callback)
     }
     
+    func executeGetErrorTypes(_ callback: @escaping DataCallBack) {
+        let url = URL(string: "\(RESTManager.shared.server)/report-types")!
+        let request = RESTManager.RESTRequest(session: URLSession.shared, url: url, method: .get)
+        request.execute(callback)
+    }
+    
     
 }

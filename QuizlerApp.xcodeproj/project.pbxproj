@@ -25,6 +25,7 @@
 		9E31CA91266BC67C0064599C /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E31CA90266BC67C0064599C /* AppTheme.swift */; };
 		9E347784269C53F5007FCD65 /* QuestionReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E347783269C53F5007FCD65 /* QuestionReportViewController.swift */; };
 		9E3D0BA52994040600AE91B9 /* QuizlerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E3D0BA42994040600AE91B9 /* QuizlerTableViewCell.xib */; };
+		9E48591A2A0FAD9800B0EB4A /* ReportTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4859192A0FAD9800B0EB4A /* ReportTypeModel.swift */; };
 		9E49755F267917AF00677E3A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E49755E267917AF00677E3A /* LoginViewController.swift */; };
 		9E4FFE02268F8B6D004A4C09 /* HerokuRestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4FFE01268F8B6D004A4C09 /* HerokuRestManager.swift */; };
 		9E5454792722E444009755D7 /* LocalStorageStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5454782722E444009755D7 /* LocalStorageStorable.swift */; };
@@ -100,6 +101,7 @@
 		9E31CA90266BC67C0064599C /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		9E347783269C53F5007FCD65 /* QuestionReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionReportViewController.swift; sourceTree = "<group>"; };
 		9E3D0BA42994040600AE91B9 /* QuizlerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizlerTableViewCell.xib; sourceTree = "<group>"; };
+		9E4859192A0FAD9800B0EB4A /* ReportTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportTypeModel.swift; sourceTree = "<group>"; };
 		9E49755E267917AF00677E3A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9E4FFE01268F8B6D004A4C09 /* HerokuRestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerokuRestManager.swift; sourceTree = "<group>"; };
 		9E5454782722E444009755D7 /* LocalStorageStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageStorable.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				9E9328BB26A09C5E00A33609 /* DifficultyModel.swift */,
 				9E9328BD26A09C9F00A33609 /* SubMode.swift */,
 				9E8D52ED2719EB21002261AE /* ScoreModel.swift */,
+				9E4859192A0FAD9800B0EB4A /* ReportTypeModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				9E8D52E827184D02002261AE /* LengthScoreboardViewController.swift in Sources */,
 				9E78DF842670E5E7005BF3BB /* QuizlerTextField.swift in Sources */,
 				9E9328C026A84C0E00A33609 /* LocalCommonRESTService.swift in Sources */,
+				9E48591A2A0FAD9800B0EB4A /* ReportTypeModel.swift in Sources */,
 				9E9328BA26A0677000A33609 /* CategoryModel.swift in Sources */,
 				9E5AA02129AA483500976E49 /* Reachability.swift in Sources */,
 				9E31CA79266BBBB80064599C /* AppDelegate.swift in Sources */,

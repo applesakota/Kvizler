@@ -9,7 +9,9 @@ import UIKit
 import ProgressHUD
 
 
-class QuizViewController: UIViewController {
+class QuizViewController: UIViewController, QuizlerWarningViewDelegate {
+
+    
     
     //MARK: - Globals
     
@@ -35,7 +37,11 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var answer4Button: UIButton!
     
     @IBOutlet weak var reportButton: UIButton!
+    @IBOutlet weak var reportView: UIView!
+    @IBOutlet weak var reportLabel: UILabel!
     
+    @IBOutlet weak var warningViewBackground: UIView!
+    @IBOutlet weak var customWarningView: QuizlerWarningView!
     
     var colorTheme: UIColor? = AppTheme.current.cellColor
     var categoryId: String?
@@ -44,6 +50,7 @@ class QuizViewController: UIViewController {
     var timer = Timer()
     var timerCount = 15
     var timePerQuestion = 15
+    var resumedTime = 0
     private var id: String!
     private var countNumberOfCorrectAnswers = 0
     private var fibiCount = 0
@@ -58,14 +65,16 @@ class QuizViewController: UIViewController {
     var name: String!
     
     private var questions: [QuestionModel] = []
+    private var reportTypes: [ReportTypeModel] = []
     var numberOfQuestions: Int = 20
     var mode: String!
     
     //MARK: - Init
     
-    class func instantiate(questions: [QuestionModel], numberOfQuestions: Int, timePerQuestion: Int, mode: String) -> QuizViewController {
+    class func instantiate(questions: [QuestionModel], reportTypes: [ReportTypeModel], numberOfQuestions: Int, timePerQuestion: Int, mode: String) -> QuizViewController {
         let viewController = UIStoryboard.utils.instantiate(identifier) as! QuizViewController
         viewController.questions = questions
+        viewController.reportTypes = reportTypes
         viewController.timePerQuestion = timePerQuestion
         viewController.numberOfQuestions = numberOfQuestions
         viewController.mode = mode
@@ -163,6 +172,21 @@ class QuizViewController: UIViewController {
         self.answer3Button.setTitleColor(AppTheme.current.bodyTextColor, for: .normal)
         self.answer3Button.layer.cornerRadius = answer3Button.layer.bounds.height / 2
         self.answer3Button.isExclusiveTouch = true
+        
+        self.reportButton.isExclusiveTouch = true
+        self.reportView.backgroundColor = AppTheme.current.categoryViewBackgroundColor
+        self.reportView.layer.cornerRadius = 5
+        self.reportLabel.textColor = AppTheme.current.categoryViewTextColor
+        self.warningViewBackground.isHidden = true
+        self.customWarningView.isHidden = true
+        
+        self.customWarningView.configure(with: QuizlerWarningView.Config(
+            title: "Prijava nevalidnog pitanja",
+            wariningColor: AppTheme.current.mainColor,
+            warinngDescription: "Obelezite razloge zasto mislite da je pitanje nevalidno.",
+            reportTypes: reportTypes)
+        )
+        
         
         if questions[counter].answers.count <= 3 { self.answer4Button.isHidden = true } else {
             self.answer4Button.isHidden = false
@@ -313,8 +337,22 @@ class QuizViewController: UIViewController {
     // MARK: - User Interaction
     
     @IBAction func reportButtonTouched(_ sender: Any) {
-        print("Dugme stisnuto bajo")
+        self.timer.invalidate()
+        self.timerView.pauseAnimation()
+        self.warningViewBackground.isHidden = false
+        self.customWarningView.isHidden = false
+        self.customWarningView.delegate = self
     }
+    
+    func returnToQuiz() {
+        self.warningViewBackground.isHidden = true
+        self.customWarningView.isHidden = true
+        self.prepareThemeAndLocalization()
+    }
+    
+
+    
+    
 }
 
 

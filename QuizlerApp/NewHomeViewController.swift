@@ -16,6 +16,7 @@ class NewHomeViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var tableView: UITableView!
     private var dataSource: [CategoryModel] = []
     private var questionsDataSource: QuestionsViewModel?
+    private var reportTypes: [ReportTypeModel] = []
 
     struct LocalizationStrings {
         static let kategorijaTitle = "home_view_screen_kategorija_title".localized()
@@ -72,6 +73,11 @@ class NewHomeViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
         
+        self.apiFetchReportTypes { [weak self] reportTypes in
+            guard let self = self else { return }
+            self.reportTypes = reportTypes
+        }
+        
     }
     
     // MARK: - Utils
@@ -111,15 +117,15 @@ class NewHomeViewController: UIViewController, UITableViewDataSource, UITableVie
         
         if indexPath.row == 0 {
             guard let model = dataSource.first(where: { $0.name == "category"}) else { return UITableViewCell() }
-            cell.configure(with: LocalizationStrings.kategorijaTitle, description: LocalizationStrings.kategorijaDescription, data: model.submodes, questions: questionsDataSource)
+            cell.configure(with: LocalizationStrings.kategorijaTitle, description: LocalizationStrings.kategorijaDescription, data: model.submodes, questions: questionsDataSource, reportTypes: reportTypes)
             return cell
         } else if indexPath.row == 1 {
             guard let model = dataSource.first(where: { $0.name == "difficulty"}) else { return UITableViewCell() }
-            cell.configure(with: LocalizationStrings.tezinaTitle, description: LocalizationStrings.tezinaDescription, data: model.submodes, questions: questionsDataSource)
+            cell.configure(with: LocalizationStrings.tezinaTitle, description: LocalizationStrings.tezinaDescription, data: model.submodes, questions: questionsDataSource, reportTypes: reportTypes)
             return cell
         } else if indexPath.row == 2 {
             guard let model = dataSource.first(where: { $0.name == "length"}) else { return UITableViewCell() }
-            cell.configure(with: LocalizationStrings.duzinaTitle, description: LocalizationStrings.duzinaDescription, data: model.submodes, questions: questionsDataSource)
+            cell.configure(with: LocalizationStrings.duzinaTitle, description: LocalizationStrings.duzinaDescription, data: model.submodes, questions: questionsDataSource, reportTypes: reportTypes)
             return cell
         }
         
@@ -134,6 +140,18 @@ class NewHomeViewController: UIViewController, UITableViewDataSource, UITableVie
             loader.dismiss()
             switch result {
             case .success(let questions): callback(questions)
+            case .failure: break
+            }
+        }
+    }
+    
+    private func apiFetchReportTypes(_ callback: @escaping ([ReportTypeModel])->Swift.Void) {
+        let loader = LoaderView.create(for: self.view, config: AppGlobals.defaultLoadConfig)
+        
+        AppGlobals.herokuRESTManager.getReportTypes { (result) in
+            loader.dismiss()
+            switch result {
+            case .success(let dataSource): callback(dataSource)
             case .failure: break
             }
         }
