@@ -180,14 +180,7 @@ class QuizViewController: UIViewController, QuizlerWarningViewDelegate {
         self.warningViewBackground.isHidden = true
         self.customWarningView.isHidden = true
         
-        self.customWarningView.configure(with: QuizlerWarningView.Config(
-            title: "Prijava nevalidnog pitanja",
-            wariningColor: AppTheme.current.mainColor,
-            warinngDescription: "Obelezite razloge zasto mislite da je pitanje nevalidno.",
-            reportTypes: reportTypes)
-        )
-        
-        
+
         if questions[counter].answers.count <= 3 { self.answer4Button.isHidden = true } else {
             self.answer4Button.isHidden = false
             self.answer4Button.backgroundColor = AppTheme.current.containerColor
@@ -339,6 +332,14 @@ class QuizViewController: UIViewController, QuizlerWarningViewDelegate {
     @IBAction func reportButtonTouched(_ sender: Any) {
         self.timer.invalidate()
         self.timerView.pauseAnimation()
+        
+        self.customWarningView.configure(with: QuizlerWarningView.Config(
+            title: "Prijava nevalidnog pitanja",
+            wariningColor: AppTheme.current.mainColor,
+            warinngDescription: "Obelezite razloge zasto mislite da je pitanje nevalidno.",
+            reportTypes: reportTypes,
+            questionId: questions[counter].id)
+        )
         self.warningViewBackground.isHidden = false
         self.customWarningView.isHidden = false
         self.customWarningView.delegate = self

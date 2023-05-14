@@ -138,6 +138,17 @@ class HerokuRestManager {
         }
     }
     
+    func requestPostError(reportTypeId: String, questionId: String, _ callback: @escaping (Result<(),Error>)->Swift.Void) {
+        service.executePostError(reportTypeId: reportTypeId, questionId: questionId) { (result: RESTManager.ResponseResult<RESTManager.DiscardableServerModel>) in
+            switch result.result {
+            case .success:
+                callback(.success( () ) )
+            case .failure(let error):
+                callback(.failure(error))
+            }
+        }
+    }
+    
 
     private func loadModelFromLocalStorageIfAny<T: Codable>(hashKey: String) -> T? {
         

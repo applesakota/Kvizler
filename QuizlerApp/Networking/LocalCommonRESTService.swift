@@ -12,6 +12,8 @@ class LocalCommonRESTService: HerokuService {
 
     
 
+    
+
             
     //MARK: - Globals
     
@@ -156,5 +158,9 @@ class LocalCommonRESTService: HerokuService {
     
     func executeGetErrorTypes(_ callback: @escaping DataCallBack) {
         
+    }
+    
+    func executePostError(reportTypeId: String, questionId: String, _ callback: @escaping DataCallBack) {
+    
     }
 }

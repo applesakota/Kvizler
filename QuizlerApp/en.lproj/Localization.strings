@@ -17,6 +17,11 @@
 "zen" = "Zen";
 "exam" = "Test";
 "marathon" = "Maraton";
+"non_understandable"="Nerazumljivo pitanje";
+"no_correct_answer"="Tačan odgovor nije ponudjen";
+"typos"="Slovne greške";
+"wrong_correct_answer"="Netačan odgovor obeležen kao tačan";
+
 // No internet Connection View
 "splash_screen_no_internet_connection_title" = "Nema internet konekcije";
 "splash_screen_no_internet_connection_description_text" = "Potrebna internet konekcija radi osvežavanja podataka.";
