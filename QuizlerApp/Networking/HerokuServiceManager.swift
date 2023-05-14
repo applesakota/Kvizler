@@ -69,5 +69,20 @@ class HerokuServiceManager: HerokuService {
         request.execute(callback)
     }
     
+    func executeGetErrorTypes(_ callback: @escaping DataCallBack) {
+        let url = URL(string: "\(RESTManager.shared.server)/report-types")!
+        let request = RESTManager.RESTRequest(session: URLSession.shared, url: url, method: .get)
+        request.execute(callback)
+    }
     
+    func executePostError(reportTypeId: String, questionId: String, _ callback: @escaping DataCallBack) {
+        let url = URL(string: "\(RESTManager.shared.server)/invalid-question")!
+        let request = RESTManager.RESTRequest(session: URLSession.shared, url: url, method: .post)
+        let body: NSMutableDictionary = [
+            "reportTypeId": reportTypeId,
+            "questionId": questionId
+        ]
+        request.setBody(body: body)
+        request.execute(callback)
+    }
 }

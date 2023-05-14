@@ -10,6 +10,10 @@ import Foundation
 //Private class that will do all Heroku havy lifting for us and wrap functionality in single place
 class LocalCommonRESTService: HerokuService {
 
+    
+
+    
+
             
     //MARK: - Globals
     
@@ -150,5 +154,13 @@ class LocalCommonRESTService: HerokuService {
     
     func executePostScore(username: String, mode: String, score: Int, _ callback: @escaping DataCallBack) {
         
+    }
+    
+    func executeGetErrorTypes(_ callback: @escaping DataCallBack) {
+        
+    }
+    
+    func executePostError(reportTypeId: String, questionId: String, _ callback: @escaping DataCallBack) {
+    
     }
 }

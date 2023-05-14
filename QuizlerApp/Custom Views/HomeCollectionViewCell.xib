@@ -9,8 +9,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="RobotoSlab-Regular.ttf">
-            <string>RobotoSlab-Regular</string>
+        <array key="RobotoSlab-SemiBold.ttf">
+            <string>RobotoSlab-SemiBold</string>
         </array>
     </customFonts>
     <objects>
@@ -48,8 +48,8 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" text="Test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDI-qI-nMt">
-                                <rect key="frame" x="42.333333333333329" y="63.999999999999993" width="34.333333333333329" height="22.666666666666664"/>
-                                <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="17"/>
+                                <rect key="frame" x="42.333333333333343" y="63.999999999999993" width="34.666666666666657" height="22.666666666666664"/>
+                                <fontDescription key="fontDescription" name="RobotoSlab-SemiBold" family="Roboto Slab" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
