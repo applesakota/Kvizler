@@ -14,6 +14,8 @@ class LocalCommonRESTService: HerokuService {
 
     
 
+    
+
             
     //MARK: - Globals
     
@@ -162,5 +164,9 @@ class LocalCommonRESTService: HerokuService {
     
     func executePostError(reportTypeId: String, questionId: String, _ callback: @escaping DataCallBack) {
     
+    }
+    
+    func executePostQuestion(body: NSDictionary, _ callback: @escaping DataCallBack) {
+        
     }
 }

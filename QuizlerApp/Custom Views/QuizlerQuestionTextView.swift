@@ -1,16 +1,15 @@
 //
-//  QuizlerTextView.swift
+//  QuizlerQuestionTextView.swift
 //  QuizlerApp
 //
-//  Created by Petar Sakotic on 7/13/21.
+//  Created by Petar Sakotic on 5/18/23.
 //
 
 import UIKit
 
-class QuizlerTextView: UIView, UITextViewDelegate {
+class QuizlerQuestionTextView: UIView, UITextViewDelegate {
     
-    
-    class var nibName: String { return "QuizlerTextView" }
+    class var nibName: String { return "QuizlerQuestionTextView" }
     
     @IBOutlet var view: UIView!
     
@@ -18,6 +17,7 @@ class QuizlerTextView: UIView, UITextViewDelegate {
         var title: String?
         var countLabel: String
         var numberOfCharacters: Int
+        var maximumNumberOfLines: Int
         var keyboardAppearance: UIKeyboardAppearance
         var returnKeyType: UIReturnKeyType
         var titleColor: UIColor
@@ -36,6 +36,7 @@ class QuizlerTextView: UIView, UITextViewDelegate {
                 title: "",
                 countLabel: "",
                 numberOfCharacters: 0,
+                maximumNumberOfLines: 0,
                 keyboardAppearance: .default,
                 returnKeyType: .default,
                 titleColor: .clear,
@@ -51,8 +52,8 @@ class QuizlerTextView: UIView, UITextViewDelegate {
     private (set) var config: Config = Config.empty
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var textView: UITextView!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -84,7 +85,7 @@ class QuizlerTextView: UIView, UITextViewDelegate {
     
     private func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: QuizlerTextView.nibName, bundle: bundle)
+        let nib = UINib(nibName: QuizlerQuestionTextView.nibName, bundle: bundle)
         let nibView = nib.instantiate(withOwner: self, options: nil).first as! UIView
         return nibView
     }
@@ -93,11 +94,13 @@ class QuizlerTextView: UIView, UITextViewDelegate {
         self.config = config
         
         titleLabel.text = config.title
-        countLabel.text = config.countLabel
         titleLabel.isHidden = (config.title == nil)
         titleLabel.textColor = config.titleColor
+        countLabel.text = config.countLabel
         countLabel.textColor = config.countLabelColor
         textView.returnKeyType = config.returnKeyType
+        textView.textContainer.maximumNumberOfLines = config.maximumNumberOfLines
+        textView.textContainer.lineBreakMode = .byWordWrapping
         textView.keyboardAppearance = config.keyboardAppearance
         textView.backgroundColor = config.backgroundColor
         textView.layer.borderColor = config.borderColor
@@ -129,7 +132,7 @@ class QuizlerTextView: UIView, UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         self.countLabel.text = "\(textView.text.count)/\(config.numberOfCharacters)"
     }
-    
+        
     func textView(_ textView: UITextView, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         return true
@@ -142,7 +145,6 @@ class QuizlerTextView: UIView, UITextViewDelegate {
         config.returnKeyCallback?()
         return true
     }
-    
     
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         config.endEditingCallback?()

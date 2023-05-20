@@ -29,6 +29,8 @@
 		9E49755F267917AF00677E3A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E49755E267917AF00677E3A /* LoginViewController.swift */; };
 		9E4FFE02268F8B6D004A4C09 /* HerokuRestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4FFE01268F8B6D004A4C09 /* HerokuRestManager.swift */; };
 		9E5454792722E444009755D7 /* LocalStorageStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5454782722E444009755D7 /* LocalStorageStorable.swift */; };
+		9E5742752A16B7FE001AFC88 /* QuizlerQuestionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5742742A16B7FE001AFC88 /* QuizlerQuestionTextView.swift */; };
+		9E5742772A16B87F001AFC88 /* QuizlerQuestionTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E5742762A16B87F001AFC88 /* QuizlerQuestionTextView.xib */; };
 		9E5830A326F4D1C500474206 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5830A226F4D1C500474206 /* ProfileViewController.swift */; };
 		9E5AA02129AA483500976E49 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5AA02029AA483500976E49 /* Reachability.swift */; };
 		9E71C889299FCD2400FFA023 /* ScoreboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E71C888299FCD2400FFA023 /* ScoreboardViewController.swift */; };
@@ -105,6 +107,8 @@
 		9E49755E267917AF00677E3A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9E4FFE01268F8B6D004A4C09 /* HerokuRestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HerokuRestManager.swift; sourceTree = "<group>"; };
 		9E5454782722E444009755D7 /* LocalStorageStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageStorable.swift; sourceTree = "<group>"; };
+		9E5742742A16B7FE001AFC88 /* QuizlerQuestionTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizlerQuestionTextView.swift; sourceTree = "<group>"; };
+		9E5742762A16B87F001AFC88 /* QuizlerQuestionTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizlerQuestionTextView.xib; sourceTree = "<group>"; };
 		9E5830A226F4D1C500474206 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9E5AA02029AA483500976E49 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		9E71C888299FCD2400FFA023 /* ScoreboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardViewController.swift; sourceTree = "<group>"; };
@@ -332,6 +336,8 @@
 				9EE41F0A29D1C98300875A96 /* QuizlerCustomAlertViewController.swift */,
 				9EE41F0B29D1C98300875A96 /* QuizlerCustomAlertViewController.xib */,
 				9EC805F329EEC849008CA296 /* QuizlerProgressBarView.swift */,
+				9E5742762A16B87F001AFC88 /* QuizlerQuestionTextView.xib */,
+				9E5742742A16B7FE001AFC88 /* QuizlerQuestionTextView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -467,6 +473,7 @@
 				9E939BB2299022DE00B3CB4F /* QuizlerWarningView.xib in Resources */,
 				9E78DF862670E5FA005BF3BB /* QuizlerTextField.xib in Resources */,
 				9E31CA82266BBBBA0064599C /* Assets.xcassets in Resources */,
+				9E5742772A16B87F001AFC88 /* QuizlerQuestionTextView.xib in Resources */,
 				9E18CB2529B020B000053B3C /* Localization.strings in Resources */,
 				9E31CA80266BBBB80064599C /* Main.storyboard in Resources */,
 				9E3D0BA52994040600AE91B9 /* QuizlerTableViewCell.xib in Resources */,
@@ -532,6 +539,7 @@
 				9E0F5D7A268327FE004E28C0 /* RESTResponse.swift in Sources */,
 				9E8D52F1271EFE40002261AE /* LocalStorage+Keychain.swift in Sources */,
 				9EC805F429EEC849008CA296 /* QuizlerProgressBarView.swift in Sources */,
+				9E5742752A16B7FE001AFC88 /* QuizlerQuestionTextView.swift in Sources */,
 				9E0F5D7426826E8D004E28C0 /* RESTRequest.swift in Sources */,
 				9E8D52F7272193E7002261AE /* AppTarget.swift in Sources */,
 				9E8D52E827184D02002261AE /* LengthScoreboardViewController.swift in Sources */,

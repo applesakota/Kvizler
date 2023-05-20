@@ -25,6 +25,7 @@ class MainTabBarController: UITabBarController {
         // Do any additional setup after loading the view.
         viewControllers = [
             NewHomeViewController.instantiateWithNavigation(),
+            QuestionReportViewController.instantiateWithNavigation(),
             ScoreboardViewController.instantiateWithNavigation()
         ]
     }
@@ -61,6 +62,7 @@ class MainTabBarController: UITabBarController {
     lazy var tabBarViewControllers: [UIViewController] = {
         let viewControllers = [
             NewHomeViewController.instantiateWithNavigation(),
+            QuestionReportViewController.instantiateWithNavigation(),
             ScoreboardViewController.instantiateWithNavigation()
         ]
         viewControllers.forEach({ $0.viewControllers.first?.loadViewIfNeeded() })
@@ -73,7 +75,11 @@ class MainTabBarController: UITabBarController {
     }
     
     var scoreBoardViewController: ScoreboardViewController {
-        return (tabBarViewControllers[1] as! UINavigationController).viewControllers[0] as! ScoreboardViewController
+        return (tabBarViewControllers[2] as! UINavigationController).viewControllers[0] as! ScoreboardViewController
+    }
+    
+    var questionReportViewController: QuestionReportViewController {
+        return (tabBarViewControllers[1] as! UINavigationController).viewControllers[0] as! QuestionReportViewController
     }
 
 }
