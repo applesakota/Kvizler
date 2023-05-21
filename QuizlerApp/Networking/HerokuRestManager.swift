@@ -28,9 +28,7 @@ class HerokuRestManager {
     
     
     //MARK: Public API
-    
-
-    
+        
     func executeRefreshToken(_ callback: @escaping (Result<(), Error>) -> Swift.Void) {
 
     }
@@ -143,6 +141,17 @@ class HerokuRestManager {
             switch result.result {
             case .success:
                 callback(.success( () ) )
+            case .failure(let error):
+                callback(.failure(error))
+            }
+        }
+    }
+    
+    func requestPostQuestion(body: NSDictionary, _ callback: @escaping (Result<(), Error>)->Swift.Void ) {
+        service.executePostQuestion(body: body) { (result: RESTManager.ResponseResult<RESTManager.DiscardableServerModel>) in
+            switch result.result {
+            case .success:
+                callback(.success(()))
             case .failure(let error):
                 callback(.failure(error))
             }

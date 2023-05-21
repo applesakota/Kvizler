@@ -47,5 +47,8 @@ protocol HerokuService {
     ///    - questionId: Id of the specific question
     ///    - callback: Callback function that will be async executed once request is done
     func executePostError(reportTypeId: String, questionId: String, _ callback: @escaping DataCallBack)
+    
+    
+    func executePostQuestion(body: NSDictionary, _ callback: @escaping DataCallBack)
 
 }
