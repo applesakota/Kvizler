@@ -84,7 +84,7 @@ class QuizResultViewController: UIViewController {
             
         } else {
             
-            self.titleLabel.text = "Bilo je dobro, probaj opet sledecei put!"
+            self.titleLabel.text = "Bilo je dobro, probaj opet sledeći put!"
             self.countScoreLabel.text = "Osvojio si \(score) poena"
             self.answersCountLabel.text = "\(numberOfAnswers)"
             self.returnToTheMainControllerButton.setTitle("Idi na glavni ekran", for: .normal)
