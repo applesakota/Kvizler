@@ -41,7 +41,7 @@ class LocalStorage {
     func save(string value: String, key: String, forced: Bool = true) -> Bool {
         self.save(string: value, key: key, forced: forced)
     }
-    
+        
     @discardableResult
     func save(bool value: Bool, key: String, forced: Bool = true) -> Bool {
         self.save(bool: value, key: key, forced: forced)

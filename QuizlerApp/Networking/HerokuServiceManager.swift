@@ -12,7 +12,6 @@ import RealmSwift
 // Private class that will do all Heroku DB havy lifting for us and wrap functionality in single place.
 class HerokuServiceManager: HerokuService {
 
-    
 
     //Global shared instance should be used inside application
     static let shared = HerokuServiceManager()
@@ -31,13 +30,13 @@ class HerokuServiceManager: HerokuService {
     }
     
     ///Question request implementation
-    func executeRequestQuestion(body: NSDictionary, _ callback: @escaping DataCallBack) {
-        let url = URL(string: "\(RESTManager.shared.server)/questions")!
-        let request = RESTManager.RESTRequest(session: URLSession.shared, url: url, method: .post, useToken: false)
+    func executePostQuestion(body: NSDictionary, _ callback: @escaping DataCallBack) {
+        let url = URL(string: "\(RESTManager.shared.server)/questions/create")!
+        let request = RESTManager.RESTRequest(session: URLSession.shared, url: url, method: .post)
         request.setBody(body: body)
         request.execute(callback)
     }
-    
+        
     ///Modes request implementation
     func executeGetModes(_ callback: @escaping DataCallBack) {
         let url = URL(string: "\(RESTManager.shared.server)/modes")!
@@ -69,5 +68,20 @@ class HerokuServiceManager: HerokuService {
         request.execute(callback)
     }
     
+    func executeGetErrorTypes(_ callback: @escaping DataCallBack) {
+        let url = URL(string: "\(RESTManager.shared.server)/report-types")!
+        let request = RESTManager.RESTRequest(session: URLSession.shared, url: url, method: .get)
+        request.execute(callback)
+    }
     
+    func executePostError(reportTypeId: String, questionId: String, _ callback: @escaping DataCallBack) {
+        let url = URL(string: "\(RESTManager.shared.server)/invalid-question")!
+        let request = RESTManager.RESTRequest(session: URLSession.shared, url: url, method: .post)
+        let body: NSMutableDictionary = [
+            "reportTypeId": reportTypeId,
+            "questionId": questionId
+        ]
+        request.setBody(body: body)
+        request.execute(callback)
+    }
 }

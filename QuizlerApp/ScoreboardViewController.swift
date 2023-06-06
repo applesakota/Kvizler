@@ -17,26 +17,30 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var refreshButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var topBackgroundView: UIView!
     
+    @IBOutlet weak var categoryBackgroundImageView: UIImageView!
+    @IBOutlet weak var categoryView: UIView!
     @IBOutlet weak var categoryTextField: UITextField!
+    @IBOutlet weak var categoryImageView: UIImageView!
+    @IBOutlet weak var categoryStackView: UIStackView!
+    
     @IBOutlet weak var scoreboardBackgroundView: UIView!
     
     @IBOutlet weak var thirdPlaceLabel: UILabel!
-    @IBOutlet weak var thirdPlaceBackgroundView: UIView!
-    @IBOutlet weak var thirdScoreBackgroundView: UIView!
     @IBOutlet weak var thirdScoreLabel: UILabel!
+    @IBOutlet weak var thirdScoreBackgroundView: UIView!
     
     @IBOutlet weak var secondPlaceLabel: UILabel!
-    @IBOutlet weak var secondPlaceBackgroundView: UIView!
-    @IBOutlet weak var secondScoreBackgroundView: UIView!
     @IBOutlet weak var secondScoreLabel: UILabel!
+    @IBOutlet weak var secondScoreBackgroundView: UIView!
+    
     @IBOutlet weak var noInternetConectionContainerView: UIView!
     @IBOutlet weak var noInternetConeectionView: UIView!
     
     @IBOutlet weak var firstPlaceLabel: UILabel!
-    @IBOutlet weak var firstPlaceBackgroundView: UIView!
-    @IBOutlet weak var firstScoreBackgroundView: UIView!
     @IBOutlet weak var firstScoreLabel: UILabel!
+    @IBOutlet weak var firstPlaceBackgroundView: UIView!
     
     var pickerViewDataSource: [SubMode] = []
     var scores: [ScoreModel] = []
@@ -48,6 +52,10 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
         }}
     }
     
+    struct LocalizationStrings {
+        static let tabelaText = "scoreboard_screen_tabela_text".localized()
+    }
+    
     //MARK: - Init
     
     class func instantiate(selectedSubMode: SubMode?) -> ScoreboardViewController {
@@ -55,7 +63,7 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
         if selectedSubMode != nil {
             viewController.selectedSubMode = selectedSubMode
         }
-        viewController.tabBarItem = UITabBarItem(title: "Tabela", image: #imageLiteral(resourceName: "table"), selectedImage: #imageLiteral(resourceName: "table"))
+        viewController.tabBarItem = UITabBarItem(title: LocalizationStrings.tabelaText, image: #imageLiteral(resourceName: "table"), selectedImage: #imageLiteral(resourceName: "table"))
         return viewController
     }
     
@@ -109,44 +117,56 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
     func prepareNavigationBarTheme() {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.barStyle = .default
-        self.navigationController?.navigationBar.tintColor = AppTheme.current.blackColor
-        self.navigationController?.navigationBar.barTintColor = AppTheme.current.secondPlaceColor
+        self.navigationController?.navigationBar.tintColor = AppTheme.current.textColor
+        self.navigationController?.navigationBar.barTintColor = AppTheme.current.containerColor
         self.navigationController?.navigationBar.titleTextAttributes = [
-            .font: AppTheme.semiboldFont(ofSize: 17)
+            .font: AppTheme.semiboldFont(ofSize: 17),
+            .foregroundColor: AppTheme.current.textColor
         ]
-        self.navigationBackgroundView.backgroundColor = AppTheme.current.secondPlaceColor
+        self.navigationBackgroundView.backgroundColor = AppTheme.current.containerColor
         
     }
     
     func prepareThemeAndLocalization() {
-        self.categoryTextField.backgroundColor = AppTheme.current.cellColor
-        self.categoryTextField.textColor = AppTheme.current.white
-        self.categoryTextField.layer.cornerRadius = 30
+        
+        self.categoryTextField.backgroundColor = UIColor.clear
+        self.categoryTextField.textColor = AppTheme.current.categoryViewTextColor
         self.categoryTextField.isUserInteractionEnabled = false
+        self.categoryTextField.borderStyle = .none
+        self.categoryView.layer.cornerRadius = 10
+        self.categoryView.layer.borderWidth = 1
+        self.categoryView.layer.masksToBounds = true
+        self.categoryView.layer.borderColor = AppTheme.current.categoryViewTextColor.cgColor
+        self.categoryStackView.backgroundColor = AppTheme.current.categoryViewBackgroundColor
+        self.categoryImageView.tintColor = AppTheme.current.categoryViewTextColor
+        
+        self.categoryBackgroundImageView.layer.masksToBounds = true
+        self.view.backgroundColor = AppTheme.current.scoreboardTableViewBackgroundColor
+        self.topBackgroundView.backgroundColor = AppTheme.current.mainColor
+        
+        self.scoreboardBackgroundView.layer.cornerRadius = 10
+        self.scoreboardBackgroundView.layer.masksToBounds = true
         
         self.thirdPlaceLabel.text = ""
         self.thirdPlaceLabel.superview?.layer.cornerRadius = 10
-        self.thirdPlaceLabel.superview?.backgroundColor = AppTheme.current.thirdPlaceColor
-        self.thirdPlaceBackgroundView.backgroundColor = AppTheme.current.thirdPlaceColor
-        self.thirdScoreBackgroundView.backgroundColor = AppTheme.current.thirdScoreBackgroundColor
-        self.thirdScoreBackgroundView.layer.cornerRadius = 10
+        self.thirdPlaceLabel.superview?.backgroundColor = .clear
         self.thirdScoreLabel.text = ""
+        self.thirdScoreBackgroundView.layer.cornerRadius = 10
+        self.thirdScoreBackgroundView.backgroundColor = AppTheme.current.mainColor
         
         self.secondPlaceLabel.text = ""
         self.secondPlaceLabel.superview?.layer.cornerRadius = 10
-        self.secondPlaceLabel.superview?.backgroundColor = AppTheme.current.secondPlaceColor
-        self.secondPlaceBackgroundView.backgroundColor = AppTheme.current.secondPlaceColor
-        self.secondScoreBackgroundView.backgroundColor = AppTheme.current.secondScoreBackgroundColor
-        self.secondScoreBackgroundView.layer.cornerRadius = 10
+        self.secondPlaceLabel.superview?.backgroundColor = .clear
         self.secondScoreLabel.text = ""
+        self.secondScoreBackgroundView.layer.cornerRadius = 10
+        self.secondScoreBackgroundView.backgroundColor = AppTheme.current.mainColor
         
         self.firstPlaceLabel.text = ""
         self.firstPlaceLabel.superview?.layer.cornerRadius = 10
-        self.firstPlaceLabel.superview?.backgroundColor = AppTheme.current.firstPlaceColor
-        self.firstPlaceBackgroundView.backgroundColor = AppTheme.current.firstPlaceColor
-        self.firstScoreBackgroundView.backgroundColor = AppTheme.current.firstScoreBackgroundColor
-        self.firstScoreBackgroundView.layer.cornerRadius = 10
+        self.firstPlaceLabel.superview?.backgroundColor = .clear
         self.firstScoreLabel.text = ""
+        self.firstPlaceBackgroundView.layer.cornerRadius = 10
+        self.firstPlaceBackgroundView.backgroundColor = AppTheme.current.mainColor
         self.noInternetConectionContainerView.layer.cornerRadius = 10
     }
     
@@ -154,34 +174,41 @@ class ScoreboardViewController: UIViewController, UITableViewDelegate, UITableVi
         if selectedSubMode != nil {
             let scores = fetchScores()
             if scores.count >= 3 {
-                self.categoryTextField.backgroundColor = AppTheme.current.cellColor
-                self.categoryTextField.textColor = AppTheme.current.white
-                self.categoryTextField.layer.cornerRadius = 30
+                self.categoryTextField.backgroundColor = UIColor.clear
+                self.categoryTextField.textColor = AppTheme.current.categoryViewTextColor
                 self.categoryTextField.text = selectedSubMode?.name.localized()
+                self.categoryTextField.borderStyle = .none
+                self.categoryView.layer.cornerRadius = 10
+                self.categoryView.layer.borderWidth = 1
+                self.categoryView.layer.borderColor = AppTheme.current.categoryViewTextColor.cgColor
+                self.categoryView.layer.masksToBounds = true
+                self.categoryImageView.image = UIImage(named: selectedSubMode!.name)!
+                self.categoryImageView.tintColor = AppTheme.current.categoryViewTextColor
+                self.categoryBackgroundImageView.layer.masksToBounds = true
                 
                 self.thirdPlaceLabel.text = scores[2].username
                 self.thirdPlaceLabel.superview?.layer.cornerRadius = 10
-                self.thirdPlaceLabel.superview?.backgroundColor = AppTheme.current.thirdPlaceColor
-                self.thirdPlaceBackgroundView.backgroundColor = AppTheme.current.thirdPlaceColor
-                self.thirdScoreBackgroundView.backgroundColor = AppTheme.current.thirdScoreBackgroundColor
-                self.thirdScoreBackgroundView.layer.cornerRadius = 10
+                self.thirdPlaceLabel.superview?.backgroundColor = .clear
                 self.thirdScoreLabel.text = String("\(scores[2].score)")
+                self.thirdScoreLabel.textColor = UIColor.white
+                self.thirdScoreBackgroundView.layer.cornerRadius = 10
+                self.thirdScoreBackgroundView.backgroundColor = AppTheme.current.mainColor
                 
                 self.secondPlaceLabel.text = scores[1].username
                 self.secondPlaceLabel.superview?.layer.cornerRadius = 10
-                self.secondPlaceLabel.superview?.backgroundColor = AppTheme.current.secondPlaceColor
-                self.secondPlaceBackgroundView.backgroundColor = AppTheme.current.secondPlaceColor
-                self.secondScoreBackgroundView.backgroundColor = AppTheme.current.secondScoreBackgroundColor
-                self.secondScoreBackgroundView.layer.cornerRadius = 10
+                self.secondPlaceLabel.superview?.backgroundColor = .clear
                 self.secondScoreLabel.text = String("\(scores[1].score)")
+                self.secondScoreLabel.textColor = UIColor.white
+                self.secondScoreBackgroundView.layer.cornerRadius = 10
+                self.secondScoreBackgroundView.backgroundColor = AppTheme.current.mainColor
                 
                 self.firstPlaceLabel.text = scores[0].username
                 self.firstPlaceLabel.superview?.layer.cornerRadius = 10
-                self.firstPlaceLabel.superview?.backgroundColor = AppTheme.current.firstPlaceColor
-                self.firstPlaceBackgroundView.backgroundColor = AppTheme.current.firstPlaceColor
-                self.firstScoreBackgroundView.backgroundColor = AppTheme.current.firstScoreBackgroundColor
-                self.firstScoreBackgroundView.layer.cornerRadius = 10
-                self.firstScoreLabel.text = String("\(scores[0].score)")
+                self.firstPlaceLabel.superview?.backgroundColor = .clear
+                self.firstScoreLabel.text = String("\(scores[1].score)")
+                self.firstScoreLabel.textColor = UIColor.white
+                self.firstPlaceBackgroundView.layer.cornerRadius = 10
+                self.firstPlaceBackgroundView.backgroundColor = AppTheme.current.mainColor
             }
         }
         //Reload data

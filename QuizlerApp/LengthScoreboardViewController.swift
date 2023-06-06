@@ -28,6 +28,12 @@ class LengthScoreboardViewController: UIViewController, UICollectionViewDataSour
     private(set) var submodes: [SubMode] = []
     private(set) var rawSubModes: [SubMode] = []
     
+    struct LocalizationStrings {
+        static let duzinaButtonText = "length_screen_duzina_button_text".localized()
+        static let kategorijaButtonText = "length_screen_kategorija_button_text".localized()
+        static let tezinaButtonText = "length_screen_tezina_button_text".localized()
+    }
+    
     //MARK: - Init
     class func instantiate(submodes: [SubMode]) -> LengthScoreboardViewController {
         let viewController = UIStoryboard.main.instantiate(identifier) as! LengthScoreboardViewController
@@ -45,8 +51,12 @@ class LengthScoreboardViewController: UIViewController, UICollectionViewDataSour
     //MARK: - Utils
     
     func prepareThemeAndLocalization() {
+        self.view.backgroundColor = AppTheme.current.scoreboardTableViewBackgroundColor
+        self.toolbarContainerView.backgroundColor = AppTheme.current.containerColor
         
-        self.toolbarContainerView.backgroundColor = AppTheme.current.secondPlaceColor
+        self.duzinaButton.setTitle(LocalizationStrings.duzinaButtonText, for: .normal)
+        self.kategorijaButton.setTitle(LocalizationStrings.kategorijaButtonText, for: .normal)
+        self.tezinaButton.setTitle(LocalizationStrings.tezinaButtonText, for: .normal)
         
         onUnselectButton(duzinaButton)
         onUnselectButton(kategorijaButton)
@@ -56,15 +66,15 @@ class LengthScoreboardViewController: UIViewController, UICollectionViewDataSour
     }
     
     func onSelectButton(_ button: UIButton) {
-        button.tintColor = AppTheme.current.cellColor
-        button.setTitleColor(AppTheme.current.cellColor, for: .normal)
+        button.tintColor = AppTheme.current.mainColor
+        button.setTitleColor(AppTheme.current.mainColor, for: .normal)
         button.backgroundColor = UIColor.clear
-        (button.superview as? UIStackView)?.arrangedSubviews.last?.backgroundColor = AppTheme.current.cellColor
+        (button.superview as? UIStackView)?.arrangedSubviews.last?.backgroundColor = AppTheme.current.mainColor
     }
     
     func onUnselectButton(_ button: UIButton) {
-        button.tintColor = AppTheme.current.blackColor
-        button.setTitleColor(AppTheme.current.blackColor, for: .normal)
+        button.tintColor = AppTheme.current.textColor
+        button.setTitleColor(AppTheme.current.textColor, for: .normal)
         button.backgroundColor = UIColor.clear
         (button.superview as? UIStackView)?.arrangedSubviews.last?.backgroundColor = UIColor.clear
     }
@@ -116,13 +126,13 @@ class LengthScoreboardViewController: UIViewController, UICollectionViewDataSour
             //Check is tezina is selected
             if tezinaButton.isSelected {
                 result.append(contentsOf: dataSource.filter({
-                    $0.name.localized() == "Lako" || $0.name.localized() == "Srednje" || $0.name.localized() == "Tesko"
+                    $0.name.localized() == "Lako" || $0.name.localized() == "Srednje" || $0.name.localized() == "Teško"
                 }))
             }
             //Check is lategorija is selected
             if kategorijaButton.isSelected {
                 result.append(contentsOf: dataSource.filter({
-                    $0.name.localized() == "Sport" || $0.name.localized() == "Muzika" || $0.name.localized() == "Istorija" || $0.name.localized() == "Geografija" || $0.name.localized() == "Film" || $0.name.localized() == "Opste znanje"
+                    $0.name.localized() == "Sport" || $0.name.localized() == "Muzika" || $0.name.localized() == "Istorija" || $0.name.localized() == "Geografija" || $0.name.localized() == "Film" || $0.name.localized() == "Opšte znanje"
                 }))
             }
             
@@ -163,9 +173,7 @@ class LengthScoreboardViewController: UIViewController, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let fullWidth = (collectionView.bounds.width - 32) / 3.0
-        let fullHeight = fullWidth
-        
-        return CGSize(width: fullWidth, height: fullHeight)
+        return CGSize(width: fullWidth, height: 120)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -203,10 +211,14 @@ class SubModeCollectionViewCell: UICollectionViewCell {
     class var identifier: String { return "SubModeCollectionViewCell" }
     
     func setTheme(with model: SubMode) {
-        self.backgroundColor = AppTheme.current.cellColor.withAlphaComponent(0.5)
-        self.subModeImageView.alpha = 0.5
-        self.layer.cornerRadius = self.layer.bounds.width / 2
+        self.backgroundColor = AppTheme.current.collectionViewBackground
+        self.layer.cornerRadius = 10
+        self.subModeImageView.layer.cornerRadius = 10
+        self.containerView.layer.cornerRadius = 10
+        self.subModeImageView.tintColor = AppTheme.current.mainColor
+        self.subModeTitleLabel.text = model.name
         self.subModeImageView.image = UIImage(named: model.name)
         self.subModeTitleLabel.text = model.name.localized()
+        self.subModeTitleLabel.textColor = AppTheme.current.textColor
     }
 }

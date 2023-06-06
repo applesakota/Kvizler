@@ -8,260 +8,337 @@
 import UIKit
 
 
-class QuestionReportViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
+class QuestionReportViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
+
+
     //MARK: - Globals
     
     class var identifier: String { return "QuestionReportViewController" }
     
-    @IBOutlet weak var questionTextView: QuizlerTextView!
-    @IBOutlet weak var choseCategoryLabel: UITextField!
+
+    @IBOutlet weak var imageView: UIView!
+    @IBOutlet weak var headerImageView: UIImageView!
     
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var newQuestionView: UIView!
     
-    @IBOutlet weak var value1Label: UILabel!
-    @IBOutlet weak var value2Label: UILabel!
-    @IBOutlet weak var value4Label: UILabel!
-    @IBOutlet weak var value3Label: UILabel!
+    @IBOutlet weak var questionTitleView: UIView!
+    @IBOutlet weak var quizlerTextView: QuizlerTextView!
     
-    @IBOutlet weak var answer1Label: QuizlerTextField!
-    @IBOutlet weak var answer2Label: QuizlerTextField!
-    @IBOutlet weak var answer3label: QuizlerTextField!
-    @IBOutlet weak var answer4Label: QuizlerTextField!
+    @IBOutlet weak var choseCategoryView: UIView!
+    @IBOutlet weak var choseCategoryLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var button1Outlet: UIButton!
-    @IBOutlet weak var button2Outlet: UIButton!
-    @IBOutlet weak var button3Outlet: UIButton!
-    @IBOutlet weak var button4Outlet: UIButton!
+    @IBOutlet weak var correctAnswerView: UIView!
+    @IBOutlet weak var selectCorrectAnswer: UILabel!
     
-    var dataSource: [CategoryModel] = []
-    var selectedCategory: CategoryModel?
+    @IBOutlet weak var answerOneContainerView: UIView!
+    @IBOutlet weak var answerOneButton: UIButton!
+    @IBOutlet weak var answerOneTextField: QuizlerQuestionTextView!
     
-    var isAnswer1Correct: Bool = true
-    var isAnswer2Correct: Bool = false
-    var isAnswer3Correct: Bool = false
-    var isAnswer4Correct: Bool = false
+    @IBOutlet weak var answerTwoContainerView: UIView!
+    @IBOutlet weak var answerTwoButton: UIButton!
+    @IBOutlet weak var answerTwoTextField: QuizlerQuestionTextView!
     
+    @IBOutlet weak var answerThreeContainerView: UIView!
+    @IBOutlet weak var answerThreeButton: UIButton!
+    @IBOutlet weak var answerThreeTextField: QuizlerQuestionTextView!
     
+    @IBOutlet weak var answerFourContainerView: UIView!
+    @IBOutlet weak var answerFourButton: UIButton!
+    @IBOutlet weak var answerFourLabel: QuizlerQuestionTextView!
     
+    private(set) var selectedSubMode: SubMode?
+    private(set) var selectedSubModePath: IndexPath?
+    private(set) var submodes: [SubMode] = []
+    private(set) var isFirstCorrect: Bool = false
+    private(set) var isSecondCorrect: Bool = false
+    private(set) var isThirdCorrect: Bool = false
+    private(set) var isFourthCorrect: Bool = false
+    
+    @IBOutlet weak var sendQuestionButton: UIButton!
+    @IBOutlet weak var buttonView: UIView!
+    
+    private var rawSubModes: [SubMode] {
+        var array: [SubMode] = []
+        array = submodes.filter({ $0.name.localized() != "Lako" || $0.name.localized() != "Teško" || $0.name.localized() != "Srednje" || $0.name.localized() != "Zen" || $0.name.localized() != "Test" || $0.name.localized() != "Maraton" })
+        return array
+    }
+
     //MARK: - Init
     
     class func instantiate() -> QuestionReportViewController {
         let viewController = UIStoryboard.main.instantiate(identifier) as! QuestionReportViewController
+        viewController.tabBarItem = UITabBarItem(title: "Dodaj", image: #imageLiteral(resourceName: "new"), selectedImage: #imageLiteral(resourceName: "new"))
         return viewController
+    }
+    
+    class func instantiateWithNavigation() -> UINavigationController {
+        let navigationController = UINavigationController(rootViewController: instantiate())
+        navigationController.modalTransitionStyle = .crossDissolve
+        navigationController.modalPresentationStyle = .fullScreen
+        navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController.navigationBar.backgroundColor = UIColor.clear
+        return navigationController
     }
     
     // MARK: - View life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.choseCategoryLabel.delegate = self
         self.prepareThemeAndLocalization()
         self.prepareNavigationBarTheme()
-//
-//        self.apiFetchCategories { dataSource in
-//            DispatchQueue.main.async {
-//                self.dataSource = dataSource
-//                self.setupPickerView()
-//            }
-//        }
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
         
+        self.apiFetchSubmodes { [weak self] submodes in
+            guard let self = self else { return }
+            self.submodes = submodes.filter({ $0.name.localized() == "Sport" || $0.name.localized() == "Muzika" || $0.name.localized() == "Istorija" || $0.name.localized() == "Geografija" || $0.name.localized() == "Film" || $0.name.localized() == "Opšte znanje" })
+        }
     }
-    
+
     // MARK: - Utils
     
     func prepareThemeAndLocalization() {
         
         //Theme
-        self.view.backgroundColor = AppTheme.current.white
-        self.choseCategoryLabel.backgroundColor = UIColor.clear
+        self.navigationItem.title = "Postavi pitanje"
+        self.view.backgroundColor = AppTheme.current.scoreboardTableViewBackgroundColor
+        self.newQuestionView.backgroundColor = AppTheme.current.scoreboardTableViewBackgroundColor
+        self.buttonView.backgroundColor = AppTheme.current.white.withAlphaComponent(0.5)
+        self.buttonView.layer.cornerRadius = 10
+        self.sendQuestionButton.setTitleColor(AppTheme.current.bodyTextColor.withAlphaComponent(0.5), for: .normal)
         
-        self.button1Outlet.setImage(UIImage(systemName: "circle.fill"), for: .normal)
-        self.button2Outlet.setImage(UIImage(systemName: "circle"), for: .normal)
-        self.button3Outlet.setImage(UIImage(systemName: "circle"), for: .normal)
-        self.button4Outlet.setImage(UIImage(systemName: "circle"), for: .normal)
+        self.questionTitleView.backgroundColor = AppTheme.current.white
+        self.questionTitleView.layer.cornerRadius = 10
         
-        let titleColor = AppTheme.current.darkGreyColor
-        let selectedColor = AppTheme.current.darkGreyColor
-        let iconColor = AppTheme.current.historyColor
+        self.choseCategoryView.backgroundColor = AppTheme.current.white
+        self.choseCategoryView.layer.cornerRadius = 10
+        self.choseCategoryLabel.textColor = AppTheme.current.bodyTextColor
         
-        questionTextView.configure(with: QuizlerTextView.Config(
-            title: "Question",
+        self.correctAnswerView.backgroundColor = AppTheme.current.white
+        self.correctAnswerView.layer.cornerRadius = 10
+        self.selectCorrectAnswer.textColor = AppTheme.current.bodyTextColor
+        
+
+        let titleColor = AppTheme.current.bodyTextColor
+        let selectedColor = AppTheme.current.bodyTextColor
+        let iconColor = AppTheme.current.bodyTextColor
+        
+        self.quizlerTextView.configure(with: QuizlerTextView.Config(
+            title: "Pitanje",
+            countLabel: "0/200",
+            numberOfCharacters: 200,
             keyboardAppearance: .default,
-            returnKeyType: .next,
+            returnKeyType: .done,
             titleColor: titleColor,
-            backgroundColor: UIColor.clear,
-            borderColor: AppTheme.current.primary.cgColor,
+            countLabelColor: titleColor,
+            backgroundColor: AppTheme.current.scoreboardTableViewBackgroundColor,
             selectedColor: selectedColor,
             iconColor: iconColor,
             textValidationExpression: { text in
-                return (text.count >= 1, "Pitanje mora biti vece od 3 slova")
+                return (text.trimmingAllSpaces().count >= 1, "Pitanje mora biti vece od 1 slova")
             },
-            returnKeyCallback: {[weak self] in
-                self?.choseCategoryLabel.becomeFirstResponder()
+            endEditingCallback: { [weak self] in
+                guard let self = self else { return }
+                self.isButtonHidden()
             }
         ))
-        
-        answer1Label.configure(with: QuizlerTextField.Config(
-            title: nil,
-            placeholder: "Answer A",
-            isSecureTextEntry: false,
+                
+        self.answerOneTextField.configure(with: QuizlerQuestionTextView.Config(
+            title: "Odgovor",
+            countLabel: "0/50",
+            numberOfCharacters: 50,
+            maximumNumberOfLines: 2,
             keyboardAppearance: .default,
-            returnKeyType: .next,
+            returnKeyType: .done,
             titleColor: titleColor,
-            backgroundColor: UIColor.clear,
-            borderColor: AppTheme.current.primary.cgColor,
+            countLabelColor: titleColor,
+            backgroundColor: AppTheme.current.scoreboardTableViewBackgroundColor,
             selectedColor: selectedColor,
             iconColor: iconColor,
             textValidationExpression: { text in
-                return (text.count >= 1, "Odgovor mora biti veci od 3 slova")
+                return (text.trimmingAllSpaces().count >= 1, "Pitanje mora biti vece od 1 slova")
             },
-            returnKeyCallback: { [weak self] in
-                self?.answer2Label.textField.becomeFirstResponder()
+            endEditingCallback: { [weak self] in
+                guard let self = self else { return }
+                self.isButtonHidden()
             }
         ))
         
-        answer2Label.configure(with: QuizlerTextField.Config(
-            title: nil,
-            placeholder: "Answer B",
-            isSecureTextEntry: false,
+        self.answerTwoTextField.configure(with: QuizlerQuestionTextView.Config(
+            title: "Odgovor",
+            countLabel: "0/50",
+            numberOfCharacters: 50,
+            maximumNumberOfLines: 2,
             keyboardAppearance: .default,
-            returnKeyType: .next,
+            returnKeyType: .done,
             titleColor: titleColor,
-            backgroundColor: UIColor.clear,
-            borderColor: AppTheme.current.primary.cgColor,
+            countLabelColor: titleColor,
+            backgroundColor: AppTheme.current.scoreboardTableViewBackgroundColor,
             selectedColor: selectedColor,
             iconColor: iconColor,
             textValidationExpression: { text in
-                return (text.count >= 1, "Odgovor mora biti veci od 3 slova")
+                return (text.trimmingAllSpaces().count >= 1, "Pitanje mora biti vece od 1 slova")
             },
-            returnKeyCallback: { [weak self] in
-                self?.answer3label.textField.becomeFirstResponder()
+            endEditingCallback: { [weak self] in
+                guard let self = self else { return }
+                self.isButtonHidden()
             }
         ))
         
-        answer3label.configure(with: QuizlerTextField.Config(
-            title: nil,
-            placeholder: "Answer C",
-            isSecureTextEntry: false,
+        self.answerThreeTextField.configure(with: QuizlerQuestionTextView.Config(
+            title: "Odgovor",
+            countLabel: "0/50",
+            numberOfCharacters: 50,
+            maximumNumberOfLines: 2,
             keyboardAppearance: .default,
-            returnKeyType: .next,
+            returnKeyType: .done,
             titleColor: titleColor,
-            backgroundColor: UIColor.clear,
-            borderColor: AppTheme.current.primary.cgColor,
+            countLabelColor: titleColor,
+            backgroundColor: AppTheme.current.scoreboardTableViewBackgroundColor,
             selectedColor: selectedColor,
             iconColor: iconColor,
             textValidationExpression: { text in
-                return (text.count >= 1, "Odgovor mora biti veci od 3 slova")
+                return (text.trimmingAllSpaces().count >= 1, "Pitanje mora biti vece od 1 slova")
             },
-            returnKeyCallback: { [weak self] in
-                self?.answer4Label.textField.becomeFirstResponder()
+            endEditingCallback: { [weak self] in
+                guard let self = self else { return }
+                self.isButtonHidden()
             }
         ))
         
-        answer4Label.configure(with: QuizlerTextField.Config(
-            title: nil,
-            placeholder: "Answer D",
-            isSecureTextEntry: false,
+        self.answerFourLabel.configure(with: QuizlerQuestionTextView.Config(
+            title: "Odgovor",
+            countLabel: "0/50",
+            numberOfCharacters: 50,
+            maximumNumberOfLines: 2,
             keyboardAppearance: .default,
-            returnKeyType: .next,
+            returnKeyType: .done,
             titleColor: titleColor,
-            backgroundColor: UIColor.clear,
-            borderColor: AppTheme.current.primary.cgColor,
+            countLabelColor: titleColor,
+            backgroundColor: AppTheme.current.scoreboardTableViewBackgroundColor,
             selectedColor: selectedColor,
             iconColor: iconColor,
             textValidationExpression: { text in
-                return (text.count >= 1, "Odgovor mora biti veci od 3 slova")
+                return (text.trimmingAllSpaces().count >= 1, "Pitanje mora biti vece od 1 slova")
             },
-            returnKeyCallback: { [weak self] in
-                self?.answer2Label.textField.becomeFirstResponder()
+            endEditingCallback: { [weak self] in
+                guard let self = self else { return }
+                self.isButtonHidden()
             }
         ))
+        
+        self.isButtonHidden()
         
     }
-    private func setupPickerView() {
-        let categoryPicker = UIPickerView()
-        choseCategoryLabel.inputView = categoryPicker
-        categoryPicker.delegate = self
-        categoryPicker.dataSource = self
-        choseCategoryLabel.text = dataSource[0].name
-    }
-    
-    
+
     func prepareNavigationBarTheme() {
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.navigationBar.barStyle = .default
+        self.navigationController?.navigationBar.tintColor = AppTheme.current.bodyTextColor
+        self.navigationController?.navigationBar.barTintColor = AppTheme.current.mainColor
+        self.navigationController?.navigationBar.backgroundColor = AppTheme.current.containerColor
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            .font: AppTheme.semiboldFont(ofSize: 17),
+            .foregroundColor: AppTheme.current.bodyTextColor
+        ]
+        self.backgroundView.backgroundColor = AppTheme.current.containerColor
     }
     
     func prepareRequestBody() -> NSDictionary? {
         
         guard
-            let questionTitle = questionTextView.textView.text,
-            let answer1       = answer1Label.textField.text,
-            let answer2       = answer2Label.textField.text,
-            let answer3       = answer3label.textField.text,
-            let answer4       = answer4Label.textField.text,
-            let categoryId    = selectedCategory?.id
+            let questionTitle = self.quizlerTextView.textView.text,
+            let answer1       = self.answerOneTextField.textView.text,
+            let answer2       = self.answerOneTextField.textView.text,
+            let answer3       = self.answerOneTextField.textView.text,
+            let answer4       = self.answerOneTextField.textView.text,
+            let categoryId    = self.selectedSubMode?.id
         else {
             return nil
         }
         var answers: [NSDictionary] = []
-        
+
         let answer1Dictionary: NSDictionary = [
             "text": answer1,
-            "isCorrect"  : self.isAnswer1Correct
+            "isCorrect"  : isFirstCorrect
         ]
         let answer2Dictionary: NSDictionary = [
             "text": answer2,
-            "isCorrect"  : self.isAnswer2Correct
+            "isCorrect"  : isSecondCorrect
         ]
         let answer3Dictionary: NSDictionary = [
             "text" : answer3,
-            "isCorrect"   : self.isAnswer3Correct
+            "isCorrect"   : isThirdCorrect,
         ]
         let answer4Dictionary: NSDictionary = [
             "text" : answer4,
-            "isCorrect"   : self.isAnswer4Correct
+            "isCorrect"   : isFourthCorrect
         ]
-        
+
         answers.append(answer1Dictionary)
         answers.append(answer2Dictionary)
         answers.append(answer3Dictionary)
         answers.append(answer4Dictionary)
-        
-        
+
+
         //Required
         let request: NSMutableDictionary = [
             "text": questionTitle,
-            "category_id": categoryId
+            "categoryId": categoryId
         ]
-        
+
         request.setValue(answers, forKeyPath: "answers")
         print(request)
         return request
     }
     
-//    func apiRequestQuestion() {
-//        if let body = prepareRequestBody() {
-//            let loader = LoaderView.create(for: self.view, config: AppGlobals.defaultLoadConfig)
-//            AppGlobals.herokuRESTManager.postRequestQuestion(body: body) { (result) in
-//                loader.dismiss()
-//                switch result {
-//                case .success:
-//                    //Present home screen
-//                    FlowManager.presentMainScreen()
-//
-//                case .failure(let error):
-//                    DispatchQueue.main.async {
-//                        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-//                        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-//                        self.present(alert, animated: true, completion: nil)
-//                    }
-//                }
-//
-//            }
-//        } else {
-//            print("Failed to prepare request body for registration")
-//        }
-//    }
+    func apiRequestQuestion() {
+        if let body = prepareRequestBody() {
+            let loader = LoaderView.create(for: self.view, config: AppGlobals.defaultLoadConfig)
+            AppGlobals.herokuRESTManager.requestPostQuestion(body: body) { (result) in
+                loader.dismiss()
+                switch result {
+                case .success:
+                    //Present home screen
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Hvala", message: "Vaše pitanje je uspešno poslato", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default) { _ in
+                            FlowManager.presentMainScreen()
+                        })
+                        self.present(alert, animated: false)
+                    }
+
+                case .failure:
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "Greška", message: "Trenutno nije moguće poslati pitanje", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+
+            }
+        } else {
+            print("Failed to prepare request body for registration")
+        }
+    }
+    
+    func apiFetchSubmodes(_ callback: @escaping ([SubMode]) -> Swift.Void) {
+        let loader = LoaderView.create(for: self.view, config: AppGlobals.defaultLoadConfig)
+        AppGlobals.herokuRESTManager.getModes { (result) in
+            loader.dismiss()
+            switch result {
+            case .success(let categories):
+                var submodes: [SubMode] = []
+                for category in categories {
+                    submodes.append(contentsOf: category.submodes)
+                }
+                callback(submodes)
+            case .failure: break
+            }
+        }
+    }
     
     
     //MARK: - User Interaction
@@ -270,41 +347,53 @@ class QuestionReportViewController: UIViewController, UIPickerViewDelegate, UIPi
         
         switch sender.tag {
         case 1:
-            self.button1Outlet.setImage(UIImage(systemName: "circle.fill"), for: .normal)
-            self.button2Outlet.setImage(UIImage(systemName: "circle"), for: .normal)
-            self.button3Outlet.setImage(UIImage(systemName: "circle"), for: .normal)
-            self.button4Outlet.setImage(UIImage(systemName: "circle"), for: .normal)
-            self.isAnswer1Correct = true
-            self.isAnswer2Correct = false
-            self.isAnswer3Correct = false
-            self.isAnswer4Correct = false
+            self.answerOneButton.isSelected   = true
+            self.answerTwoButton.isSelected   = false
+            self.answerThreeButton.isSelected = false
+            self.answerFourButton.isSelected  = false
+            
+            self.isFirstCorrect = true
+            self.isSecondCorrect = false
+            self.isThirdCorrect = false
+            self.isFourthCorrect = false
+            
+            self.isButtonHidden()
         case 2:
-            self.button1Outlet.setImage(UIImage(systemName: "circle"), for: .normal)
-            self.button2Outlet.setImage(UIImage(systemName: "circle.fill"), for: .normal)
-            self.button3Outlet.setImage(UIImage(systemName: "circle"), for: .normal)
-            self.button4Outlet.setImage(UIImage(systemName: "circle"), for: .normal)
-            self.isAnswer1Correct = false
-            self.isAnswer2Correct = true
-            self.isAnswer3Correct = false
-            self.isAnswer4Correct = false
+            self.answerOneButton.isSelected   = false
+            self.answerTwoButton.isSelected   = true
+            self.answerThreeButton.isSelected = false
+            self.answerFourButton.isSelected  = false
+            
+            self.isFirstCorrect = false
+            self.isSecondCorrect = true
+            self.isThirdCorrect = false
+            self.isFourthCorrect = false
+            
+            self.isButtonHidden()
         case 3:
-            self.button1Outlet.setImage(UIImage(systemName: "circle"), for: .normal)
-            self.button2Outlet.setImage(UIImage(systemName: "circle"), for: .normal)
-            self.button3Outlet.setImage(UIImage(systemName: "circle.fill"), for: .normal)
-            self.button4Outlet.setImage(UIImage(systemName: "circle"), for: .normal)
-            self.isAnswer1Correct = false
-            self.isAnswer2Correct = false
-            self.isAnswer3Correct = true
-            self.isAnswer4Correct = false
+            self.answerOneButton.isSelected   = false
+            self.answerTwoButton.isSelected   = false
+            self.answerThreeButton.isSelected = true
+            self.answerFourButton.isSelected  = false
+            
+            self.isFirstCorrect = false
+            self.isSecondCorrect = false
+            self.isThirdCorrect = true
+            self.isFourthCorrect = false
+            
+            self.isButtonHidden()
         case 4:
-            self.button1Outlet.setImage(UIImage(systemName: "circle"), for: .normal)
-            self.button2Outlet.setImage(UIImage(systemName: "circle"), for: .normal)
-            self.button3Outlet.setImage(UIImage(systemName: "circle"), for: .normal)
-            self.button4Outlet.setImage(UIImage(systemName: "circle.fill"), for: .normal)
-            self.isAnswer1Correct = false
-            self.isAnswer2Correct = false
-            self.isAnswer3Correct = false
-            self.isAnswer4Correct = true
+            self.answerOneButton.isSelected   = false
+            self.answerTwoButton.isSelected   = false
+            self.answerThreeButton.isSelected = false
+            self.answerFourButton.isSelected  = true
+            
+            self.isFirstCorrect = false
+            self.isSecondCorrect = false
+            self.isThirdCorrect = false
+            self.isFourthCorrect = true
+            
+            self.isButtonHidden()
         default: return
         }
         
@@ -312,68 +401,101 @@ class QuestionReportViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     @IBAction func saveQuestionButton_Tapped(_ sender: Any) {
         if isInputValid() {
-//            self.apiRequestQuestion()
+            self.apiRequestQuestion()
+        }
+    }
+        func isInputValid() -> Bool {
+        let flag1 = quizlerTextView.checkTextValidity()
+        let flag2 = answerOneTextField.checkTextValidity()
+        let flag3 = answerTwoTextField.checkTextValidity()
+        let flag4 = answerThreeTextField.checkTextValidity()
+        let flag5 = answerFourLabel.checkTextValidity()
+        let flag6 = isAnswerChecked()
+        let flag7 = isCategorySelected()
+        
+        return flag1 && flag2 && flag3 && flag4 && flag5 && flag6 && flag7
+    }
+    
+    func isAnswerChecked() -> Bool {
+        let flag1 = isFirstCorrect
+        let flag2 = isSecondCorrect
+        let flag3 = isThirdCorrect
+        let flag4 = isFourthCorrect
+        
+        return flag1 || flag2 || flag3 || flag4
+    }
+    
+    func isCategorySelected() -> Bool {
+        return selectedSubMode != nil ? true : false
+    }
+    
+    func isButtonHidden() {
+        if isInputValid() {
+            sendQuestionButton.isUserInteractionEnabled = true
+            buttonView.backgroundColor = AppTheme.current.white
+            sendQuestionButton.setTitleColor(AppTheme.current.bodyTextColor, for: .normal)
+        } else {
+            sendQuestionButton.isUserInteractionEnabled = false
+            buttonView.backgroundColor = AppTheme.current.white.withAlphaComponent(0.5)
+            sendQuestionButton.setTitleColor(AppTheme.current.bodyTextColor.withAlphaComponent(0.5), for: .normal)
         }
     }
     
-    func isInputValid() -> Bool {
-        let flag1 = questionTextView.checkTextValidity()
-        let flag2 = answer1Label.checkTextValidity()
-        let flag3 = answer2Label.checkTextValidity()
-        let flag4 = answer3label.checkTextValidity()
-        let flag5 = answer4Label.checkTextValidity()
-        
-        
-        return flag1 && flag2 && flag3 && flag4 && flag5
-    }
-    
-    
     // MARK: - DataSources / Delegates
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return rawSubModes.isEmpty ? 1 : rawSubModes.count
     }
     
-    func pickerView( _ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return dataSource.count
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SelectCategoryCollectionViewCell.identifier, for: indexPath) as? SelectCategoryCollectionViewCell else { return UICollectionViewCell() }
+        cell.setTheme(for: rawSubModes[indexPath.item])
+        if indexPath == selectedSubModePath {
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
+            cell.setupSelectedBackground(isSelected: true)
+        }
+        return cell
+        
     }
     
-    func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dataSource[row].name
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedSubMode = rawSubModes[indexPath.item]
+        selectedSubModePath = indexPath
+        self.isButtonHidden()
     }
-    
-    func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let category = dataSource[row]
-        choseCategoryLabel.text = category.name
-        selectedCategory = category
-    }
-    
-    //MARK: Api
-    
-//    private func apiFetchCategories(_ callback: @escaping ([CategoryModel])->Swift.Void) {
-//        let loader = LoaderView.create(for: self.view, config: AppGlobals.defaultLoadConfig)
-//
-//        AppGlobals.herokuRESTManager.getCategories { (result) in
-//            loader.dismiss()
-//            switch result {
-//            case .success(let dataSource): callback(dataSource)
-//            case .failure: break
-//            }
-//        }
-//    }
     
     
 }
-//MARK: - UITextFieldDelegate
 
-extension QuestionReportViewController: UITextFieldDelegate {
+//MARK: - UICollectionViewCell
+
+class SelectCategoryCollectionViewCell: UICollectionViewCell {
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.choseCategoryLabel.layer.borderColor = AppTheme.current.primary.cgColor
-        self.choseCategoryLabel.layer.borderWidth = 2.0
+    class var identifier: String { return "SelectCategoryCollectionViewCell" }
+    @IBOutlet weak var titleLabel: UILabel!
+    override var isSelected: Bool {
+        didSet {
+            setSelectedCell(isSelected: isSelected)
+        }
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        self.choseCategoryLabel.layer.borderWidth = 0.0
+    func setTheme(for model: SubMode) {
+        self.titleLabel.text = model.name.localized()
+        self.backgroundColor = AppTheme.current.containerColor.withAlphaComponent(0.5)
+        self.titleLabel.textColor = AppTheme.current.bodyTextColor
+        self.layer.cornerRadius = 10
     }
+    
+    func setSelectedCell(isSelected: Bool) {
+        print("isSelected \(isSelected)")
+        setupSelectedBackground(isSelected: isSelected)
+    }
+    
+    func setupSelectedBackground(isSelected: Bool) {
+        self.backgroundColor = isSelected ? AppTheme.current.mainColor : AppTheme.current.containerColor
+        self.titleLabel.textColor = isSelected ? AppTheme.current.white : AppTheme.current.bodyTextColor
+        self.layoutIfNeeded()
+    }
+    
+    
 }

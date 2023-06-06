@@ -26,6 +26,7 @@
                 <outlet property="alertTitleLabel" destination="oDB-gs-qtU" id="IuX-2T-h92"/>
                 <outlet property="alertView" destination="FhZ-Mh-aer" id="nJw-Wo-msa"/>
                 <outlet property="alertYesButton" destination="UcI-BV-5Ru" id="faO-1A-Hkj"/>
+                <outlet property="buttonsStackView" destination="jJ9-V1-tGX" id="Rsq-Ul-Zl0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="pzr-tM-uy0"/>
             </connections>
         </placeholder>
@@ -35,35 +36,35 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FhZ-Mh-aer">
-                    <rect key="frame" x="8" y="300.33333333333331" width="377" height="251.33333333333331"/>
+                    <rect key="frame" x="8" y="308.33333333333331" width="377" height="235.33333333333331"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="sJz-76-nQw">
-                            <rect key="frame" x="16" y="16" width="345" height="219.33333333333334"/>
+                            <rect key="frame" x="0.0" y="16" width="377" height="219.33333333333334"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exit-2" translatesAutoresizingMaskIntoConstraints="NO" id="n1e-kv-sGc">
-                                    <rect key="frame" x="142.66666666666663" y="0.0" width="60.000000000000028" height="60"/>
+                                    <rect key="frame" x="158.66666666666666" y="0.0" width="60" height="60"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="n1e-kv-sGc" secondAttribute="height" multiplier="1:1" id="okY-I8-b0o"/>
                                         <constraint firstAttribute="width" constant="60" id="sCG-pC-HQR"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Naapusti kviz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDB-gs-qtU">
-                                    <rect key="frame" x="106" y="80" width="133.33333333333337" height="26.666666666666671"/>
+                                    <rect key="frame" x="122.00000000000001" y="80" width="133.33333333333337" height="26.666666666666671"/>
                                     <fontDescription key="fontDescription" name="RobotoSlab-SemiBold" family="Roboto Slab" pointSize="20"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Da li sigurno želiš da napustiš kviz ?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icJ-UQ-miG">
-                                    <rect key="frame" x="27.333333333333371" y="126.6666666666667" width="290.33333333333326" height="22.666666666666671"/>
+                                    <rect key="frame" x="43.333333333333343" y="126.6666666666667" width="290.33333333333326" height="22.666666666666671"/>
                                     <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jJ9-V1-tGX">
-                                    <rect key="frame" x="0.0" y="169.33333333333337" width="345" height="50"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="jJ9-V1-tGX">
+                                    <rect key="frame" x="0.0" y="169.33333333333337" width="377" height="50"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVB-z2-YP4">
-                                            <rect key="frame" x="0.0" y="0.0" width="168.66666666666666" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="188.66666666666666" height="50"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="JjU-Y1-cmd"/>
                                             </constraints>
@@ -77,7 +78,10 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcI-BV-5Ru">
-                                            <rect key="frame" x="176.66666666666663" y="0.0" width="168.33333333333337" height="50"/>
+                                            <rect key="frame" x="188.66666666666663" y="0.0" width="188.33333333333337" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="T0V-br-lS4"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" name="RobotoSlab-SemiBold" family="Roboto Slab" pointSize="20"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="Da">
@@ -88,19 +92,20 @@
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="O25-cP-AX1"/>
+                                    </constraints>
                                 </stackView>
                             </subviews>
-                            <constraints>
-                                <constraint firstItem="jJ9-V1-tGX" firstAttribute="leading" secondItem="sJz-76-nQw" secondAttribute="leading" id="87X-2Q-q8o"/>
-                                <constraint firstAttribute="trailing" secondItem="jJ9-V1-tGX" secondAttribute="trailing" id="duN-Ck-3Op"/>
-                            </constraints>
                         </stackView>
                     </subviews>
                     <color key="backgroundColor" name="backgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="sJz-76-nQw" secondAttribute="trailing" constant="16" id="02d-bK-RDA"/>
-                        <constraint firstAttribute="bottom" secondItem="sJz-76-nQw" secondAttribute="bottom" constant="16" id="CS0-E0-lDb"/>
-                        <constraint firstItem="sJz-76-nQw" firstAttribute="leading" secondItem="FhZ-Mh-aer" secondAttribute="leading" constant="16" id="I8s-u5-nD8"/>
+                        <constraint firstAttribute="trailing" secondItem="sJz-76-nQw" secondAttribute="trailing" id="02d-bK-RDA"/>
+                        <constraint firstAttribute="bottom" secondItem="sJz-76-nQw" secondAttribute="bottom" id="CS0-E0-lDb"/>
+                        <constraint firstItem="sJz-76-nQw" firstAttribute="leading" secondItem="FhZ-Mh-aer" secondAttribute="leading" id="I8s-u5-nD8"/>
+                        <constraint firstItem="jJ9-V1-tGX" firstAttribute="leading" secondItem="FhZ-Mh-aer" secondAttribute="leading" id="Jbn-el-GAc"/>
+                        <constraint firstAttribute="trailing" secondItem="jJ9-V1-tGX" secondAttribute="trailing" id="cUi-6L-wpK"/>
                         <constraint firstItem="sJz-76-nQw" firstAttribute="top" secondItem="FhZ-Mh-aer" secondAttribute="top" constant="16" id="mNj-ay-tdd"/>
                     </constraints>
                 </view>

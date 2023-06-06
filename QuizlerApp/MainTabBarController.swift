@@ -18,39 +18,40 @@ class MainTabBarController: UITabBarController {
         return tabBarController
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareTabBarTheme()
         // Do any additional setup after loading the view.
         viewControllers = [
             NewHomeViewController.instantiateWithNavigation(),
-            ScoreboardViewController.instantiateWithNavigation()
+            QuestionReportViewController.instantiateWithNavigation(),
+            ScoreboardViewController.instantiateWithNavigation(),
+            SettingsViewController.instantiateWithNavigation()
         ]
     }
     
     
     private func prepareTabBarTheme() {
-        self.tabBar.tintColor = AppTheme.current.blackColor
-        self.tabBar.barTintColor = AppTheme.current.secondPlaceColor
-        self.tabBar.unselectedItemTintColor = AppTheme.current.blackColor.withAlphaComponent(0.5)
+        self.tabBar.tintColor = AppTheme.current.bodyTextColor
+        self.tabBar.barTintColor = AppTheme.current.containerColor
+        self.tabBar.unselectedItemTintColor = AppTheme.current.bodyTextColor.withAlphaComponent(0.5)
         
         if #available(iOS 15.0, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = AppTheme.current.secondPlaceColor
-            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: AppTheme.current.blackColor.withAlphaComponent(0.4)]
-            appearance.stackedLayoutAppearance.normal.iconColor = AppTheme.current.blackColor.withAlphaComponent(0.4)
-            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: AppTheme.current.blackColor]
-            appearance.stackedLayoutAppearance.selected.iconColor = AppTheme.current.blackColor
-            appearance.inlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: AppTheme.current.blackColor.withAlphaComponent(0.4)]
-            appearance.inlineLayoutAppearance.normal.iconColor = AppTheme.current.blackColor.withAlphaComponent(0.4)
-            appearance.inlineLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: AppTheme.current.blackColor]
-            appearance.inlineLayoutAppearance.selected.iconColor = AppTheme.current.blackColor
-            appearance.compactInlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: AppTheme.current.blackColor.withAlphaComponent(0.4)]
-            appearance.compactInlineLayoutAppearance.normal.iconColor = AppTheme.current.blackColor.withAlphaComponent(0.4)
-            appearance.compactInlineLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: AppTheme.current.blackColor]
-            appearance.compactInlineLayoutAppearance.selected.iconColor = AppTheme.current.blackColor
+            appearance.backgroundColor = AppTheme.current.containerColor
+            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: AppTheme.current.bodyTextColor.withAlphaComponent(0.4)]
+            appearance.stackedLayoutAppearance.normal.iconColor = AppTheme.current.bodyTextColor.withAlphaComponent(0.4)
+            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: AppTheme.current.bodyTextColor]
+            appearance.stackedLayoutAppearance.selected.iconColor = AppTheme.current.bodyTextColor
+            appearance.inlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: AppTheme.current.bodyTextColor.withAlphaComponent(0.4)]
+            appearance.inlineLayoutAppearance.normal.iconColor = AppTheme.current.bodyTextColor.withAlphaComponent(0.4)
+            appearance.inlineLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: AppTheme.current.bodyTextColor]
+            appearance.inlineLayoutAppearance.selected.iconColor = AppTheme.current.bodyTextColor
+            appearance.compactInlineLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: AppTheme.current.bodyTextColor.withAlphaComponent(0.4)]
+            appearance.compactInlineLayoutAppearance.normal.iconColor = AppTheme.current.bodyTextColor.withAlphaComponent(0.4)
+            appearance.compactInlineLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: AppTheme.current.bodyTextColor]
+            appearance.compactInlineLayoutAppearance.selected.iconColor = AppTheme.current.bodyTextColor
                  
             self.tabBar.standardAppearance = appearance
             self.tabBar.scrollEdgeAppearance = appearance
@@ -61,7 +62,9 @@ class MainTabBarController: UITabBarController {
     lazy var tabBarViewControllers: [UIViewController] = {
         let viewControllers = [
             NewHomeViewController.instantiateWithNavigation(),
-            ScoreboardViewController.instantiateWithNavigation()
+            QuestionReportViewController.instantiateWithNavigation(),
+            ScoreboardViewController.instantiateWithNavigation(),
+            SettingsViewController.instantiateWithNavigation()
         ]
         viewControllers.forEach({ $0.viewControllers.first?.loadViewIfNeeded() })
         return viewControllers
@@ -73,7 +76,15 @@ class MainTabBarController: UITabBarController {
     }
     
     var scoreBoardViewController: ScoreboardViewController {
-        return (tabBarViewControllers[1] as! UINavigationController).viewControllers[0] as! ScoreboardViewController
+        return (tabBarViewControllers[2] as! UINavigationController).viewControllers[0] as! ScoreboardViewController
+    }
+    
+    var questionReportViewController: QuestionReportViewController {
+        return (tabBarViewControllers[1] as! UINavigationController).viewControllers[0] as! QuestionReportViewController
+    }
+    
+    var settingsViewController: SettingsViewController {
+        return (tabBarViewControllers[2] as! UINavigationController).viewControllers[0] as! SettingsViewController
     }
 
 }
