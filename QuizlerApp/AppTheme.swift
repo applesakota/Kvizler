@@ -211,4 +211,16 @@ enum AppTheme {
         UIColor(named: "congratsBackgroundColor")!
     }
     
+    var blueBackgroundColor: UIColor {
+        UIColor(named: "GeneralknowledgeColor")!
+    }
+    
+    var purpleBackgroundColor: UIColor {
+        UIColor(named: "purpleBackgroundColor")!
+    }
+    
+    var yellowBackgroundColor: UIColor {
+        UIColor(named: "yellowBackgroundColor")!
+    }
+    
 }

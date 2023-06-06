@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="RobotoSlab-Regular.ttf">
+            <string>RobotoSlab-Regular</string>
+        </array>
         <array key="RobotoSlab-SemiBold.ttf">
             <string>RobotoSlab-SemiBold</string>
         </array>
@@ -24,7 +27,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="e8J-Oh-M1i">
-                        <rect key="frame" x="16" y="16" width="119" height="111"/>
+                        <rect key="frame" x="16" y="15.999999999999993" width="119" height="113.33333333333331"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUJ-ru-E3R">
                                 <rect key="frame" x="31.666666666666664" y="0.0" width="55.999999999999993" height="56"/>
@@ -54,8 +57,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 pitanja" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDx-IL-o0i">
-                                <rect key="frame" x="29.000000000000004" y="94.666666666666671" width="61.333333333333343" height="16.333333333333329"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <rect key="frame" x="27" y="94.666666666666671" width="65.333333333333329" height="18.666666666666671"/>
+                                <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>

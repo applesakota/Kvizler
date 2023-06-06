@@ -48,6 +48,8 @@ class NewHomeViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.fetchBackgroundColorFromDB()
+        
     }
 
     override func viewDidLoad() {
@@ -79,6 +81,7 @@ class NewHomeViewController: UIViewController, UITableViewDataSource, UITableVie
         }
         
     }
+
     
     // MARK: - Utils
     
@@ -86,7 +89,6 @@ class NewHomeViewController: UIViewController, UITableViewDataSource, UITableVie
         //Theme
         tableView.delegate = self
         tableView.dataSource = self
-        self.view.backgroundColor = AppTheme.current.mainColor
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
         
     }
@@ -95,7 +97,7 @@ class NewHomeViewController: UIViewController, UITableViewDataSource, UITableVie
     
     private func apiFetchCategories(_ callback: @escaping ([CategoryModel])->Swift.Void) {
         let loader = LoaderView.create(for: self.view, config: AppGlobals.defaultLoadConfig)
-        
+         
         AppGlobals.herokuRESTManager.getModes { (result) in
             loader.dismiss()
             switch result {
@@ -154,6 +156,15 @@ class NewHomeViewController: UIViewController, UITableViewDataSource, UITableVie
             case .success(let dataSource): callback(dataSource)
             case .failure: break
             }
+        }
+    }
+    
+    private func fetchBackgroundColorFromDB() {
+        if let colorData: Data = AppGlobals.standardLocalStorage.loadCodable("SELECTED_HOME_COLOR"),
+           let backgroundColor = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(colorData) as? UIColor {
+            self.view.backgroundColor = backgroundColor
+        } else {
+            self.view.backgroundColor = AppTheme.current.mainColor
         }
     }
 }

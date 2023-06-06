@@ -158,9 +158,7 @@ class HerokuRestManager {
         }
     }
     
-
     private func loadModelFromLocalStorageIfAny<T: Codable>(hashKey: String) -> T? {
-        
         let model: T? = storage.loadCodable(hashKey)
         return model
     }

@@ -98,6 +98,11 @@ class QuizViewController: UIViewController, QuizlerWarningViewDelegate {
         self.answer3Button.layer.cornerRadius = answer1Button.layer.bounds.height / 2
         self.answer4Button.layer.cornerRadius = answer4Button.layer.bounds.height / 2
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.fetchBackgroundColorFromDB()
+    }
         
     //MARK: - User Interaction
     
@@ -108,28 +113,28 @@ class QuizViewController: UIViewController, QuizlerWarningViewDelegate {
             timer.invalidate()
             self.timerView.pauseAnimation()
             isAnswerRight(button: sender)
-            sender.backgroundColor = AppTheme.current.cardOrange
+            sender.backgroundColor = AppTheme.current.categoryViewBackgroundColor
             showRightAnswer()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { self.prepareNewQuestion() }
         case 2:
             timer.invalidate()
             self.timerView.pauseAnimation()
             isAnswerRight(button: sender)
-            sender.backgroundColor = AppTheme.current.cardOrange
+            sender.backgroundColor = AppTheme.current.categoryViewBackgroundColor
             showRightAnswer()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { self.prepareNewQuestion() }
         case 3:
             timer.invalidate()
             self.timerView.pauseAnimation()
             isAnswerRight(button: sender)
-            sender.backgroundColor = AppTheme.current.cardOrange
+            sender.backgroundColor = AppTheme.current.categoryViewBackgroundColor
             showRightAnswer()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { self.prepareNewQuestion() }
         case 4:
             timer.invalidate()
             self.timerView.pauseAnimation()
             isAnswerRight(button: sender)
-            sender.backgroundColor = AppTheme.current.cardOrange
+            sender.backgroundColor = AppTheme.current.categoryViewBackgroundColor
             showRightAnswer()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { self.prepareNewQuestion() }
         default: return
@@ -153,7 +158,6 @@ class QuizViewController: UIViewController, QuizlerWarningViewDelegate {
         
         self.questionTitleLabel.text = questions[counter].questionTitle
         self.questionTitleLabel.textColor = AppTheme.current.bodyTextColor
-        self.headerView.backgroundColor = AppTheme.current.containerColor
         
         self.answer1Button.backgroundColor = AppTheme.current.containerColor
         self.answer1Button.setTitle(questions[counter].answers[0].answerText, for: .normal)
@@ -351,6 +355,15 @@ class QuizViewController: UIViewController, QuizlerWarningViewDelegate {
         self.prepareThemeAndLocalization()
     }
     
+    
+    private func fetchBackgroundColorFromDB() {
+        if let colorData: Data = AppGlobals.standardLocalStorage.loadCodable("SELECTED_QUIZ_COLOR"),
+           let backgroundColor = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(colorData) as? UIColor {
+            self.headerView.backgroundColor = backgroundColor
+        } else {
+            self.headerView.backgroundColor = AppTheme.current.containerColor
+        }
+    }
 
     
     

@@ -18,7 +18,6 @@ class MainTabBarController: UITabBarController {
         return tabBarController
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareTabBarTheme()
@@ -26,7 +25,8 @@ class MainTabBarController: UITabBarController {
         viewControllers = [
             NewHomeViewController.instantiateWithNavigation(),
             QuestionReportViewController.instantiateWithNavigation(),
-            ScoreboardViewController.instantiateWithNavigation()
+            ScoreboardViewController.instantiateWithNavigation(),
+            SettingsViewController.instantiateWithNavigation()
         ]
     }
     
@@ -63,7 +63,8 @@ class MainTabBarController: UITabBarController {
         let viewControllers = [
             NewHomeViewController.instantiateWithNavigation(),
             QuestionReportViewController.instantiateWithNavigation(),
-            ScoreboardViewController.instantiateWithNavigation()
+            ScoreboardViewController.instantiateWithNavigation(),
+            SettingsViewController.instantiateWithNavigation()
         ]
         viewControllers.forEach({ $0.viewControllers.first?.loadViewIfNeeded() })
         return viewControllers
@@ -80,6 +81,10 @@ class MainTabBarController: UITabBarController {
     
     var questionReportViewController: QuestionReportViewController {
         return (tabBarViewControllers[1] as! UINavigationController).viewControllers[0] as! QuestionReportViewController
+    }
+    
+    var settingsViewController: SettingsViewController {
+        return (tabBarViewControllers[2] as! UINavigationController).viewControllers[0] as! SettingsViewController
     }
 
 }

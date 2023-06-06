@@ -31,7 +31,7 @@ class HerokuServiceManager: HerokuService {
     
     ///Question request implementation
     func executePostQuestion(body: NSDictionary, _ callback: @escaping DataCallBack) {
-        let url = URL(string: "\(RESTManager.shared.server)/questions")!
+        let url = URL(string: "\(RESTManager.shared.server)/questions/create")!
         let request = RESTManager.RESTRequest(session: URLSession.shared, url: url, method: .post)
         request.setBody(body: body)
         request.execute(callback)
