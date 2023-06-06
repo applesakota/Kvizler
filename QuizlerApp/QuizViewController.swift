@@ -9,7 +9,9 @@ import UIKit
 import ProgressHUD
 
 
-class QuizViewController: UIViewController {
+class QuizViewController: UIViewController, QuizlerWarningViewDelegate {
+
+    
     
     //MARK: - Globals
     
@@ -17,12 +19,7 @@ class QuizViewController: UIViewController {
     
     @IBOutlet weak var headerView: UIView!
     
-    @IBOutlet weak var numberOfQuestionsView: UIView!
-    @IBOutlet weak var numberOfQuestionsLabel: UILabel!
-    @IBOutlet weak var numberOfQuestionsCountLabel: UILabel!
-    @IBOutlet weak var quizlerPopUpContainerView: UIView!
-    @IBOutlet weak var quizlerPopUpView: QuizlerCustomPopUpView!
-    
+    @IBOutlet weak var countProgresView: UIProgressView!
     @IBOutlet weak var coinView: UIView!
     @IBOutlet weak var coinResultLabel: UILabel!
     @IBOutlet weak var coinImageView: UIImageView!
@@ -40,7 +37,11 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var answer4Button: UIButton!
     
     @IBOutlet weak var reportButton: UIButton!
+    @IBOutlet weak var reportView: UIView!
+    @IBOutlet weak var reportLabel: UILabel!
     
+    @IBOutlet weak var warningViewBackground: UIView!
+    @IBOutlet weak var customWarningView: QuizlerWarningView!
     
     var colorTheme: UIColor? = AppTheme.current.cellColor
     var categoryId: String?
@@ -49,6 +50,7 @@ class QuizViewController: UIViewController {
     var timer = Timer()
     var timerCount = 15
     var timePerQuestion = 15
+    var resumedTime = 0
     private var id: String!
     private var countNumberOfCorrectAnswers = 0
     private var fibiCount = 0
@@ -63,14 +65,16 @@ class QuizViewController: UIViewController {
     var name: String!
     
     private var questions: [QuestionModel] = []
+    private var reportTypes: [ReportTypeModel] = []
     var numberOfQuestions: Int = 20
     var mode: String!
     
     //MARK: - Init
     
-    class func instantiate(questions: [QuestionModel], numberOfQuestions: Int, timePerQuestion: Int, mode: String) -> QuizViewController {
+    class func instantiate(questions: [QuestionModel], reportTypes: [ReportTypeModel], numberOfQuestions: Int, timePerQuestion: Int, mode: String) -> QuizViewController {
         let viewController = UIStoryboard.utils.instantiate(identifier) as! QuizViewController
         viewController.questions = questions
+        viewController.reportTypes = reportTypes
         viewController.timePerQuestion = timePerQuestion
         viewController.numberOfQuestions = numberOfQuestions
         viewController.mode = mode
@@ -83,6 +87,8 @@ class QuizViewController: UIViewController {
         super.viewDidLoad()
         self.prepareNavigationView()
         self.prepareThemeAndLocalization()
+        self.countProgresView.progress = 0.0
+        self.countProgresView.progressTintColor = AppTheme.current.mainColor
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -91,6 +97,11 @@ class QuizViewController: UIViewController {
         self.answer2Button.layer.cornerRadius = answer1Button.layer.bounds.height / 2
         self.answer3Button.layer.cornerRadius = answer1Button.layer.bounds.height / 2
         self.answer4Button.layer.cornerRadius = answer4Button.layer.bounds.height / 2
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.fetchBackgroundColorFromDB()
     }
         
     //MARK: - User Interaction
@@ -102,28 +113,28 @@ class QuizViewController: UIViewController {
             timer.invalidate()
             self.timerView.pauseAnimation()
             isAnswerRight(button: sender)
-            sender.backgroundColor = AppTheme.current.cardOrange
+            sender.backgroundColor = AppTheme.current.categoryViewBackgroundColor
             showRightAnswer()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { self.prepareNewQuestion() }
         case 2:
             timer.invalidate()
             self.timerView.pauseAnimation()
             isAnswerRight(button: sender)
-            sender.backgroundColor = AppTheme.current.cardOrange
+            sender.backgroundColor = AppTheme.current.categoryViewBackgroundColor
             showRightAnswer()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { self.prepareNewQuestion() }
         case 3:
             timer.invalidate()
             self.timerView.pauseAnimation()
             isAnswerRight(button: sender)
-            sender.backgroundColor = AppTheme.current.cardOrange
+            sender.backgroundColor = AppTheme.current.categoryViewBackgroundColor
             showRightAnswer()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { self.prepareNewQuestion() }
         case 4:
             timer.invalidate()
             self.timerView.pauseAnimation()
             isAnswerRight(button: sender)
-            sender.backgroundColor = AppTheme.current.cardOrange
+            sender.backgroundColor = AppTheme.current.categoryViewBackgroundColor
             showRightAnswer()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { self.prepareNewQuestion() }
         default: return
@@ -143,52 +154,59 @@ class QuizViewController: UIViewController {
     }
     
     func prepareThemeAndLocalization() {
+        self.view.backgroundColor = AppTheme.current.mainColor
         
         self.questionTitleLabel.text = questions[counter].questionTitle
-        self.headerView.backgroundColor = AppTheme.current.cellBackgroundColor
+        self.questionTitleLabel.textColor = AppTheme.current.bodyTextColor
         
-        self.answer1Button.backgroundColor = colorTheme
+        self.answer1Button.backgroundColor = AppTheme.current.containerColor
         self.answer1Button.setTitle(questions[counter].answers[0].answerText, for: .normal)
-        self.answer1Button.setTitleColor(AppTheme.current.white, for: .normal)
+        self.answer1Button.setTitleColor(AppTheme.current.bodyTextColor, for: .normal)
         self.answer1Button.layer.cornerRadius = answer1Button.layer.bounds.height / 2
         self.answer1Button.isExclusiveTouch = true
         
-        self.answer2Button.backgroundColor = colorTheme
+        self.answer2Button.backgroundColor = AppTheme.current.containerColor
         self.answer2Button.setTitle(questions[counter].answers[1].answerText, for: .normal)
-        self.answer2Button.setTitleColor(AppTheme.current.white, for: .normal)
+        self.answer2Button.setTitleColor(AppTheme.current.bodyTextColor, for: .normal)
         self.answer2Button.layer.cornerRadius = answer2Button.layer.bounds.height / 2
         self.answer2Button.isExclusiveTouch = true
         
-        self.answer3Button.backgroundColor = colorTheme
+        self.answer3Button.backgroundColor = AppTheme.current.containerColor
         self.answer3Button.setTitle(questions[counter].answers[2].answerText, for: .normal)
-        self.answer3Button.setTitleColor(AppTheme.current.white, for: .normal)
+        self.answer3Button.setTitleColor(AppTheme.current.bodyTextColor, for: .normal)
         self.answer3Button.layer.cornerRadius = answer3Button.layer.bounds.height / 2
         self.answer3Button.isExclusiveTouch = true
         
+        self.reportButton.isExclusiveTouch = true
+        self.reportView.backgroundColor = AppTheme.current.categoryViewBackgroundColor
+        self.reportView.layer.cornerRadius = 5
+        self.reportLabel.textColor = AppTheme.current.categoryViewTextColor
+        self.warningViewBackground.isHidden = true
+        self.customWarningView.isHidden = true
+        
+
         if questions[counter].answers.count <= 3 { self.answer4Button.isHidden = true } else {
             self.answer4Button.isHidden = false
-            self.answer4Button.backgroundColor = colorTheme
+            self.answer4Button.backgroundColor = AppTheme.current.containerColor
             self.answer4Button.setTitle(questions[counter].answers[3].answerText, for: .normal)
-            self.answer4Button.setTitleColor(AppTheme.current.white, for: .normal)
+            self.answer4Button.setTitleColor(AppTheme.current.bodyTextColor, for: .normal)
             self.answer4Button.layer.cornerRadius = answer4Button.layer.bounds.height / 2
             self.answer4Button.isExclusiveTouch = true
         }
         
-        self.numberOfQuestionsCountLabel.text = "\(counter + 1) / \(questions.count)"
         self.view.isUserInteractionEnabled = true
         self.timerCount = timePerQuestion
         self.timerValueLabel.text = "\(timerCount)"
+        self.timerValueLabel.textColor = AppTheme.current.bodyTextColor
         self.view.makeCircleLayer(onView: timerView, withShapeLayer: shapeLayer, label: timerValueLabel, defaultTimeRemaining: timerCount, timeRemaining: timerCount)
-        self.closeButton.backgroundColor = AppTheme.current.errorRed
-        self.closeButton.imageView?.tintColor = UIColor.white
+        self.closeButton.backgroundColor = AppTheme.current.mainColor
+        self.closeButton.imageView?.tintColor = AppTheme.current.containerColor
         self.closeButton.layer.cornerRadius = closeButton.layer.bounds.width / 2
         self.closeButton.clipsToBounds = true
-        self.numberOfQuestionsView.layer.cornerRadius = 10
         self.coinView.layer.cornerRadius = 10
-        self.numberOfQuestionsLabel.text = "Pitanje"
+        self.coinView.backgroundColor = .clear
         self.coinResultLabel.text = "\(score)"
-        self.quizlerPopUpView.isHidden = true
-        self.quizlerPopUpContainerView.isHidden = true
+        self.coinResultLabel.textColor = AppTheme.current.bodyTextColor
         
         self.timerView.backgroundColor = UIColor.clear
         timer.invalidate()
@@ -272,23 +290,28 @@ class QuizViewController: UIViewController {
     
     private func updateUIOnStateChange() {
         self.coinResultLabel.text = "\(score)"
+        self.setUpProgressView(for: counter)
+    }
+    
+    func setUpProgressView(for countValue: Int) {
+        countProgresView.setProgress(Float(countValue) / Float(numberOfQuestions), animated: true)
     }
     
     func prepareNewQuestion() {
         if !questions.isEmpty {
             if counter == questions.count {
                 DispatchQueue.main.async {
-                    self.view.isUserInteractionEnabled = true
-                    self.quizlerPopUpView.configure(with: self.score, numberOfAnsers: self.countNumberOfCorrectAnswers, countOfAnswers: self.numberOfQuestions, mode: self.questions.first?.categoryId)
-                    self.quizlerPopUpView.isHidden = false
-                    self.quizlerPopUpContainerView.isHidden = false
-                    self.quizlerPopUpContainerView.backgroundColor = AppTheme.current.backgroundColor.withAlphaComponent(0.7)
-                    self.quizlerPopUpView.delegate = self
+                    self.presentResultViewController()
                 }
             } else {
                 self.prepareThemeAndLocalization()
             }
         }
+    }
+    
+    private func presentResultViewController() {
+        let viewController = QuizResultViewController.instantiate(with: score, numberOfAnswers: countNumberOfCorrectAnswers, countOfAnswers: numberOfQuestions, mode: mode)
+        self.present(viewController, animated: true)
     }
     
     func calculateScore(numCorrectAnswers: Int) -> Int {
@@ -311,37 +334,41 @@ class QuizViewController: UIViewController {
     // MARK: - User Interaction
     
     @IBAction func reportButtonTouched(_ sender: Any) {
-        print("Dugme stisnuto bajo")
+        self.timer.invalidate()
+        self.timerView.pauseAnimation()
+        
+        self.customWarningView.configure(with: QuizlerWarningView.Config(
+            title: "Prijava nevalidnog pitanja",
+            wariningColor: AppTheme.current.mainColor,
+            warinngDescription: "Obelezite razloge zasto mislite da je pitanje nevalidno.",
+            reportTypes: reportTypes,
+            questionId: questions[counter].id)
+        )
+        self.warningViewBackground.isHidden = false
+        self.customWarningView.isHidden = false
+        self.customWarningView.delegate = self
     }
+    
+    func returnToQuiz() {
+        self.warningViewBackground.isHidden = true
+        self.customWarningView.isHidden = true
+        self.prepareThemeAndLocalization()
+    }
+    
+    
+    private func fetchBackgroundColorFromDB() {
+        if let colorData: Data = AppGlobals.standardLocalStorage.loadCodable("SELECTED_QUIZ_COLOR"),
+           let backgroundColor = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(colorData) as? UIColor {
+            self.headerView.backgroundColor = backgroundColor
+        } else {
+            self.headerView.backgroundColor = AppTheme.current.containerColor
+        }
+    }
+
+    
+    
 }
 
-//MARK: - SendScoreButtonDelegate
-extension QuizViewController: SendScoreButtonDelegate {
-    
-    func sendScore(username: String) {
-        apiPostRequestScore(username: username, mode: mode, score: score) { message in
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: "Info", message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default) { _ in
-                    FlowManager.presentMainScreen()
-                })
-                self.present(alert, animated: false)
-            }
-        }
-    }
-    
-//MARK: - API
-    
-    func apiPostRequestScore(username: String, mode: String, score: Int, _ callback: @escaping (String) -> Swift.Void) {
-        let loader = LoaderView.create(for: self.view)
-        AppGlobals.herokuRESTManager.requestPostScore(username: username, mode: mode, score: score) { result in
-            loader.dismiss()
-            switch result {
-            case .success: callback("Tvoj rezultat je zabelezen")
-            case .failure: callback("Greska pri slanju rezultata")
-            }
-        }
-    }
-}
+
 
 

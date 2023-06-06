@@ -22,14 +22,17 @@ class ScoreboardTableViewCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     //Set theme
     func setTheme(for model: ScoreModel, rank: Int) {
+        self.backgroundColor = AppTheme.current.scoreboardTableViewBackgroundColor
         medalImageView.image = UIImage(named: "coin")
         usernameLabel.text = model.username
         scoreLabel.text = model.scoreAsString
+        scoreRankLabel.text = String(rank)
+        containerView.backgroundColor = AppTheme.current.white
+        containerView.layer.cornerRadius = 10
+        scoreBackgroundView.backgroundColor = .clear
+        scoreBackgroundView.layer.borderWidth = 1
         scoreBackgroundView.layer.cornerRadius = scoreBackgroundView.layer.bounds.width / 2
         scoreBackgroundView.clipsToBounds = true
-        scoreRankLabel.text = String(rank)
-        containerView.backgroundColor = AppTheme.current.scoreCellBackgroundColor
-        containerView.layer.cornerRadius = 10
-        scoreBackgroundView.backgroundColor = AppTheme.current.scoreBackgroundColor
+        scoreBackgroundView.layer.borderColor = AppTheme.current.textColor.cgColor
     }
 }

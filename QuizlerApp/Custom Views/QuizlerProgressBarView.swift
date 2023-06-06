@@ -10,7 +10,7 @@ import UIKit
 class QuizlerProgressBarView: UIView {
     
     //MARK: - Globals
-    @IBInspectable var color: UIColor = AppTheme.current.cellColor
+    @IBInspectable var color: UIColor = AppTheme.current.containerColor
     let backgroundMask = CAShapeLayer()
     var progress: CGFloat = 0 {
         didSet { setNeedsDisplay() }

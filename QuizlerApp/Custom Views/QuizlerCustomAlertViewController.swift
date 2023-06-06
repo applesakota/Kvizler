@@ -15,6 +15,7 @@ class QuizlerCustomAlertViewController: UIViewController {
     @IBOutlet weak var alertNoButton: UIButton!
     @IBOutlet weak var alertYesButton: UIButton!
     @IBOutlet weak var alertView: UIView!
+    @IBOutlet weak var buttonsStackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +49,15 @@ class QuizlerCustomAlertViewController: UIViewController {
         self.alertView.layer.cornerRadius = 10
         self.alertImageView.image = UIImage(named: "exit-2")
         self.alertTitleLabel.text = "Napusti kviz"
+        self.alertTitleLabel.textColor = AppTheme.current.bodyTextColor
         self.alertDescriptionLabel.text = "Da li sigurno želiš da napustiš kviz?"
+        self.alertDescriptionLabel.textColor = AppTheme.current.bodyTextColor
         self.alertNoButton.setTitle("Ne", for: .normal)
+        self.alertNoButton.setTitleColor(AppTheme.current.bodyTextColor, for: .normal)
         self.alertYesButton.setTitle("Da", for: .normal)
+        self.alertYesButton.setTitleColor(AppTheme.current.bodyTextColor, for: .normal)
         self.alertView.layer.borderWidth = 0.2
+        self.alertView.backgroundColor = AppTheme.current.containerColor
         self.alertView.showShadow()
     }
     

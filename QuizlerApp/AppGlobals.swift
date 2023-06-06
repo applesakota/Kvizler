@@ -43,4 +43,14 @@ enum AppGlobals {
             foregroundColor: AppTheme.current.blackColor.withAlphaComponent(0.2),
             userLargeSpinner: true)
     }
+    
+    //MARK: - HomeViewController
+    
+    //MARK: - AppVersion
+    static let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+    
+    static let appId = "id6446685036"
+    
+    static let privacyPolicyUrl = URL(string: "https://github.com/applesakota/Kvizler/wiki/Privacy-Policy-for-Kvizler-on-App-Store")!
+    
 }

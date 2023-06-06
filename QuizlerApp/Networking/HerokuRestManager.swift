@@ -28,9 +28,7 @@ class HerokuRestManager {
     
     
     //MARK: Public API
-    
-
-    
+        
     func executeRefreshToken(_ callback: @escaping (Result<(), Error>) -> Swift.Void) {
 
     }
@@ -38,26 +36,6 @@ class HerokuRestManager {
 
     }
 
-    
-    
-//    /// Function that should send question request to server
-//    /// - Parameters:
-//    ///   - body: Request body that will be send to ApI
-//    ///   - callback: Callback function that will be async executed once request is done.
-//    func postRequestQuestion(body: NSDictionary, _ callback: @escaping (Result<(), Error>) -> Swift.Void) {
-//        // Execute api request
-//        service.executeRequestQuestion(body: body) { (result: RESTManager.ResponseResult<RESTManager.DiscardableServerModel>) in
-//            switch result.result {
-//            case .success:
-//                print("Seccesfully send post request to server")
-//                callback(.success( () ))
-//            case .failure(let error):
-//                callback(.failure(error))
-//            }
-//        }
-//
-//    }
-    
     func getQuestions(_ callback: @escaping (Result<([QuestionModel]), Error>) -> Swift.Void) {
         
         if isCachingEnabled, let models: [QuestionModel] = loadModelFromLocalStorageIfAny(hashKey: "all_questions") {
@@ -104,6 +82,29 @@ class HerokuRestManager {
                 callback(.failure(error))
             }
         }
+    }
+    
+    func getReportTypes(_ callback: @escaping (Result<[ReportTypeModel], Error>)->Swift.Void) {
+        if isCachingEnabled, let models: [ReportTypeModel] = loadModelFromLocalStorageIfAny(hashKey: "all_report_types") {
+            callback(.success(models))
+            print("Seccessfuly fetchet report types from local storage")
+            return
+        }
+        
+        //Execute api request
+        service.executeGetErrorTypes { (result: RESTManager.ResponseResult<RESTManager.DiscardableServerModel>) in
+            switch result.result {
+            case .success:
+                if let dictionary = result.rawData?.toDictionaries() {
+                    let models = dictionary.compactMap { ReportTypeModel($0) }
+                    self.storage.save(codable: models, key: "all_report_types")
+                    print("Seccessfuly fetched report types from server side")
+                    callback(.success(models))
+                }
+            case .failure(let error):
+                callback(.failure(error))
+            }
+        }
         
     }
     
@@ -135,46 +136,30 @@ class HerokuRestManager {
         }
     }
     
-//    func getLengthQuestions(id: String, _ callback: @escaping (Result<([QuestionModel]), Error>)->Swift.Void) {
-//        // Execute api request
-//        service.executeGetLengthQuestions(id: id) { (result: RESTManager.ResponseResult<RESTManager.DiscardableServerModel>) in
-//            switch result.result {
-//            case .success:
-//                if let dictionary = result.rawData?.toDictionaries() {
-//                    let models = dictionary.compactMap{ QuestionModel($0) }
-//                    print("Seccessfuly fetched lenth questions from server side")
-//                    callback(.success(models))
-//                }
-//            case .failure(let error):
-//                callback(.failure(error))
-//            }
-//        }
-//    }
-//
-//
-//    func getScoreboard(userId: String, categoryId: String, _ callback: @escaping (Result<([ScoreModel]), Error>)->Swift.Void) {
-//        // Execute api request
-//        service.executeGetScoreboard(userId: userId, categoryId: categoryId) { (result: RESTManager.ResponseResult<RESTManager.DiscardableServerModel>) in
-//            switch result.result {
-//            case .success:
-//                if let dictionary = result.rawData?.toDictionaries() {
-//                    let models = dictionary.compactMap( { ScoreModel($0)} )
-//                    print("Seccessfully fatched scoreboard from server side")
-//                    callback(.success(models))
-//                }
-//            case .failure(let error):
-//                callback(.failure(error))
-//            }
-//        }
-//    }
+    func requestPostError(reportTypeId: String, questionId: String, _ callback: @escaping (Result<(),Error>)->Swift.Void) {
+        service.executePostError(reportTypeId: reportTypeId, questionId: questionId) { (result: RESTManager.ResponseResult<RESTManager.DiscardableServerModel>) in
+            switch result.result {
+            case .success:
+                callback(.success( () ) )
+            case .failure(let error):
+                callback(.failure(error))
+            }
+        }
+    }
     
-    
+    func requestPostQuestion(body: NSDictionary, _ callback: @escaping (Result<(), Error>)->Swift.Void ) {
+        service.executePostQuestion(body: body) { (result: RESTManager.ResponseResult<RESTManager.DiscardableServerModel>) in
+            switch result.result {
+            case .success:
+                callback(.success(()))
+            case .failure(let error):
+                callback(.failure(error))
+            }
+        }
+    }
     
     private func loadModelFromLocalStorageIfAny<T: Codable>(hashKey: String) -> T? {
-        
         let model: T? = storage.loadCodable(hashKey)
         return model
-        
-        
     }
 }
