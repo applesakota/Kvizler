@@ -101,9 +101,9 @@
                                                         <constraint firstAttribute="width" constant="2" id="f34-DM-w0i"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Obelezite razloge zasto mislite da je pitanje nevalidno." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Mr-Dj-yAF">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Obeležite razloge zasto mislite da je pitanje nevalidno." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Mr-Dj-yAF">
                                                     <rect key="frame" x="10" y="0.0" width="109" height="128"/>
-                                                    <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="14"/>
                                                     <color key="textColor" name="bodyTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -134,9 +134,6 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <constraints>
-                                <constraint firstItem="kTc-g4-pbH" firstAttribute="top" secondItem="HcR-A0-MZR" secondAttribute="top" constant="89" id="84O-iq-LhN"/>
-                            </constraints>
                         </stackView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LVC-g8-kAx">
                             <rect key="frame" x="0.0" y="277" width="310" height="323"/>
